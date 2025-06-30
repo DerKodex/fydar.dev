@@ -1,5 +1,5 @@
-
-figure.figure-embed-video {
+/* Video Figures */
+figure.figure-video {
     position: relative;
     width: 100%;
     background-color: black;
@@ -8,7 +8,7 @@ figure.figure-embed-video {
     border-radius: 8px;
 }
 
-    figure.figure-embed-video video {
+    figure.figure-video video {
         position: absolute;
         top: 0;
         left: 0;
