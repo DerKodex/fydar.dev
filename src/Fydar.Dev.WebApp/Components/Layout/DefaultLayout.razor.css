@@ -422,9 +422,6 @@ main {
         mask: linear-gradient(to top, #00000000 24px, #ffffffff 85%, #ffffffff 100%);
     }
 
-    ::deep .cascade-container + * {
-        min-height: 512px;
-    }
 
 header .topbar,
 main,
@@ -549,8 +546,8 @@ footer {
 @media screen and (min-width: 768px) {
 
     ::deep .container {
-        padding-left: 48px;
-        padding-right: 48px;
+        padding-left: 40px;
+        padding-right: 40px;
     }
 
     ::deep section.section-feature .feature-body {
@@ -602,7 +599,7 @@ footer {
         header .topbar:has(aside),
         main:has(aside),
         footer:has(aside) {
-            grid-template-columns: auto [aside] 280px 24px [container] 616px auto;
+            grid-template-columns: auto [aside] 300px 24px [container] 572px auto;
         }
 
             header .topbar:has(aside) ::deep .container.container-wide,
@@ -628,7 +625,7 @@ footer {
         header .topbar:has(aside),
         main:has(aside),
         footer:has(aside) {
-            grid-template-columns: auto [aside] 350px 24px [container] 754px auto;
+            grid-template-columns: auto [aside] 350px 24px [container] 730px auto;
         }
 }
 
@@ -648,7 +645,7 @@ footer {
         header .topbar:has(aside),
         main:has(aside),
         footer:has(aside) {
-            grid-template-columns: auto [aside] 420px 24px [container] 884px auto;
+            grid-template-columns: auto [aside] 420px 24px [container] 860px auto;
         }
 }
 
@@ -783,10 +780,6 @@ footer {
     display: none;
 }
 
-header .topbar .row {
-    padding: 0 8px;
-}
-
 header .topbar menu {
     gap: 4px;
 }
@@ -820,10 +813,6 @@ header .topbar menu {
 
     header .topbar menu {
         gap: 11px;
-    }
-
-    header .topbar .row {
-        padding: 0 16px;
     }
 
     ::deep .container > .card-grid {
