@@ -553,7 +553,7 @@ footer {
     }
 
     ::deep section.section-feature {
-        grid-template-columns: auto [container] 960px auto;
+        grid-template-columns: auto [container] 896px auto;
     }
 
         ::deep section.section-feature .feature-body {
@@ -564,13 +564,13 @@ footer {
     header .topbar,
     main,
     footer {
-        grid-template-columns: auto [container] 960px auto;
+        grid-template-columns: auto [container] 896px auto;
     }
 
         header .topbar:has(aside),
         main:has(aside),
         footer:has(aside) {
-            grid-template-columns: auto [aside] 288px 32px [container] 610px auto;
+            grid-template-columns: auto [aside] 280px 24px [container] 616px auto;
         }
 
             header .topbar:has(aside) ::deep .container.container-wide,
@@ -584,19 +584,19 @@ footer {
 @media screen and (min-width: 1200px) {
 
     ::deep section.section-feature {
-        grid-template-columns: auto [aside] 348px 42px [container] 720px auto;
+        grid-template-columns: auto [aside] 350px 24px [container] 754px auto;
     }
 
     header .topbar,
     main,
     footer {
-        grid-template-columns: auto [container] 1140px auto;
+        grid-template-columns: auto [container] 1104px auto;
     }
 
         header .topbar:has(aside),
         main:has(aside),
         footer:has(aside) {
-            grid-template-columns: auto [aside] 348px 42px [container] 720px auto;
+            grid-template-columns: auto [aside] 350px 24px [container] 754px auto;
         }
 }
 
@@ -604,19 +604,19 @@ footer {
 @media screen and (min-width: 1400px) {
 
     ::deep section.section-feature {
-        grid-template-columns: auto [aside] 408px 42px [container] 870px auto;
+        grid-template-columns: auto [aside] 430px 24px [container] 922px auto;
     }
 
     header .topbar,
     main,
     footer {
-        grid-template-columns: auto [container] 1320px auto;
+        grid-template-columns: auto [container] 1304px auto;
     }
 
         header .topbar:has(aside),
         main:has(aside),
         footer:has(aside) {
-            grid-template-columns: auto [aside] 408px 42px [container] 870px auto;
+            grid-template-columns: auto [aside] 420px 24px [container] 884px auto;
         }
 }
 
