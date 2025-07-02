@@ -1,42 +1,45 @@
 @layout DefaultLayout
 @page "/portfolio/multiplayer"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Multiplayer Engineering - Fydar",
+        Description = "A collection of multiplayer games I've developed.",
+        CanonicalUrl = "https://fydar.dev/portfolio/multiplayer",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/header.webp",
+                Alt = "A portrait of Fydar in an anime art style."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Multiplayer Engineering",
+                Item = "https://fydar.dev/portfolio/multiplayer"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Multiplayer Engineering - Fydar",
-            Description = "A collection of multiplayer games I've developed.",
-            CanonicalUrl = "https://fydar.dev/portfolio/multiplayer",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/header.webp",
-                    Alt = "A portrait of Fydar in an anime art style."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Multiplayer Engineering",
-                    Item = "https://fydar.dev/portfolio/multiplayer"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
+<section class="container container-wide" data-nosnippet>
+    <h1>Multiplayer Programming</h1>
+</section>
 
 <HeadingScope>
     <aside>

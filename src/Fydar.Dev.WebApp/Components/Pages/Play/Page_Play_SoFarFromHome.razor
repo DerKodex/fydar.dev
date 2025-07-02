@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/sofarfromhome"
-
-<HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play So Far From Home - Fydar",
-            Description = "Searching between the sofa cushions for a missing key, but what else is down there?",
-            CanonicalUrl = "https://fydar.dev/play/sofarfromhome",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/sofarfromhome/social.webp",
-                    Alt = "Promotional material for the game 'So Far From Home'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play So Far From Home - Fydar",
+        Description = "A dungeon crawler with a powerful node-based editor for the RPG system.",
+        CanonicalUrl = "https://fydar.dev/play/sofarfromhome",
+        Properties = [
+            new OpenGraphModelImage()
             {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "So Far From Home",
-                    Item = "https://fydar.dev/play/sofarfromhome"
-                }
+                Url = "https://fydar.dev/media/sofarfromhome/social.webp",
+                Alt = "Promotional material for the game 'So Far From Home'."
             }
-        };
-    }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "So Far From Home",
+                Item = "https://fydar.dev/play/sofarfromhome"
+            }
+        }
+    };
+}
+
+<HeadContent>x
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

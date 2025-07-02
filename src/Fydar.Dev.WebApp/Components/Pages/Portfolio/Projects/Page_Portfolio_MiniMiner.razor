@@ -1,59 +1,60 @@
 @layout DefaultLayout
 @page "/portfolio/miniminer"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Mini Miner - Fydar",
+        Description = "The Game Boy demake of the Nintendo DS Pokémon Diamond and Pearl underground mining minigame.",
+        CanonicalUrl = "https://fydar.dev/portfolio/miniminer",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/miniminer/social.webp",
+                Alt = "Promotional material for the game 'Mini Miner'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Mini Miner",
+                Item = "https://fydar.dev/portfolio/miniminer"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Mini Miner - Fydar",
-            Description = "The Game Boy demake of the Nintendo DS Pokémon Diamond and Pearl underground mining minigame.",
-            CanonicalUrl = "https://fydar.dev/portfolio/miniminer",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/miniminer/social.webp",
-                    Alt = "Promotional material for the game 'Mini Miner'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Mini Miner",
-                    Item = "https://fydar.dev/portfolio/miniminer"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
             <img src="@Assets["media/miniminer/background.webp"]" style="image-rendering: pixelated; object-position: 70% 50%" />
         </picture>
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/miniminer/titlecard.svg"]" alt="Title card for the game 'Mini Miner'." />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/miniminer/titlecard.svg"]" alt="Title card for the game 'Mini Miner'." />
-        </picture>
-
-        <SteamPlayButton href="/play/miniminer">Play in Browser</SteamPlayButton>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="/play/miniminer">Play in Browser</SteamPlayButton>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -62,16 +63,34 @@
     </div>
 </div>
 
-<aside>
+<section class="container container-wide" data-nosnippet>
+    <h1>Mini Miner</h1>
+</section>
+
+<aside class="project-summary">
     <section>
-        <h1>Mini Miner</h1>
+        <img class="project-featuredimage" src="@Assets["media/miniminer/social.webp"]" alt="Promotional material for the game 'Mini Miner'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gamejams" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Game Jam" /><p>Game Jam</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-technicalart" href="/portfolio/technicalart" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--brush" Alt="Technical Art" /><p>Technical Art</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>The Game Boy demake of the Nintendo DS <i>Pokémon Diamond and Pearl</i> underground mining minigame.</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://github.com/fydar/MiniMiner" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-github" Alt="GitHub" /></a></li>
+            <li><a href="https://youtu.be/_JwmO41hxcI" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
     </section>
 </aside>
 
 <section class="container">
-
     <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/_JwmO41hxcI?si=1btWzYt8tR6iS5HH" />
-
 </section>
 
 <HeadingScope>

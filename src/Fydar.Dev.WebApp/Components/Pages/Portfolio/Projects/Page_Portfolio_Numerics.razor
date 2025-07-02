@@ -1,41 +1,61 @@
 @layout DefaultLayout
 @page "/portfolio/numerics"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Numerics - Fydar",
+        Description = "A complete numerics system.",
+        CanonicalUrl = "https://fydar.dev/portfolio/numerics",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/header.webp",
+                Alt = "A portrait of Fydar in an anime art style."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Numerics",
+                Item = "https://fydar.dev/portfolio/numerics"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Numerics - Fydar",
-            Description = "A complete numerics system.",
-            CanonicalUrl = "https://fydar.dev/portfolio/numerics",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/header.webp",
-                    Alt = "A portrait of Fydar in an anime art style."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Numerics",
-                    Item = "https://fydar.dev/portfolio/numerics"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
+
+<section class="container container-wide" data-nosnippet>
+    <h1>Numerics</h1>
+</section>
+
+<aside class="project-summary">
+    <section>
+        <PillCloud>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://github.com/fydar/Deterministic" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-github" Alt="GitHub" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+    </section>
+</aside>
 
 <HeadingScope>
     <aside>

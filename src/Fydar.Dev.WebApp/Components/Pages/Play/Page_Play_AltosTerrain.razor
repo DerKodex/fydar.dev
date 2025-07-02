@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/altosterrain"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play Altos-style Terrain - Fydar",
+        Description = "A recreation of the procedural terrain generation from Altos Odyssy.",
+        CanonicalUrl = "https://fydar.dev/play/altosterrain",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/altosterrain/social.webp",
+                Alt = "Promotional material for the game 'Altos-style Terrain'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Altos-style Terrain",
+                Item = "https://fydar.dev/play/altosterrain"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play Altos-style Terrain - Fydar",
-            Description = "A recreation of the procedural terrain generation from Altos Odyssy.",
-            CanonicalUrl = "https://fydar.dev/play/altosterrain",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/altosterrain/social.webp",
-                    Alt = "Promotional material for the game 'Altos-style Terrain'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Altos-style Terrain",
-                    Item = "https://fydar.dev/play/altosterrain"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

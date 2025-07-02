@@ -4,36 +4,34 @@
 @page "/resume"
 
 @inject NavigationManager NavigationManager
-
-<PageTitle>Resume - Fydar</PageTitle>
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Resume - Fydar",
+        Description = "Fydar is a game developer and engineer who thrives when pushing technical boundaries and creating memorable experiences.",
+        CanonicalUrl = "https://fydar.dev/resume",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/header.webp",
+                Alt = "A portrait of Fydar in an anime art style."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Resume",
+                Item = "https://fydar.dev/resume/"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Resume - Fydar",
-            Description = "Fydar is a game developer and engineer who thrives when pushing technical boundaries and creating memorable experiences.",
-            CanonicalUrl = "https://fydar.dev/resume",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/header.webp",
-                    Alt = "A portrait of Fydar in an anime art style."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Resume",
-                    Item = "https://fydar.dev/resume/"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>

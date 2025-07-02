@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/void"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play Void - Fydar",
+        Description = "Explore the empty void, deploy mining vessels to mine asteroids.",
+        CanonicalUrl = "https://fydar.dev/play/void",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/void/social.webp",
+                Alt = "Promotional material for the game 'Void'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Void",
+                Item = "https://fydar.dev/play/void"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play Void - Fydar",
-            Description = "Explore the empty void, deploy mining vessels to mine asteroids.",
-            CanonicalUrl = "https://fydar.dev/play/void",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/void/social.webp",
-                    Alt = "Promotional material for the game 'Void'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Void",
-                    Item = "https://fydar.dev/play/void"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

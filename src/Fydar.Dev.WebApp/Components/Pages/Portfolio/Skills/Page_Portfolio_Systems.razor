@@ -1,42 +1,45 @@
 @layout DefaultLayout
 @page "/portfolio/systems"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Systems Programming - Fydar",
+        Description = "A collection of systems I've developed.",
+        CanonicalUrl = "https://fydar.dev/portfolio/systems",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/header.webp",
+                Alt = "A portrait of Fydar in an anime art style."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Systems Programming",
+                Item = "https://fydar.dev/portfolio/systems"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Systems Programming - Fydar",
-            Description = "A collection of systems I've developed.",
-            CanonicalUrl = "https://fydar.dev/portfolio/systems",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/header.webp",
-                    Alt = "A portrait of Fydar in an anime art style."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Systems Programming",
-                    Item = "https://fydar.dev/portfolio/systems"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
+<section class="container container-wide" data-nosnippet>
+    <h1>Systems Engineering</h1>
+</section>
 
 <HeadingScope>
     <aside>

@@ -1,56 +1,57 @@
 @layout DefaultLayout
 @page "/portfolio/void"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Void - Fydar",
+        Description = "A top-down space RTS.",
+        CanonicalUrl = "https://fydar.dev/portfolio/void",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/void/social.webp",
+                Alt = "Promotional material for the game 'Void'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Void",
+                Item = "https://fydar.dev/portfolio/void"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Void - Fydar",
-            Description = "A top-down space RTS.",
-            CanonicalUrl = "https://fydar.dev/portfolio/void",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/void/social.webp",
-                    Alt = "Promotional material for the game 'Void'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Void",
-                    Item = "https://fydar.dev/portfolio/void"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/void/titlecard.png"]" alt="Title card for the game 'Void'." />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/void/titlecard.png"]" alt="Title card for the game 'Void'." />
-        </picture>
-
-        <SteamPlayButton href="/play/void">Play in Browser</SteamPlayButton>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="/play/void">Play in Browser</SteamPlayButton>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -58,6 +59,29 @@
     <div class="cascade" style="background: linear-gradient(to right, #FFA50000 0%, #FFA50030 75%, #FFA50014 100%), url('media/noise.svg');">
     </div>
 </div>
+
+<section class="container container-wide" data-nosnippet>
+    <h1>Void</h1>
+</section>
+
+<aside class="project-summary">
+    <section>
+        <img class="project-featuredimage" src="@Assets["media/void/social.webp"]" alt="Promotional material for the game 'Void'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gamejams" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Game Jam" /><p>Game Jam</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+    </section>
+</aside>
 
 <HeadingScope>
     <aside>

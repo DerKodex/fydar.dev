@@ -1,45 +1,44 @@
 @layout DefaultLayout
 @page "/portfolio/eitr"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "EITR - Fydar",
+        Description = "A soulslike RPG built around exceptional combat and formidable challenges set within a mythological Norse world.",
+        CanonicalUrl = "https://fydar.dev/portfolio/eitr",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/eitr/social.webp",
+                Alt = "Promotional material for the game 'EITR'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "EITR",
+                Item = "https://fydar.dev/portfolio/eitr"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "EITR - Fydar",
-            Description = "A soulslike RPG built around exceptional combat and formidable challenges set within a mythological Norse world.",
-            CanonicalUrl = "https://fydar.dev/portfolio/eitr",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/eitr/keyart-1_91x1-1200x630.webp",
-                    Alt = "Promotional material for the game 'EITR'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "EITR",
-                    Item = "https://fydar.dev/portfolio/eitr"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <div class="parallax-layer" style="--parallax-multiplier: 0.5;">
             <div class="blur" style="background: radial-gradient(100% 100% at 50% 50%, #2C353C, #151F26, #0D1318);">
             </div>
@@ -49,35 +48,53 @@
             <source src="@Assets["media/eitr/background.720p.29fps.h265.mp4"]" type='video/mp4; codecs="hev1.1.2.L93.90"; profiles="isom,iso2,mp41"'>
             <source src="@Assets["media/eitr/background.720p.29fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d401f"; profiles="isom,iso2,avc1,mp41"'>
         </video>
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/eitr/titlecard.png"]" alt="Title card for the game 'EITR'." style="image-rendering: pixelated;" />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/eitr/titlecard.png"]" alt="Title card for the game 'EITR'." style="image-rendering: pixelated;" />
-        </picture>
-
-        <SteamPlayButton href="https://store.steampowered.com/app/350050/EITR/">Visit on Steam</SteamPlayButton>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="https://store.steampowered.com/app/350050/EITR/">Visit on Steam</SteamPlayButton>
+            </div>
+        </div>
     </div>
 </section>
 
 <div class="cascade-container">
-    <div class="cascade" style="background: linear-gradient(to right, #3d545200 0%, #3d545230 75%, #3d545214 100%), url('media/noise.svg');">
+    <div class="cascade" style="background: linear-gradient(to right, #ff810029 0%, #00ffd029 75%, #00ff7429 100%), url(media/noise.svg);">
     </div>
 </div>
 
-<aside>
+<section class="container container-wide" data-nosnippet>
+    <h1>EITR</h1>
+</section>
+
+<aside class="project-summary">
     <section>
-        <h1>EITR</h1>
+        <img class="project-featuredimage" src="@Assets["media/eitr/social.webp"]" alt="Promotional material for the game 'Eitr'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-tools" href="/portfolio/tools" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" /><p>Tools Programming</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://youtu.be/z4EWdcoSpAo" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
     </section>
 </aside>
 
 <section class="container">
-
     <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/z4EWdcoSpAo?si=HMri-k_GT7woe8eT" />
-
 </section>
 
 <HeadingScope>

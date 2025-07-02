@@ -144,7 +144,7 @@
             height: 14pt;
         }
 
-        .resume .link-tag ::deep svg:last-child {
+        .resume .link-tag ::deep svg.external-link-icon {
             width: 7pt;
             height: 7pt;
             margin-left: -1pt;
@@ -179,19 +179,19 @@
             margin: 0;
         }
 
-        .resume .capsule-tag ::deep svg:last-child {
+        .resume .capsule-tag ::deep svg:first-child {
+            width: 14pt;
+            height: 14pt;
+            margin: 0;
+        }
+
+        .resume .capsule-tag ::deep svg.external-link-icon {
             width: 7pt;
             height: 7pt;
             margin-left: -1pt;
             margin-top: 2pt;
             margin-right: 1pt;
             align-self: start;
-        }
-
-        .resume .capsule-tag ::deep svg:first-child {
-            width: 14pt;
-            height: 14pt;
-            margin: 0;
         }
 
     .resume .page-coverletter {
@@ -485,10 +485,6 @@
 }
 
 .palette-systems {
-    /*
-    --palette-primary-color: #457c00;
-    --palette-primary-background1-color: #457c0025;
-    */
     --palette-primary-color: #0a7a5f;
     --palette-primary-background1-color: #00a46e24;
 }

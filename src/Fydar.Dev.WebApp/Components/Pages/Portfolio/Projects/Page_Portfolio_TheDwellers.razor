@@ -1,59 +1,60 @@
 @layout DefaultLayout
 @page "/portfolio/thedwellers"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "The Dwellers - Fydar",
+        Description = "A 3D dungeon crawler game demo with a full RPG item system, featuring a wide range of weapons and other equipment.",
+        CanonicalUrl = "https://fydar.dev/portfolio/thedwellers",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/thedwellers/social.webp",
+                Alt = "Promotional material for the game 'The Dwellers'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "The Dwellers",
+                Item = "https://fydar.dev/portfolio/thedwellers"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "The Dwellers - Fydar",
-            Description = "A dungeon crawler with a powerful node-based editor for the RPG system.",
-            CanonicalUrl = "https://fydar.dev/portfolio/thedwellers",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/thedwellers/social.webp",
-                    Alt = "Promotional material for the game 'The Dwellers'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "The Dwellers",
-                    Item = "https://fydar.dev/portfolio/thedwellers"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
             <img src="@Assets["media/thedwellers/background.webp"]" style="object-position: 42% 50%;" />
         </picture>
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/thedwellers/titlecard.svg"]" alt="Title card for the game 'The Dwellers'." />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/thedwellers/titlecard.svg"]" alt="Title card for the game 'The Dwellers'." />
-        </picture>
-
-        <SteamPlayButton href="/play/thedwellers">Play in Browser</SteamPlayButton>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="/play/thedwellers">Play in Browser</SteamPlayButton>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -62,16 +63,34 @@
     </div>
 </div>
 
+<section class="container container-wide" data-nosnippet>
+    <h1>The Dwellers</h1>
+</section>
+
 <aside>
     <section>
-        <h1>The Dwellers</h1>
+        <img class="project-featuredimage" src="@Assets["media/thedwellers/social.webp"]" alt="Promotional material for the game 'The Dwellers'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gamejams" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Game Jam" /><p>Game Jam</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-tools" href="/portfolio/tools" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" /><p>Tools Programming</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://youtu.be/ksa6ccxi0Ug" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+
     </section>
 </aside>
 
 <section class="container">
-
     <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/ksa6ccxi0Ug?si=hheiAYNLLLx_EhRv" />
-
 </section>
 
 <HeadingScope>

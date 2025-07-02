@@ -1,45 +1,44 @@
 @layout DefaultLayout
 @page "/portfolio/astralelites"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Astral Elites - Fydar",
+        Description = "The physics-based and fast-paced asteroids clone for the modern era.",
+        CanonicalUrl = "https://fydar.dev/portfolio/astralelites",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/astralelites/social.webp",
+                Alt = "Promotional material for the game 'Astral Elites'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Astral Elites",
+                Item = "https://fydar.dev/portfolio/astralelites"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Astral Elites - Fydar",
-            Description = "The physics-based and fast-paced asteroids clone for the modern era.",
-            CanonicalUrl = "https://fydar.dev/portfolio/astralelites",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/astralelites/social.webp",
-                    Alt = "Promotional material for the game 'Astral Elites'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Astral Elites",
-                    Item = "https://fydar.dev/portfolio/astralelites"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <EmbedUnity class="embed loading parallax-layer" style="--parallax-multiplier: 0.5">
             <Configuration>
                 <script>
@@ -60,30 +59,49 @@
                 <img src="@Assets["play/astralelites/favicon.ico"]" alt="The logo for 'Astral Elites'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
             </Placeholder>
         </EmbedUnity>
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/astralelites/titlecard.svg"]" alt="Title card for the game 'Astral Elites'." />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/astralelites/titlecard.svg"]" alt="Title card for the game 'Astral Elites'." />
-        </picture>
-
-        <SteamPlayButton href="/play/astralelites">Play in Browser</SteamPlayButton>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="/play/astralelites">Play in Browser</SteamPlayButton>
+            </div>
+        </div>
     </div>
+</section>
+
+<section class="container container-wide" data-nosnippet>
+    <h1>Astral Elites</h1>
 </section>
 
 <aside>
     <section>
-        <h1>Astral Elites</h1>
+        <img class="project-featuredimage" src="@Assets["media/astralelites/social.webp"]" alt="Promotional material for the game 'Astral Elites'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gamejams" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Game Jam" /><p>Game Jam</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://github.com/fydar/AstralElites" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-github" Alt="GitHub" /></a></li>
+            <li><a href="https://youtu.be/r4RrKXTHTGY" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
     </section>
 </aside>
 
 <section class="container">
-
     <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/r4RrKXTHTGY?si=02R98hFpkABaYXAy" />
-
 </section>
 
 <HeadingScope>

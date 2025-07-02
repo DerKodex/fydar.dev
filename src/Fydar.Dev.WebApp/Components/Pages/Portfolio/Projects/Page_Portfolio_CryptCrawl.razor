@@ -1,59 +1,60 @@
 @layout DefaultLayout
 @page "/portfolio/cryptcrawl"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Crypt Crawl - Fydar",
+        Description = "A pixel art dungeon crawler with dungeon textures generated in Substance Designer.",
+        CanonicalUrl = "https://fydar.dev/portfolio/cryptcrawl",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/cryptcrawl/social.webp",
+                Alt = "Promotional material for the game 'Crypt Crawl'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Crypt Crawl",
+                Item = "https://fydar.dev/portfolio/cryptcrawl"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Crypt Crawl - Fydar",
-            Description = "A pixel art dungeon crawler with dungeon textures generated in Substance Designer.",
-            CanonicalUrl = "https://fydar.dev/portfolio/cryptcrawl",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/cryptcrawl/social.webp",
-                    Alt = "Promotional material for the game 'Crypt Crawl'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Crypt Crawl",
-                    Item = "https://fydar.dev/portfolio/cryptcrawl"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
             <img src="@Assets["media/cryptcrawl/background.webp"]" style="image-rendering: pixelated;" />
         </picture>
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/cryptcrawl/titlecard.svg"]" alt="Title card for the game 'Crypt Crawl'." />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/cryptcrawl/titlecard.svg"]" alt="Title card for the game 'Crypt Crawl'." />
-        </picture>
-
-        <SteamPlayButton href="/play/cryptcrawl">Play in Browser</SteamPlayButton>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="/play/cryptcrawl">Play in Browser</SteamPlayButton>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -62,16 +63,32 @@
     </div>
 </div>
 
-<aside>
+<section class="container container-wide" data-nosnippet>
+    <h1>Crypt Crawl</h1>
+</section>
+
+<aside class="project-summary">
     <section>
-        <h1>Crypt Crawl</h1>
+        <img class="project-featuredimage" src="@Assets["media/cryptcrawl/social.webp"]" alt="Promotional material for the game 'Crypt Crawl'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gamejams" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Game Jam" /><p>Game Jam</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://youtu.be/wZhdUXI0Wyg" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
     </section>
 </aside>
 
 <section class="container">
-
     <EmbedYouTube Url="https://www.youtube.com/embed/q9bQsY3fzQ8?si=I2F6BTu95kdAyQSK" />
-
 </section>
 
 <HeadingScope>

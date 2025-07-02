@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/snoot"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play Snoot - Fydar",
+        Description = "Restore life to a desolate world by exploring a sandbox of crafting recipes. On your adventure you will bring rain, grass, bugs, birds, and bees.",
+        CanonicalUrl = "https://fydar.dev/play/snoot",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/snoot/social.webp",
+                Alt = "Promotional material for the game 'Snoot'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Snoot",
+                Item = "https://fydar.dev/play/snoot"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play Snoot - Fydar",
-            Description = "Restore life to a desolate world by exploring a sandbox of crafting recipes. On your adventure you will bring rain, grass, bugs, birds, and bees.",
-            CanonicalUrl = "https://fydar.dev/play/snoot",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/snoot/social.webp",
-                    Alt = "Promotional material for the game 'Snoot'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Snoot",
-                    Item = "https://fydar.dev/play/snoot"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

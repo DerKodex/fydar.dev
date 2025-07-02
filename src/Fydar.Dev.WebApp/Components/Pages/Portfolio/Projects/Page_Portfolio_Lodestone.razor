@@ -1,41 +1,61 @@
 @layout DefaultLayout
 @page "/portfolio/lodestone"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Lodestone - Fydar",
+        Description = "An asset database and build system.",
+        CanonicalUrl = "https://fydar.dev/portfolio/lodestone",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/header.webp",
+                Alt = "A portrait of Fydar in an anime art style."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Lodestone",
+                Item = "https://fydar.dev/portfolio/lodestone"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Lodestone - Fydar",
-            Description = "An asset database and build system.",
-            CanonicalUrl = "https://fydar.dev/portfolio/lodestone",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/header.webp",
-                    Alt = "A portrait of Fydar in an anime art style."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Lodestone",
-                    Item = "https://fydar.dev/portfolio/lodestone"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
+
+<section class="container container-wide" data-nosnippet>
+    <h1>Lodestone</h1>
+</section>
+
+<aside class="project-summary">
+    <section>
+        <PillCloud>
+            <NavLink class="pill palette-tools" href="/portfolio/tools" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" /><p>Tools Programming</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+    </section>
+</aside>
 
 <HeadingScope>
     <aside>
@@ -48,7 +68,7 @@
 
     <section class="container">
 
-        <Heading Level="2" Identifier="world">
+        <Heading Level="2" Identifier="asset-pipeline">
             <Text>The Asset Pipeline</Text>
             <Content>
                 <p>The asset pipeline is composed of processing layers that transform data from one format to another.</p>
@@ -69,7 +89,7 @@
             </Content>
         </Heading>
 
-        <Heading Level="2" Identifier="world">
+        <Heading Level="2" Identifier="incremental-building">
             <Text>Incremental Building</Text>
             <Content>
                 <p>Lodestone features support for <b>incremental building</b> of assets through its cascading database.</p>

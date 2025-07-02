@@ -1,45 +1,44 @@
 @layout DefaultLayout
 @page "/portfolio/starcitizen"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Star Citizen - Fydar",
+        Description = "A next-generation AAA massively multiplayer online sandbox of life-size planets, moons, cities, space stations, asteroid belts, and more.",
+        CanonicalUrl = "https://fydar.dev/portfolio/starcitizen",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/starcitizen/social.webp",
+                Alt = "Promotional material for the game 'Star Citizen'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Star Citizen",
+                Item = "https://fydar.dev/portfolio/starcitizen"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Star Citizen - Fydar",
-            Description = "A next-generation AAA massively multiplayer online sandbox of life-size planets, moons, cities, space stations, asteroid belts, and more.",
-            CanonicalUrl = "https://fydar.dev/portfolio/starcitizen",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/starcitizen/social.webp",
-                    Alt = "Promotional material for the game 'Star Citizen'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Star Citizen",
-                    Item = "https://fydar.dev/portfolio/starcitizen"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <div class="parallax-layer" style="--parallax-multiplier: 0.5;">
             <div class="blur" style="background: radial-gradient(100% 100% at 50% 50%, #1a1215 25%, #0d0d0e 100%);">
             </div>
@@ -48,17 +47,19 @@
         <video class="parallax-layer" onloadeddata="this.classList.add('loaded');" style="--parallax-multiplier: 0.5" autoplay muted loop>
             <source src="@Assets["media/starcitizen/background.mp4"]" type="video/mp4">
         </video>
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/starcitizen/titlecard.svg"]" alt="Title card for the game 'Star Citizen'." />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/starcitizen/titlecard.svg"]" alt="Title card for the game 'Star Citizen'." />
-        </picture>
-
-        <SteamPlayButton href="https://robertsspaceindustries.com/star-citizen/play-now">Play Now</SteamPlayButton>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="https://robertsspaceindustries.com/star-citizen/play-now">Play Now</SteamPlayButton>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -67,16 +68,33 @@
     </div>
 </div>
 
-<aside>
+<section class="container container-wide" data-nosnippet>
+    <h1>Star Citizen</h1>
+</section>
+
+<aside class="project-summary">
     <section>
-        <h1>Star Citizen</h1>
+        <img class="project-featuredimage" src="@Assets["media/starcitizen/social.webp"]" alt="Promotional material for the game 'Star Citizen'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-backend" href="/portfolio/backend" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt= Engineering" /><p>Backend</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-tools" href="/portfolio/tools" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools" /><p>Tools</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C++</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://youtu.be/52rTsrwZcGQ" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
     </section>
 </aside>
 
 <section class="container">
-
     <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/52rTsrwZcGQ?si=H2talNo7mQx9f5LP" />
-
 </section>
 
 <SvgSpritesheet>

@@ -1,38 +1,38 @@
 @layout DefaultLayout
 @page "/portfolio/voxelmultiplayer"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Voxel Multiplayer - Fydar",
+        Description = "Fully bespoke voxel rendering system to create a 'Cube World' style game with a multiplayer component.",
+        CanonicalUrl = "https://fydar.dev/portfolio/voxelmultiplayer",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/voxelmultiplayer/social.webp",
+                Alt = "Promotional material for the game 'Voxel Multiplayer'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Voxel Multiplayer",
+                Item = "https://fydar.dev/portfolio/voxelmultiplayer"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Voxel Multiplayer - Fydar",
-            Description = "Fully bespoke voxel rendering system to create a 'Cube World' style game with a multiplayer component.",
-            CanonicalUrl = "https://fydar.dev/portfolio/voxelmultiplayer",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/voxelmultiplayer/social.webp",
-                    Alt = "Promotional material for the game 'Voxel Multiplayer'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Voxel Multiplayer",
-                    Item = "https://fydar.dev/portfolio/voxelmultiplayer"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
@@ -47,11 +47,15 @@
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/voxelmultiplayer/titlecard.svg"]" alt="Title card for the game 'Voxel Multiplayer'." />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/voxelmultiplayer/titlecard.svg"]" alt="Title card for the game 'Voxel Multiplayer'." />
-        </picture>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -60,16 +64,33 @@
     </div>
 </div>
 
-<aside>
+<section class="container container-wide" data-nosnippet>
+    <h1>Voxel Multiplayer</h1>
+</section>
+
+<aside class="project-summary">
     <section>
-        <h1>Voxel Multiplayer</h1>
+        <img class="project-featuredimage" src="@Assets["media/voxelmultiplayer/social.webp"]" alt="Promotional material for the game 'Voxel Multiplayer'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gamejams" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Game Jam" /><p>Game Jam</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-multiplayer" href="/portfolio/multiplayer" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--users-group" Alt="Multiplayer" /><p>Multiplayer</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://youtu.be/BbosMaHxAHo" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
     </section>
 </aside>
 
 <section class="container">
-
     <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/BbosMaHxAHo?si=HRRzPq68GrrLXLH5" StartTime="45" />
-
 </section>
 
 <HeadingScope>

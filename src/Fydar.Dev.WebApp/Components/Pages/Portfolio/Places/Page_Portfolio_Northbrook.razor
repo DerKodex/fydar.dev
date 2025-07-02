@@ -1,57 +1,59 @@
 @layout DefaultLayout
 @page "/portfolio/northbrook"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Northbrook - Fydar",
+        Description = "Assign your own unique icon to each of your ScriptableObjects.",
+        CanonicalUrl = "https://fydar.dev/portfolio/northbrook",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/northbrook/social.webp",
+                Alt = "Promotional material for 'Northbrook'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Northbrook",
+                Item = "https://fydar.dev/portfolio/northbrook"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Northbrook - Fydar",
-            Description = "Assign your own unique icon to each of your ScriptableObjects.",
-            CanonicalUrl = "https://fydar.dev/portfolio/northbrook",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/northbrook/social.webp",
-                    Alt = "Promotional material for 'Northbrook'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Northbrook",
-                    Item = "https://fydar.dev/portfolio/northbrook"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
             <img src="@Assets["media/northbrook/background.webp"]" />
         </picture>
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/northbrook/titlecard.svg"]" alt="Northbrook College" />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/northbrook/titlecard.svg"]" alt="Northbrook College" />
-        </picture>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -59,6 +61,10 @@
     <div class="cascade" style="background: linear-gradient(to right, #cb853f00 0%, #cb853f30 75%, #cb853f14 100%), url('media/noise.svg');">
     </div>
 </div>
+
+<section class="container container-wide" data-nosnippet>
+    <h1>Northbrook</h1>
+</section>
 
 <HeadingScope>
 

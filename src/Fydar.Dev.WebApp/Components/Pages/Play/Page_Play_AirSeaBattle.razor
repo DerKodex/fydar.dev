@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/airseabattle"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play Air-Sea Battle - Fydar",
+        Description = "The Game Boy demake of the Nintendo DS Pokémon Diamond and Pearl underground mining minigame.",
+        CanonicalUrl = "https://fydar.dev/play/airseabattle",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/airseabattle/social.webp",
+                Alt = "Promotional material for the game 'Air-Sea Battle'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Air-Sea Battle",
+                Item = "https://fydar.dev/play/airseabattle"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play Air-Sea Battle - Fydar",
-            Description = "The Game Boy demake of the Nintendo DS Pokémon Diamond and Pearl underground mining minigame.",
-            CanonicalUrl = "https://fydar.dev/play/airseabattle",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/airseabattle/social.webp",
-                    Alt = "Promotional material for the game 'Air-Sea Battle'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Air-Sea Battle",
-                    Item = "https://fydar.dev/play/airseabattle"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/roadtonorthstead"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play Road to Northstead - Fydar",
+        Description = "The game jam visual novel with questing and crafting to survive the night.",
+        CanonicalUrl = "https://fydar.dev/portfolio/roadtonorthstead",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/roadtonorthstead/social.webp",
+                Alt = "Promotional material for the game 'Road to Northstead'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Road to Northstead",
+                Item = "https://fydar.dev/play/roadtonorthstead"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play Road to Northstead - Fydar",
-            Description = "The game jam visual novel with questing and crafting to survive the night.",
-            CanonicalUrl = "https://fydar.dev/portfolio/roadtonorthstead",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/roadtonorthstead/social.webp",
-                    Alt = "Promotional material for the game 'Road to Northstead'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Road to Northstead",
-                    Item = "https://fydar.dev/play/roadtonorthstead"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

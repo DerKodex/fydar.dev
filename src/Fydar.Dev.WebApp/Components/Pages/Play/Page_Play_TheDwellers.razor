@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/thedwellers"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play The Dwellers - Fydar",
+        Description = "A dungeon crawler with a powerful node-based editor for the RPG system.",
+        CanonicalUrl = "https://fydar.dev/play/thedwellers",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/thedwellers/social.webp",
+                Alt = "Promotional material for the game 'The Dwellers'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "The Dwellers",
+                Item = "https://fydar.dev/play/thedwellers"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play The Dwellers - Fydar",
-            Description = "A dungeon crawler with a powerful node-based editor for the RPG system.",
-            CanonicalUrl = "https://fydar.dev/play/thedwellers",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/thedwellers/social.webp",
-                    Alt = "Promotional material for the game 'The Dwellers'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "The Dwellers",
-                    Item = "https://fydar.dev/play/thedwellers"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/bloodlust"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play Bloodlust - Fydar",
+        Description = "The physics-based and fast-paced asteroids clone for the modern era.",
+        CanonicalUrl = "https://fydar.dev/play/bloodlust",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/bloodlust/social.webp",
+                Alt = "Promotional material for the game 'Bloodlust'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Bloodlust",
+                Item = "https://fydar.dev/play/bloodlust"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play Bloodlust - Fydar",
-            Description = "The physics-based and fast-paced asteroids clone for the modern era.",
-            CanonicalUrl = "https://fydar.dev/play/bloodlust",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/bloodlust/social.webp",
-                    Alt = "Promotional material for the game 'Bloodlust'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Bloodlust",
-                    Item = "https://fydar.dev/play/bloodlust"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

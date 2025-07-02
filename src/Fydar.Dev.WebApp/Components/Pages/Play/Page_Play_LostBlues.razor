@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/lostblues"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play Lost Blues - Fydar",
+        Description = "The clicker-style where you farm kelp and release fish.",
+        CanonicalUrl = "https://fydar.dev/play/lostblues",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/lostblues/social.webp",
+                Alt = "Promotional material for the game 'Lost Blues'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Lost Blues",
+                Item = "https://fydar.dev/play/lostblues"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play Lost Blues - Fydar",
-            Description = "The clicker-style where you farm kelp and release fish.",
-            CanonicalUrl = "https://fydar.dev/play/lostblues",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/lostblues/social.webp",
-                    Alt = "Promotional material for the game 'Lost Blues'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Lost Blues",
-                    Item = "https://fydar.dev/play/lostblues"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

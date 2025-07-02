@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/cryptcrawl"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play Crypt Crawl - Fydar",
+        Description = "A pixel art dungeon crawler with dungeon textures generated in Substance Designer.",
+        CanonicalUrl = "https://fydar.dev/play/cryptcrawl",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/cryptcrawl/social.webp",
+                Alt = "Promotional material for the game 'Crypt Crawl'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Crypt Crawl",
+                Item = "https://fydar.dev/play/cryptcrawl"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play Crypt Crawl - Fydar",
-            Description = "A pixel art dungeon crawler with dungeon textures generated in Substance Designer.",
-            CanonicalUrl = "https://fydar.dev/play/cryptcrawl",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/cryptcrawl/social.webp",
-                    Alt = "Promotional material for the game 'Crypt Crawl'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Crypt Crawl",
-                    Item = "https://fydar.dev/play/cryptcrawl"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

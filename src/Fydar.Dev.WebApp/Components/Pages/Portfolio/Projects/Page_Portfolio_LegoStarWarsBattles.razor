@@ -1,46 +1,44 @@
 @layout DefaultLayout
 @page "/portfolio/legostarwarsbattles"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "LEGO® Star Wars™ Battles - Fydar",
+        Description = "A mobile multiplayer realtime strategy game featuring competitive ranked matchmaking, weekly leaderboards, and clans.",
+        CanonicalUrl = "https://fydar.dev/portfolio/legostarwarsbattles",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/legostarwarsbattles/social.webp",
+                Alt = "Promotional material for the game 'LEGO® Star Wars™ Battles'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "LEGO® Star Wars™ Battles",
+                Item = "https://fydar.dev/portfolio/legostarwarsbattles"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "LEGO® Star Wars™ Battles - Fydar",
-            Description = "A mobile multiplayer realtime strategy game featuring competitive ranked matchmaking, weekly leaderboards, and clans.",
-            CanonicalUrl = "https://fydar.dev/portfolio/legostarwarsbattles",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/legostarwarsbattles/keyart-1_91x1-1200x630.webp",
-                    Alt = "Promotional material for the game 'LEGO® Star Wars™ Battles'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "LEGO® Star Wars™ Battles",
-                    Item = "https://fydar.dev/portfolio/legostarwarsbattles"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
-
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <div class="parallax-layer" style="--parallax-multiplier: 0.5;">
             <div class="blur" style="background: radial-gradient(100% 100% at 50% 50%, #070b13 25%, #0f182e 100%);">
             </div>
@@ -50,17 +48,19 @@
             <source src="@Assets["media/legostarwarsbattles/background.1080p.30fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L120.90"; profiles="isom,iso2,mp41"'>
             <source src="@Assets["media/legostarwarsbattles/background.1080p.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
         </video>
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/legostarwarsbattles/titlecard.png"]" alt="Title card for the game 'LEGO® Star Wars™ Battles'." />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/legostarwarsbattles/titlecard.png"]" alt="Title card for the game 'LEGO® Star Wars™ Battles'." />
-        </picture>
-
-        <SteamPlayButton href="https://apps.apple.com/us/app/lego-star-wars-battles/id1563174698">Apple Arcade</SteamPlayButton>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="https://apps.apple.com/us/app/lego-star-wars-battles/id1563174698">Apple Arcade</SteamPlayButton>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -69,9 +69,29 @@
     </div>
 </div>
 
-<aside>
+<section class="container container-wide" data-nosnippet>
+    <h1>LEGO® Star Wars™ Battles</h1>
+</section>
+
+<aside class="project-summary">
     <section>
-        <h1>LEGO® Star Wars™ Battles</h1>
+        <img class="project-featuredimage" src="@Assets["media/legostarwarsbattles/social.webp"]" alt="Promotional material for the game 'LEGO® Star Wars™ Battles'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-backend" href="/portfolio/backend" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend" /><p>Backend</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-tools" href="/portfolio/tools" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools" /><p>Tools</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-multiplayer" href="/portfolio/multiplayer" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--users-group" Alt="Multiplayer" /><p>Multiplayer</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://youtu.be/XGWJk2GxE7c" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
     </section>
 </aside>
 
@@ -162,7 +182,7 @@
                 <CutContent>
                     <ChildContent>
                         <p>This feature was cut from the game.</p>
-                        <p>When the game released on Apple Arcade, we removed all monetization features.</p>
+                        <p>When the game released on Apple Arcade, all monetization features where removed.</p>
                     </ChildContent>
                 </CutContent>
 

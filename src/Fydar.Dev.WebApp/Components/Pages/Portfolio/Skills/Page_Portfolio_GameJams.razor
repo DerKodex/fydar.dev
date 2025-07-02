@@ -1,42 +1,46 @@
 @layout DefaultLayout
 @page "/portfolio/gamejams"
 @using Microsoft.AspNetCore.OutputCaching
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Game Jams - Fydar",
+        Description = "Fydar is a game developer and engineer who thrives when pushing technical boundaries and creating memorable experiences.",
+        CanonicalUrl = "https://fydar.dev/portfolio/gamejams",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/header.webp",
+                Alt = "A portrait of Fydar in an anime art style."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Game Jams",
+                Item = "https://fydar.dev/portfolio/gamejams"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Game Jams - Fydar",
-            Description = "Fydar is a game developer and engineer who thrives when pushing technical boundaries and creating memorable experiences.",
-            CanonicalUrl = "https://fydar.dev/portfolio/gamejams",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/header.webp",
-                    Alt = "A portrait of Fydar in an anime art style."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Game Jams",
-                    Item = "https://fydar.dev/portfolio/gamejams"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
+
+<section class="container container-wide" data-nosnippet>
+    <h1>Game Jams</h1>
+</section>
 
 <HeadingScope>
     <aside>
@@ -164,7 +168,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <p class="card-description">The cute crafting game to restore nature and life to the world.</p>
+                                    <p class="card-description">A top-down space RTS.</p>
                                 </div>
                             </div>
                         </ChildContent>
@@ -300,7 +304,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <p class="card-description">The clicker-style where you farm kelp and release fish.</p>
+                                    <p class="card-description">Remote control a drone to take down a rouge AI controlling the station.</p>
                                 </div>
                             </div>
                         </ChildContent>
@@ -373,26 +377,6 @@
                             </div>
                         </ChildContent>
                     </Card>
-                    <Card href="/portfolio/cryptcrawl">
-                        <FeaturedImage>
-                            <picture>
-                                <img loading="lazy" width="640" height="480" class="card-image" src="@Assets["media/cryptcrawl/keyart-4x3.png"]" alt="A preview of the game 'Crypt Crawl' featuring the protagonist wizard in a brown dungeon." style="image-rendering: pixelated;" />
-                            </picture>
-                        </FeaturedImage>
-                        <ChildContent>
-                            <div class="card-container">
-                                <div class="row">
-                                    <SvgSprite class="card-keyicon" Link="/icons.svg?v=1#icon-cryptcrawl" />
-                                    <div class="column">
-                                        <h3 class="card-header">Crypt Crawl</h3>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <p class="card-description">A pixel-art dungeon crawler with a custom tile rendering and rule-based tiles made before Unity created their own.</p>
-                                </div>
-                            </div>
-                        </ChildContent>
-                    </Card>
                     <Card href="/portfolio/lilypadleap">
                         <FeaturedImage>
                             <picture>
@@ -408,7 +392,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <p class="card-description">The clicker-style where you farm kelp and release fish.</p>
+                                    <p class="card-description">A meditative and addictive game where you jump a frog across lily pads.</p>
                                 </div>
                             </div>
                         </ChildContent>
@@ -428,7 +412,35 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <p class="card-description">The clicker-style where you farm kelp and release fish.</p>
+                                    <p class="card-description">Battle endless swarms of enemy space ships across the galaxy.</p>
+                                </div>
+                            </div>
+                        </ChildContent>
+                    </Card>
+                </CardGrid>
+            </Content>
+        </Heading>
+
+        <Heading Level="2" Identifier="2016">
+            <Text>2016</Text>
+            <Content>
+                <CardGrid Size="md">
+                    <Card href="/portfolio/cryptcrawl">
+                        <FeaturedImage>
+                            <picture>
+                                <img loading="lazy" width="640" height="480" class="card-image" src="@Assets["media/cryptcrawl/keyart-4x3.png"]" alt="A preview of the game 'Crypt Crawl' featuring the protagonist wizard in a brown dungeon." style="image-rendering: pixelated;" />
+                            </picture>
+                        </FeaturedImage>
+                        <ChildContent>
+                            <div class="card-container">
+                                <div class="row">
+                                    <SvgSprite class="card-keyicon" Link="/icons.svg?v=1#icon-cryptcrawl" />
+                                    <div class="column">
+                                        <h3 class="card-header">Crypt Crawl</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p class="card-description">A pixel-art dungeon crawler with a custom tile rendering and rule-based tiles made before Unity created their own.</p>
                                 </div>
                             </div>
                         </ChildContent>

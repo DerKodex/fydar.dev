@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/cakedodge"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play Cake Dodge - Fydar",
+        Description = "The fun mobile game demo where Cookie must dodge cakes.",
+        CanonicalUrl = "https://fydar.dev/play/cakedodge",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/cakedodge/social.webp",
+                Alt = "Promotional material for the game 'Cake Dodge'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Cake Dodge",
+                Item = "https://fydar.dev/play/cakedodge"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play Cake Dodge - Fydar",
-            Description = "The fun mobile game demo where Cookie must dodge cakes.",
-            CanonicalUrl = "https://fydar.dev/play/cakedodge",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/cakedodge/social.webp",
-                    Alt = "Promotional material for the game 'Cake Dodge'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Cake Dodge",
-                    Item = "https://fydar.dev/play/cakedodge"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

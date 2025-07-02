@@ -1,42 +1,45 @@
 @layout DefaultLayout
 @page "/portfolio/technicalart"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Technical Art - Fydar",
+        Description = "A collection of technical art pieces I've developed.",
+        CanonicalUrl = "https://fydar.dev/portfolio/technicalart",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/header.webp",
+                Alt = "A portrait of Fydar in an anime art style."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Technical Art",
+                Item = "https://fydar.dev/portfolio/technicalart"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Technical Art - Fydar",
-            Description = "A collection of technical art pieces I've developed.",
-            CanonicalUrl = "https://fydar.dev/portfolio/technicalart",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/header.webp",
-                    Alt = "A portrait of Fydar in an anime art style."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Technical Art",
-                    Item = "https://fydar.dev/portfolio/technicalart"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
+<section class="container container-wide" data-nosnippet>
+    <h1>Technical Art</h1>
+</section>
 
 <HeadingScope>
     <aside>
@@ -56,6 +59,7 @@
 
                     <Cover_Phasmophobia />
                     <Cover_UNO />
+                    <Cover_Southfield />
 
                 </CoverGrid>
 

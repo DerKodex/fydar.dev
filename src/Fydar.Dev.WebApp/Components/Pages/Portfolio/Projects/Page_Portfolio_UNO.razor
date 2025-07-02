@@ -1,45 +1,44 @@
 @layout DefaultLayout
 @page "/portfolio/uno"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "UNO™ - Fydar",
+        Description = "One of the most iconic classic games which we all grew to know and love!",
+        CanonicalUrl = "https://fydar.dev/portfolio/uno",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/uno/social.webp",
+                Alt = "Promotional material for the game 'UNO™'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "UNO™",
+                Item = "https://fydar.dev/portfolio/uno"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "UNO™ - Fydar",
-            Description = "One of the most iconic classic games which we all grew to know and love!",
-            CanonicalUrl = "https://fydar.dev/portfolio/uno",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/uno/social.webp",
-                    Alt = "Promotional material for the game 'UNO™'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "UNO™",
-                    Item = "https://fydar.dev/portfolio/uno"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <div class="parallax-layer" style="--parallax-multiplier: 0.5;">
             <div class="blur" style="background: radial-gradient(20% 25% at 57% 40%, rgba(255,118,7,1) 16%, transparent), radial-gradient(100% 105% at 66% 60%, rgba(250,202,21,1) 2%, rgba(253,165,13,1) 12%, rgba(255,118,7,1) 26%, rgba(250,70,0,1) 36%, rgba(241,36,1,1) 43%, rgba(141,5,0,1) 77%, rgba(101,2,0,1) 100%);">
             </div>
@@ -49,17 +48,19 @@
             <source src="@Assets["media/uno/background.1440p.60fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
             <source src="@Assets["media/uno/background.1440p.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d401f"; profiles="isom,iso2,avc1,mp41"'>
         </video>
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/uno/logo.svg"]" alt="Title card for the game 'UNO™'." />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/uno/logo.svg"]" alt="Title card for the game 'UNO™'." />
-        </picture>
-
-        <SteamPlayButton href="https://www.ubisoft.com/en-gb/game/uno/uno">Visit on Ubisoft</SteamPlayButton>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="https://www.ubisoft.com/en-gb/game/uno/uno">Visit on Ubisoft</SteamPlayButton>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -68,16 +69,32 @@
     </div>
 </div>
 
-<aside>
+<section class="container container-wide" data-nosnippet>
+    <h1>UNO™</h1>
+</section>
+
+<aside class="project-summary">
     <section>
-        <h1>UNO™</h1>
+        <img class="project-featuredimage" src="@Assets["media/uno/social.webp"]" alt="Promotional material for the game 'UNO™'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-technicalart" href="/portfolio/technicalart" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--brush" Alt="Technical Art" /><p>Technical Art</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://youtu.be/sthkAM0-P3I" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
     </section>
 </aside>
 
 <section class="container">
-
     <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/sthkAM0-P3I?si=SM-RixNhyfdDTb50" />
-
 </section>
 
 <HeadingScope>

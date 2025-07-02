@@ -1,59 +1,60 @@
 @layout DefaultLayout
 @page "/portfolio/loversdefence"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Lovers' Defence - Fydar",
+        Description = "A narrative driven tower defence game.",
+        CanonicalUrl = "https://fydar.dev/portfolio/loversdefence",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/loversdefence/social.webp",
+                Alt = "Promotional material for the game 'Lovers' Defence'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Lovers' Defence",
+                Item = "https://fydar.dev/portfolio/loversdefence"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Lovers' Defence - Fydar",
-            Description = "A narrative driven tower defence game.",
-            CanonicalUrl = "https://fydar.dev/portfolio/loversdefence",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/loversdefence/social.webp",
-                    Alt = "Promotional material for the game 'Lovers' Defence'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Lovers' Defence",
-                    Item = "https://fydar.dev/portfolio/loversdefence"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
             <img src="@Assets["media/loversdefence/background.webp"]" style="image-rendering: pixelated;" />
         </picture>
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/loversdefence/titlecard.png"]" alt="Title card for the game 'Lovers' Defence'." style="image-rendering: pixelated;" />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/loversdefence/titlecard.png"]" alt="Title card for the game 'Lovers Defence'." style="image-rendering: pixelated;" />
-        </picture>
-
-        <SteamPlayButton href="/play/loversdefence">Play in Browser</SteamPlayButton>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="/play/loversdefence">Play in Browser</SteamPlayButton>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -61,6 +62,29 @@
     <div class="cascade" style="background: linear-gradient(to right, #75a84700 0%, #75a84730 75%, #75a84714 100%), url('media/noise.svg');">
     </div>
 </div>
+
+<section class="container container-wide" data-nosnippet>
+    <h1>Lovers' Defence</h1>
+</section>
+
+<aside class="project-summary">
+    <section>
+        <img class="project-featuredimage" src="@Assets["media/loversdefence/social.webp"]" alt="Promotional material for the game 'Lovers' Defence'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gamejams" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Game Jam" /><p>Game Jam</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+    </section>
+</aside>
 
 <HeadingScope>
     <aside>

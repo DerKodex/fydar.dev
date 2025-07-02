@@ -1,42 +1,61 @@
 @layout DefaultLayout
 @page "/portfolio/behaviour"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Behaviour - Fydar",
+        Description = "A complete node-based behaviour system.",
+        CanonicalUrl = "https://fydar.dev/portfolio/behaviour",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/header.webp",
+                Alt = "A portrait of Fydar in an anime art style."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Behaviour",
+                Item = "https://fydar.dev/portfolio/behaviour"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Behaviour - Fydar",
-            Description = "A complete node-based behaviour system.",
-            CanonicalUrl = "https://fydar.dev/portfolio/behaviour",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/header.webp",
-                    Alt = "A portrait of Fydar in an anime art style."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Behaviour",
-                    Item = "https://fydar.dev/portfolio/behaviour"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
+<section class="container container-wide" data-nosnippet>
+    <h1>Behaviour</h1>
+</section>
+
+<aside class="project-summary">
+    <section>
+        <PillCloud>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://github.com/fydar/RPGCore" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-github" Alt="GitHub" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+    </section>
+</aside>
 
 <HeadingScope>
     <aside>
@@ -68,7 +87,7 @@
             </Content>
         </Heading>
 
-        <Heading Level="2" Identifier="nodes">
+        <Heading Level="2" Identifier="graphs">
             <Prefix>Assembling some</Prefix>
             <Text>Graphs</Text>
             <Content>
@@ -85,12 +104,12 @@
                     <Node X="-14" Y="-7" MinWidth="6">
                         <Name>Player Level</Name>
                         <Content>
-                            <div class="node-section-sockets">
+                            <div class="graph-node-section-sockets">
 
-                                <div class="node-outputs">
-                                    <div class="node-output connected" style="--row: 1">
-                                        <div class="node-output-socket">I</div>
-                                        <div class="node-output-label">Level</div>
+                                <div class="graph-node-outputs">
+                                    <div class="graph-node-output connected" style="--row: 1">
+                                        <div class="graph-node-output-socket">I</div>
+                                        <div class="graph-node-output-label">Level</div>
                                     </div>
                                 </div>
 
@@ -100,12 +119,12 @@
                     <Node X="-14" Y="-2" MinWidth="6">
                         <Name>Integer</Name>
                         <Content>
-                            <div class="node-section-sockets">
+                            <div class="graph-node-section-sockets">
 
-                                <div class="node-outputs">
-                                    <div class="node-output connected" style="--row: 1">
-                                        <div class="node-output-socket">I</div>
-                                        <div class="node-output-label">Output</div>
+                                <div class="graph-node-outputs">
+                                    <div class="graph-node-output connected" style="--row: 1">
+                                        <div class="graph-node-output-socket">I</div>
+                                        <div class="graph-node-output-label">Output</div>
                                     </div>
                                 </div>
 
@@ -115,25 +134,25 @@
                     <Node X="-5" Y="3" MinWidth="8">
                         <Name>Roll</Name>
                         <Content>
-                            <div class="node-section-sockets">
+                            <div class="graph-node-section-sockets">
 
-                                <div class="node-inputs">
+                                <div class="graph-node-inputs">
 
-                                    <div class="node-input" style="--row: 1">
-                                        <div class="node-input-socket">I</div>
-                                        <div class="node-input-label">Min</div>
+                                    <div class="graph-node-input" style="--row: 1">
+                                        <div class="graph-node-input-socket">I</div>
+                                        <div class="graph-node-input-label">Min</div>
                                     </div>
-                                    <div class="node-input" style="--row: 2">
-                                        <div class="node-input-socket">I</div>
-                                        <div class="node-input-label">Max</div>
+                                    <div class="graph-node-input" style="--row: 2">
+                                        <div class="graph-node-input-socket">I</div>
+                                        <div class="graph-node-input-label">Max</div>
                                     </div>
 
                                 </div>
 
-                                <div class="node-outputs">
-                                    <div class="node-output connected" style="--row: 1">
-                                        <div class="node-output-socket">I</div>
-                                        <div class="node-output-label">Value</div>
+                                <div class="graph-node-outputs">
+                                    <div class="graph-node-output connected" style="--row: 1">
+                                        <div class="graph-node-output-socket">I</div>
+                                        <div class="graph-node-output-label">Value</div>
                                     </div>
                                 </div>
 
@@ -143,25 +162,25 @@
                     <Node X="-3" Y="-5" MinWidth="6">
                         <Name>Multiply</Name>
                         <Content>
-                            <div class="node-section-sockets">
+                            <div class="graph-node-section-sockets">
 
-                                <div class="node-inputs">
+                                <div class="graph-node-inputs">
 
-                                    <div class="node-input connected" style="--row: 1">
-                                        <div class="node-input-socket">I</div>
-                                        <div class="node-input-label">A</div>
+                                    <div class="graph-node-input connected" style="--row: 1">
+                                        <div class="graph-node-input-socket">I</div>
+                                        <div class="graph-node-input-label">A</div>
                                     </div>
-                                    <div class="node-input connected" style="--row: 2">
-                                        <div class="node-input-socket">I</div>
-                                        <div class="node-input-label">B</div>
+                                    <div class="graph-node-input connected" style="--row: 2">
+                                        <div class="graph-node-input-socket">I</div>
+                                        <div class="graph-node-input-label">B</div>
                                     </div>
 
                                 </div>
 
-                                <div class="node-outputs">
-                                    <div class="node-output connected" style="--row: 1">
-                                        <div class="node-output-socket">I</div>
-                                        <div class="node-output-label">Output</div>
+                                <div class="graph-node-outputs">
+                                    <div class="graph-node-output connected" style="--row: 1">
+                                        <div class="graph-node-output-socket">I</div>
+                                        <div class="graph-node-output-label">Output</div>
                                     </div>
                                 </div>
 
@@ -171,25 +190,25 @@
                     <Node X="8" Y="-2" MinWidth="6">
                         <Name>Add</Name>
                         <Content>
-                            <div class="node-section-sockets">
+                            <div class="graph-node-section-sockets">
 
-                                <div class="node-inputs">
+                                <div class="graph-node-inputs">
 
-                                    <div class="node-input connected" style="--row: 1">
-                                        <div class="node-input-socket">I</div>
-                                        <div class="node-input-label">A</div>
+                                    <div class="graph-node-input connected" style="--row: 1">
+                                        <div class="graph-node-input-socket">I</div>
+                                        <div class="graph-node-input-label">A</div>
                                     </div>
-                                    <div class="node-input connected" style="--row: 2">
-                                        <div class="node-input-socket">I</div>
-                                        <div class="node-input-label">B</div>
+                                    <div class="graph-node-input connected" style="--row: 2">
+                                        <div class="graph-node-input-socket">I</div>
+                                        <div class="graph-node-input-label">B</div>
                                     </div>
 
                                 </div>
 
-                                <div class="node-outputs">
-                                    <div class="node-output" style="--row: 1">
-                                        <div class="node-output-socket">I</div>
-                                        <div class="node-output-label">Output</div>
+                                <div class="graph-node-outputs">
+                                    <div class="graph-node-output" style="--row: 1">
+                                        <div class="graph-node-output-socket">I</div>
+                                        <div class="graph-node-output-label">Output</div>
                                     </div>
                                 </div>
 

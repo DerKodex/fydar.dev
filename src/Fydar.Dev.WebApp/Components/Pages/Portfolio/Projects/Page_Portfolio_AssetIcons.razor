@@ -1,83 +1,118 @@
 @layout DefaultLayout
 @page "/portfolio/asseticons"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "AssetIcons - Fydar",
+        Description = "Assign your own unique icon to each of your ScriptableObjects.",
+        CanonicalUrl = "https://fydar.dev/portfolio/asseticons",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/asseticons/social.webp",
+                Alt = "Promotional material for 'AssetIcons'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "AssetIcons",
+                Item = "https://fydar.dev/portfolio/asseticons"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "AssetIcons - Fydar",
-            Description = "Assign your own unique icon to each of your ScriptableObjects.",
-            CanonicalUrl = "https://fydar.dev/portfolio/asseticons",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/asseticons/social.webp",
-                    Alt = "Promotional material for 'AssetIcons'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "AssetIcons",
-                    Item = "https://fydar.dev/portfolio/asseticons"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
             <img src="@Assets["media/asseticons/background.webp"]" />
         </picture>
-
     </div>
 
     <div class="fullscreen-footer">
-
-        <SteamPlayButton href="https://assetstore.unity.com/packages/tools/utilities/asseticons-100547">Visit the Asset Store</SteamPlayButton>
-
+        <div class="fullscreen-footer-container container container-wide">
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="https://assetstore.unity.com/packages/tools/utilities/asseticons-100547">Visit the Asset Store</SteamPlayButton>
+            </div>
+        </div>
     </div>
 </section>
 
 <div class="cascade-container">
-    <div class="cascade" style="background: linear-gradient(to right, #d868c900 0%, #d868c930 75%, #d868c914 100%), url('media/noise.svg');">
+    <div class="cascade" style="background: linear-gradient(to right, #f6973247 0%, #ef3d7a3d 75%, #ff00dd3b 100%), url(media/noise.svg);">
     </div>
 </div>
 
-<HeadingScope>
+<section class="container container-wide" data-nosnippet>
+    <h1>AssetIcons</h1>
+</section>
 
-    <section class="container">
-        <figure class="figure-image">
-            <picture>
-                <img loading="lazy" src="@Assets["media/asseticons/asseticons-voxel-icons.png"]" alt="The AssetIcons update checker." />
-            </picture>
-            <figcaption>The project window with icons drawn by AssetIcons.</figcaption>
-        </figure>
+<aside>
+    <section>
+        <img class="project-featuredimage" src="@Assets["media/asseticons/social.webp"]" alt="Promotional material for the game 'ASsetIcons'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-tools" href="/portfolio/tools" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" /><p>Tools Programming</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://assetstore.unity.com/packages/tools/utilities/asseticons-100547" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-unity" Alt="Unity Asset Store" /></a></li>
+            <li><a href="https://github.com/fydar/AssetIcons" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-github" Alt="GitHub" /></a></li>
+            <li><a href="https://youtu.be/9tq5_naSYmM" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
     </section>
+</aside>
+
+<section class="container">
+    <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/9tq5_naSYmM?si=OiJLTkEf7XFaxuQ9" />
+</section>
+
+<HeadingScope>
 
     <aside>
         <section style="position: sticky; top: 64px;">
             <div style="height: 5rem"></div>
             <TableOfContents />
         </section>
-
     </aside>
 
     <section class="container">
+
+        <Heading Level="2" Identifier="demo">
+            <Text>Demo Included</Text>
+            <Content>
+
+                <figure class="figure-image">
+                    <picture>
+                        <img loading="lazy" src="@Assets["media/asseticons/asseticons-voxel-icons.png"]" alt="Demo collection of AssetIcons in the project window." />
+                    </picture>
+                    <figcaption>The project window with icons drawn by AssetIcons.</figcaption>
+                </figure>
+
+            </Content>
+        </Heading>
 
         <Heading Level="2" Identifier="documentation">
             <Text>Well Documented</Text>

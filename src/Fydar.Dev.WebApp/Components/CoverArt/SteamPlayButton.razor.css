@@ -1,12 +1,12 @@
 /* Steam-style Play Buttons */
 .steamplaybutton {
     border-radius: 8px;
-    padding: 20px 32px;
+    padding: 12px 14px;
     background: linear-gradient(to right, #7cc444, #5fad57);
     text-decoration: none;
     color: white;
-    font-size: 24px;
-    letter-spacing: 1px;
+    font-size: 1.4em;
+    letter-spacing: 0.025em;
     line-height: 1;
     text-transform: uppercase;
     transition: filter 0.35s;

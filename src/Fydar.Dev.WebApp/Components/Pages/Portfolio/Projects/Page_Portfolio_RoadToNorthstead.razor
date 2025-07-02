@@ -1,59 +1,60 @@
 @layout DefaultLayout
 @page "/portfolio/roadtonorthstead"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Road to Northstead - Fydar",
+        Description = "The game jam visual novel with questing and crafting to survive the night.",
+        CanonicalUrl = "https://fydar.dev/portfolio/roadtonorthstead",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/roadtonorthstead/social.webp",
+                Alt = "Promotional material for the game 'Road to Northstead'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Road to Northstead",
+                Item = "https://fydar.dev/portfolio/roadtonorthstead"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Road to Northstead - Fydar",
-            Description = "The game jam visual novel with questing and crafting to survive the night.",
-            CanonicalUrl = "https://fydar.dev/portfolio/roadtonorthstead",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/roadtonorthstead/social.webp",
-                    Alt = "Promotional material for the game 'Road to Northstead'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Road to Northstead",
-                    Item = "https://fydar.dev/portfolio/roadtonorthstead"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
             <img src="@Assets["media/roadtonorthstead/background.webp"]" style="image-rendering: pixelated;" />
         </picture>
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/roadtonorthstead/titlecard.svg"]" alt="Title card for the game 'Road to Northstead'." />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/roadtonorthstead/titlecard.svg"]" alt="Title card for the game 'Road to Northstead'." />
-        </picture>
-
-        <SteamPlayButton href="/play/roadtonorthstead">Play in Browser</SteamPlayButton>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="/play/roadtonorthstead">Play in Browser</SteamPlayButton>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -62,16 +63,32 @@
     </div>
 </div>
 
-<aside>
+<section class="container container-wide" data-nosnippet>
+    <h1>Road to Northstead</h1>
+</section>
+
+<aside class="project-summary">
     <section>
-        <h1>Road to Northstead</h1>
+        <img class="project-featuredimage" src="@Assets["media/roadtonorthstead/social.webp"]" alt="Promotional material for the game 'Road to Northstead'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gamejams" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Game Jam" /><p>Game Jam</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://youtu.be/nt5aEzyqaOU" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
     </section>
 </aside>
 
 <section class="container">
-
     <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/nt5aEzyqaOU?si=UYA_5Xe3CJ7Qcsj6" />
-
 </section>
 
 <HeadingScope>

@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/raidhealersimulator"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play Raid Healer Simulator - Fydar",
+        Description = "The simulation experience of what it’s like to be a healer in an MMORPG raid, complete with a variety of abilities and a challenging boss battle.",
+        CanonicalUrl = "https://fydar.dev/play/raidhealersimulator",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/raidhealersimulator/social.webp",
+                Alt = "Promotional material for the game 'Raid Healer Simulator'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Raid Healer Simulator",
+                Item = "https://fydar.dev/play/raidhealersimulator"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play Raid Healer Simulator - Fydar",
-            Description = "The simulation experience of what it’s like to be a healer in an MMORPG raid, complete with a variety of abilities and a challenging boss battle.",
-            CanonicalUrl = "https://fydar.dev/play/raidhealersimulator",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/raidhealersimulator/social.webp",
-                    Alt = "Promotional material for the game 'Raid Healer Simulator'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Raid Healer Simulator",
-                    Item = "https://fydar.dev/play/raidhealersimulator"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

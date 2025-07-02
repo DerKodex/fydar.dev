@@ -1,38 +1,38 @@
 @layout GameLayout
 @page "/play/lostinstatic"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play Lost in Static - Fydar",
+        Description = "The Game Boy demake of the Nintendo DS Pokémon Diamond and Pearl underground mining minigame.",
+        CanonicalUrl = "https://fydar.dev/play/lostinstatic",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/lostinstatic/social.webp",
+                Alt = "Promotional material for the game 'Lost in Static'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Lost in Static",
+                Item = "https://fydar.dev/play/lostinstatic"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Play Lost in Static - Fydar",
-            Description = "The Game Boy demake of the Nintendo DS Pokémon Diamond and Pearl underground mining minigame.",
-            CanonicalUrl = "https://fydar.dev/play/lostinstatic",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/lostinstatic/social.webp",
-                    Alt = "Promotional material for the game 'Lost in Static'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Play",
-                    Item = "https://fydar.dev/play/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Lost in Static",
-                    Item = "https://fydar.dev/play/lostinstatic"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
     <meta name="theme-color" content="#2c3840">

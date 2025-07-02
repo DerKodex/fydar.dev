@@ -1,45 +1,44 @@
 @layout DefaultLayout
 @page "/portfolio/southfield"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Southfield - Fydar",
+        Description = "Weird farming meets silly physics, combine crops with unpredictable effects, build your dream farmstead, and experiment with automation.",
+        CanonicalUrl = "https://fydar.dev/portfolio/southfield",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/southfield/social.webp",
+                Alt = "Promotional material for the game 'Southfield'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Portfolio",
+                Item = "https://fydar.dev/portfolio/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Southfield",
+                Item = "https://fydar.dev/portfolio/southfield"
+            }
+        }
+    };
+}
 
 <HeadContent>
-    @{
-        var openGraphModel = new OpenGraphModel()
-        {
-            Title = "Southfield - Fydar",
-            Description = "Weird farming meets silly physics, combine crops with unpredictable effects, build your dream farmstead, and experiment with automation.",
-            CanonicalUrl = "https://fydar.dev/portfolio/southfield",
-            Properties = [
-                new OpenGraphModelImage()
-                {
-                    Url = "https://fydar.dev/media/southfield/social.webp",
-                    Alt = "Promotional material for the game 'Southfield'."
-                }
-            ]
-        };
-        var linkData = new LinkData()
-        {
-            new LinkDataBreadcrumbList()
-            {
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Portfolio",
-                    Item = "https://fydar.dev/portfolio/"
-                },
-                new LinkDataBreadcrumbListItem()
-                {
-                    Name = "Southfield",
-                    Item = "https://fydar.dev/portfolio/southfield"
-                }
-            }
-        };
-    }
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-
         <div class="parallax-layer" style="--parallax-multiplier: 0.5;">
             <div class="blur" style="background: linear-gradient(#679DFB, #A8D5FD, #8EBF6C, #7AA355)">
             </div>
@@ -49,17 +48,19 @@
             <source src="@Assets["media/southfield/background.1440p.60fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L150.90"; profiles="isom,iso2,mp41"'>
             <source src="@Assets["media/southfield/background.1440p.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4029"; profiles="isom,iso2,avc1,mp41"'>
         </video>
-
     </div>
 
     <div class="fullscreen-footer">
+        <div class="fullscreen-footer-container container container-wide">
+            <picture>
+                <img class="titlecard" src="@Assets["media/southfield/titlecard.svg"]" alt="Title card for the game 'Southfield'." />
+            </picture>
 
-        <picture>
-            <img class="titlecard" src="@Assets["media/southfield/titlecard.svg"]" alt="Title card for the game 'Southfield'." />
-        </picture>
-
-        <SteamPlayButton href="https://store.steampowered.com/app/2076210/Southfield/">Wishlist on Steam</SteamPlayButton>
-
+            <div class="titlerow">
+                <div class="flexible-space"></div>
+                <SteamPlayButton href="https://store.steampowered.com/app/2076210/Southfield/">Wishlist on Steam</SteamPlayButton>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -68,16 +69,33 @@
     </div>
 </div>
 
-<aside>
+<section class="container container-wide" data-nosnippet>
+    <h1>Southfield</h1>
+</section>
+
+<aside class="project-summary">
     <section>
-        <h1>Southfield</h1>
+        <img class="project-featuredimage" src="@Assets["media/southfield/social.webp"]" alt="Promotional material for the game 'Southfield'." />
+
+        <PillCloud>
+            <NavLink class="pill palette-tools" href="/portfolio/tools" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" /><p>Tools Programming</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-gameplay" href="/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Unity</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-systems" href="/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>C#</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+            <NavLink class="pill palette-technicalart" href="/portfolio/technicalart" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--brush" Alt="Technical Art" /><p>Technical Art</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></NavLink>
+        </PillCloud>
+
+        <p>@openGraphModel.Description.Default</p>
+
+        <menu class="externallinks" aria-label="Project External links">
+            <li><a href="https://youtu.be/2NkfRH4AWa8" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+        </menu>
+
+        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
     </section>
 </aside>
 
 <section class="container">
-
     <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/2NkfRH4AWa8?si=HRpJ95ddnvms37rC" />
-
 </section>
 
 <HeadingScope>
