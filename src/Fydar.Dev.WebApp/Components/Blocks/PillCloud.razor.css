@@ -10,10 +10,8 @@
         border: solid 1px var(--palette-primary-color);
         color: var(--palette-primary-color);
         border-radius: 8px;
-        line-height: 1em;
         padding: 0 0.3125em 0 0.3125em;
         display: flex;
-        font-weight: bold;
         letter-spacing: 0;
         align-items: center;
         text-decoration: none;
