@@ -39,12 +39,24 @@
             color: #8ed239;
         }
 
+        .callout.callout-success ::deep *::selection,
+        .callout.callout-success::selection {
+            background-color: #8ed239;
+            color: black;
+        }
+
     .callout.callout-primary {
         background-color: #f6c56912;
     }
 
         .callout.callout-primary ::deep svg {
             color: #f6c569;
+        }
+
+        .callout.callout-primary ::deep *::selection,
+        .callout.callout-primary::selection {
+            background-color: #f6c569;
+            color: black;
         }
 
 
@@ -61,4 +73,10 @@
         .callout.callout-construction ::deep svg,
         .callout.callout-construction .callout-body {
             filter: drop-shadow(0px 2px 2px black);
+        }
+
+        .callout.callout-construction ::deep *::selection,
+        .callout.callout-construction::selection {
+            background-color: #f6c569;
+            color: black;
         }

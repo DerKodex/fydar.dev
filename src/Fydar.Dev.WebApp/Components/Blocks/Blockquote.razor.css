@@ -8,6 +8,12 @@ figure.figure-blockquote {
     color: rgb(221 221 221);
 }
 
+    figure.figure-blockquote ::deep *::selection,
+    figure.figure-blockquote::selection {
+        background-color: #3368e473;
+        color: white;
+    }
+
     figure.figure-blockquote blockquote {
         margin: 0;
         text-align: left;

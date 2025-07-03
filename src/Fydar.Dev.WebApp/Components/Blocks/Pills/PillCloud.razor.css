@@ -22,7 +22,7 @@
 
         .pill-cloud ::deep .pill::selection {
             background-color: var(--palette-primary-color);
-            color: white;
+            color: black;
         }
 
         .pill-cloud ::deep .pill::before {
