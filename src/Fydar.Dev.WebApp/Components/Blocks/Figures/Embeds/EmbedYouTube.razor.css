@@ -2,10 +2,21 @@
 figure.figure-youtube {
     position: relative;
     width: 100%;
-    background-color: black;
     margin: 0;
     border-radius: 8px;
 }
+
+    figure.figure-youtube::before {
+        content: '';
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        bottom: 1px;
+        right: 1px;
+        z-index: -1;
+        border-radius: 8px;
+        background-color: black;
+    }
 
     figure.figure-youtube iframe {
         position: absolute;
