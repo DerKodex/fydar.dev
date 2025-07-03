@@ -659,6 +659,20 @@ footer,
                     font-size: 1.8em;
                 }
 
+                ::deep section.fullscreen .fullscreen-footer .fullscreen-footer-container .titlerow .pill {
+                    font-size: 1.5em;
+                    border-width: 2px;
+                }
+
+                    ::deep section.fullscreen .fullscreen-footer .fullscreen-footer-container .titlerow .pill::before {
+                        opacity: 0;
+                    }
+
+                    ::deep section.fullscreen .fullscreen-footer .fullscreen-footer-container .titlerow .pill:hover::before,
+                    ::deep section.fullscreen .fullscreen-footer .fullscreen-footer-container .titlerow .pill:focus-visible::before {
+                        opacity: 1;
+                    }
+
             ::deep section.fullscreen .fullscreen-footer .fullscreen-footer-container .titlecard {
                 position: absolute;
                 top: -286px;
