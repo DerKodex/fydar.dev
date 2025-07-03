@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 
-namespace Fydar.Dev.WebApp.Components.Blocks;
+namespace Fydar.Dev.WebApp.Components.Blocks.Headings;
 
 public class HeadingModel
 {

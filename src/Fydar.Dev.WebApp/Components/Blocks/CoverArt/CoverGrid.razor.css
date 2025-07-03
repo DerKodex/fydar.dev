@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px 12px;
-    margin: 10px 0;
+    margin: 12px 0;
 }
 
 @media screen and (min-width: 768px) {

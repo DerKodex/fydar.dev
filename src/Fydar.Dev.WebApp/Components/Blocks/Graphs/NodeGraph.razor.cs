@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Fydar.Dev.WebApp.Components.Graphs;
+namespace Fydar.Dev.WebApp.Components.Blocks.Graphs;
 
 public partial class NodeGraph : ComponentBase
 {

@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Fydar.Dev.WebApp.Components.Blocks;
+namespace Fydar.Dev.WebApp.Components.Blocks.Headings;
 
 public class HeadingRegister : INotifyPropertyChanged
 {
