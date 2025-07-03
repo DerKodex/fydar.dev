@@ -54,17 +54,17 @@
         }
 
         .pill-cloud ::deep .pill:hover,
-        .pill-cloud ::deep .pill:focus {
+        .pill-cloud ::deep .pill:focus-visible {
             outline: 0;
         }
 
             .pill-cloud ::deep .pill:hover::before,
-            .pill-cloud ::deep .pill:focus::before {
+            .pill-cloud ::deep .pill:focus-visible::before {
                 opacity: 1;
             }
 
             .pill-cloud ::deep .pill:hover::after,
-            .pill-cloud ::deep .pill:focus::after {
+            .pill-cloud ::deep .pill:focus-visible::after {
                 opacity: 1;
             }
 
@@ -81,52 +81,4 @@
             margin: 0.25em 0 0 0.1875em;
             align-self: start;
             pointer-events: none;
-        }
-
-        .pill-cloud ::deep .pill.palette-northbrook {
-            --palette-primary-color: #ff8967;
-            --palette-primary-hue: 13deg;
-            --palette-primary-background1-color: #ff380025;
-        }
-
-        .pill-cloud ::deep .pill.palette-gamejam {
-            --palette-primary-color: #92ff9a;
-            --palette-primary-hue: 91deg;
-            --palette-primary-background1-color: #92ff9a25;
-        }
-
-        .pill-cloud ::deep .pill.palette-backend {
-            --palette-primary-color: #91d5ff;
-            --palette-primary-hue: 203deg;
-            --palette-primary-background1-color: #009dff2b;
-        }
-
-        .pill-cloud ::deep .pill.palette-systems {
-            --palette-primary-color: #11e3b0;
-            --palette-primary-hue: 165deg;
-            --palette-primary-background1-color: #00ffab24;
-        }
-
-        .pill-cloud ::deep .pill.palette-tools {
-            --palette-primary-color: #7ca9ff;
-            --palette-primary-hue: 219deg;
-            --palette-primary-background1-color: #002dff33;
-        }
-
-        .pill-cloud ::deep .pill.palette-multiplayer {
-            --palette-primary-color: #ff76cb;
-            --palette-primary-hue: 323deg;
-            --palette-primary-background1-color: #ff009f38;
-        }
-
-        .pill-cloud ::deep .pill.palette-gameplay {
-            --palette-primary-color: #d292ff;
-            --palette-primary-hue: 275deg;
-            --palette-primary-background1-color: #9500ff25;
-        }
-
-        .pill-cloud ::deep .pill.palette-technicalart {
-            --palette-primary-color: #ff7171;
-            --palette-primary-hue: 0deg;
-            --palette-primary-background1-color: #ff000025;
         }

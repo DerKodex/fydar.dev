@@ -282,6 +282,128 @@ main {
     font-weight: 600;
 }
 
+::deep .palette-northbrook {
+    --palette-primary-color: #ff8967;
+    --palette-primary-hue: 13deg;
+    --palette-primary-background1-color: #ff380025;
+}
+
+::deep .palette-gamejam {
+    --palette-primary-color: #92ff9a;
+    --palette-primary-hue: 91deg;
+    --palette-primary-background1-color: #92ff9a25;
+}
+
+::deep .palette-backend {
+    --palette-primary-color: #91d5ff;
+    --palette-primary-hue: 203deg;
+    --palette-primary-background1-color: #009dff2b;
+}
+
+::deep .palette-systems {
+    --palette-primary-color: #11e3b0;
+    --palette-primary-hue: 165deg;
+    --palette-primary-background1-color: #00ffab24;
+}
+
+::deep .palette-tools {
+    --palette-primary-color: #7ca9ff;
+    --palette-primary-hue: 219deg;
+    --palette-primary-background1-color: #002dff33;
+}
+
+::deep .palette-multiplayer {
+    --palette-primary-color: #ff76cb;
+    --palette-primary-hue: 323deg;
+    --palette-primary-background1-color: #ff009f38;
+}
+
+::deep .palette-gameplay {
+    --palette-primary-color: #d292ff;
+    --palette-primary-hue: 275deg;
+    --palette-primary-background1-color: #9500ff25;
+}
+
+::deep .palette-technicalart {
+    --palette-primary-color: #ff7171;
+    --palette-primary-hue: 0deg;
+    --palette-primary-background1-color: #ff000025;
+}
+
+
+::deep .palette-appstore {
+    --palette-primary-color: #0D96F6;
+    --palette-primary-hue: 205deg;
+    --palette-primary-background1-color: #0D96F625;
+}
+
+::deep .palette-youtube {
+    --palette-primary-color: #FF0000;
+    --palette-primary-hue: 0deg;
+    --palette-primary-background1-color: #FF000025;
+}
+
+::deep .palette-twitter {
+    --palette-primary-color: #1D9BF0;
+    --palette-primary-hue: 204deg;
+    --palette-primary-background1-color: #1D9BF025;
+}
+
+::deep .palette-discord {
+    --palette-primary-color: #5865F2;
+    --palette-primary-hue: 235deg;
+    --palette-primary-background1-color: #5865F225;
+}
+
+::deep .palette-playstation {
+    --palette-primary-color: #0070D1;
+    --palette-primary-hue: 208deg;
+    --palette-primary-background1-color: #0070D125;
+}
+
+::deep .palette-xbox {
+    --palette-primary-color: #3d761d;
+    --palette-primary-hue: 98deg;
+    --palette-primary-background1-color: #3d761d25;
+}
+
+::deep .palette-nintendoswitch {
+    --palette-primary-color: #e60012;
+    --palette-primary-hue: 355deg;
+    --palette-primary-background1-color: #e6001225;
+}
+
+::deep .palette-linkedin {
+    --palette-primary-color: #0A66C2;
+    --palette-primary-hue: 210deg;
+    --palette-primary-background1-color: #0A66C225;
+}
+
+::deep .palette-twitch {
+    --palette-primary-color: #9146FF;
+    --palette-primary-hue: 264deg;
+    --palette-primary-background1-color: #9146FF25;
+}
+
+::deep .palette-itchio {
+    --palette-primary-color: #FA5C5C;
+    --palette-primary-hue: 0deg;
+    --palette-primary-background1-color: #FA5C5C25;
+}
+
+::deep .palette-opencollective {
+    --palette-primary-color: #7FADF2;
+    --palette-primary-hue: 216deg;
+    --palette-primary-background1-color: #7FADF225;
+}
+
+::deep .palette-steam {
+    --palette-primary-color: #66c0f4;
+    --palette-primary-hue: 202deg;
+    --palette-primary-background1-color: #66c0f425;
+}
+
+
 ::deep .row {
     display: flex;
     flex-direction: row;
@@ -333,16 +455,36 @@ main {
             align-items: center;
             user-select: none;
             color: white;
-            transition: filter 0.1s, opacity 0.1s;
+            transition: filter 0.125s, opacity 0.125s;
             opacity: 0.45;
+            position: relative;
         }
+
+            ::deep menu.externallinks li a::before {
+                content: '';
+                position: absolute;
+                top: -16px;
+                bottom: -16px;
+                left: -16px;
+                right: -16px;
+                background: radial-gradient(closest-side, hsl(var(--palette-primary-hue), 100%, 50%, 0.25) 0%, hsl(var(--palette-primary-hue), 100%, 50%, 0.0625) 50%, hsl(var(--palette-primary-hue), 100%, 50%, 0.0) 100%);
+                z-index: -1;
+                opacity: 0;
+                transition: opacity ease-in-out 0.125s;
+                pointer-events: none;
+            }
 
             ::deep menu.externallinks li a:hover,
             ::deep menu.externallinks li a:focus-visible {
                 outline: 0;
-                filter: drop-shadow(0 0 1px #ffffff60) drop-shadow(0 0 6px #e2b384);
+                filter: drop-shadow(0 0 1px #ffffff60) drop-shadow(0 0 6px var(--palette-primary-color));
                 opacity: 1;
             }
+
+                ::deep menu.externallinks li a:hover::before,
+                ::deep menu.externallinks li a:focus-visible::before {
+                    opacity: 0.825;
+                }
 
 ::deep .project-summary {
     margin-bottom: 5em;
