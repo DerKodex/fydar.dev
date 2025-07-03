@@ -22,6 +22,11 @@
         line-height: 1.75;
     }
 
+        .pill-cloud ::deep .pill::selection {
+            background-color: var(--palette-primary-color);
+            color: white;
+        }
+
         .pill-cloud ::deep .pill::before {
             content: '';
             position: absolute;
@@ -65,38 +70,25 @@
                 opacity: 1;
             }
 
-        .pill-cloud ::deep .pill ::selection {
-            background-color: var(--palette-primary-color);
-            color: white;
-        }
-
-        .pill-cloud ::deep .pill p {
-            margin: 0;
-            pointer-events: none;
-        }
-
         .pill-cloud ::deep .pill svg:first-child {
             width: 1.5em;
             height: 1.5em;
-            margin: 0;
+            margin: 0 0.25em 0 0;
             pointer-events: none;
-            margin-right: 0.25em;
         }
 
         .pill-cloud ::deep .pill svg.external-link-icon {
             width: 0.75em;
             height: 0.75em;
-            margin-left: 0.1875em;
-            margin-top: 0.25em;
-            margin-right: 0;
+            margin: 0.25em 0 0 0.1875em;
             align-self: start;
             pointer-events: none;
         }
 
         .pill-cloud ::deep .pill.palette-northbrook {
-            --palette-primary-color: #DA3C10;
+            --palette-primary-color: #ff8967;
             --palette-primary-hue: 13deg;
-            --palette-primary-background1-color: #DA3C1025;
+            --palette-primary-background1-color: #ff380025;
         }
 
         .pill-cloud ::deep .pill.palette-gamejam {
