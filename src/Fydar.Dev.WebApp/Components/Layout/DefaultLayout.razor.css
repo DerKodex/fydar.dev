@@ -344,6 +344,10 @@ main {
                 opacity: 1;
             }
 
+::deep .project-summary {
+    margin-bottom: 5em;
+}
+
 ::deep .project-featuredimage {
     width: 100%;
     margin-bottom: 0.75em;
@@ -435,8 +439,8 @@ main {
 
 ::deep .container {
     grid-column: container / span 1;
-    width: 100%;
     box-sizing: border-box;
+    width: 100%;
     padding-left: 24px;
     padding-right: 24px;
     overflow: hidden;
@@ -448,12 +452,14 @@ main {
 
 ::deep aside {
     grid-column: aside / span 1;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
     display: flex;
     flex-direction: column;
-    width: 100%;
 }
 
-::deep aside,
 ::deep .portrait {
     display: none;
 }
@@ -606,6 +612,7 @@ footer,
 
 @media screen and (min-width: 576px) {
 
+    ::deep aside,
     ::deep .container {
         padding-left: 32px;
         padding-right: 32px;
@@ -619,6 +626,7 @@ footer,
 
 @media screen and (min-width: 768px) {
 
+    ::deep aside,
     ::deep .container {
         padding-left: 40px;
         padding-right: 40px;
@@ -646,15 +654,23 @@ footer,
 
 @media screen and (min-width: 992px) {
 
-    ::deep aside,
     ::deep .portrait {
         display: block;
+    }
+
+    ::deep aside {
+        padding-left: 0;
+        padding-right: 0;
     }
 
     ::deep .container {
         padding-left: 0;
         padding-right: 0;
         overflow: visible;
+    }
+
+    ::deep .project-summary {
+        margin-bottom: 0;
     }
 
     header .topbar,
