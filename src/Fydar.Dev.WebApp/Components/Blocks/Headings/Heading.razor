@@ -1,6 +1,6 @@
 @inject NavigationManager NavigationManager
 
-<div class="heading-wrapper@(Media != null ? " heading-wrapper-media" : "")" id="@Identifier">
+<div class="heading-wrapper@(Media != null ? " heading-wrapper-media" : "") @(string.IsNullOrEmpty(Palette) ? "" : " palette-" + Palette)" id="@Identifier">
 
     @if (Prefix != null)
     {
@@ -94,6 +94,9 @@
 
     [Parameter, EditorRequired]
     public string Identifier { get; set; } = "";
+
+    [Parameter]
+    public string Palette { get; set; } = "";
 
     [Parameter]
     public RenderFragment? Prefix { get; set; }
