@@ -288,6 +288,42 @@ main {
     --palette-primary-background1-color: #ff380025;
 }
 
+::deep .palette-globalgamejam {
+    --palette-primary-color: #8acdff;
+    --palette-primary-hue: 206deg;
+    --palette-primary-background1-color: #0092ff38;
+}
+
+::deep .palette-gameboy {
+    --palette-primary-color: #d0ff00;
+    --palette-primary-hue: 71deg;
+    --palette-primary-background1-color: #d0ff0025;
+}
+
+::deep .palette-ludumdare-jam {
+    --palette-primary-color: #ff7646;
+    --palette-primary-hue: 14deg;
+    --palette-primary-background1-color: #ff410026;
+}
+
+::deep .palette-ludumdare-compo {
+    --palette-primary-color: #f4ce38;
+    --palette-primary-hue: 33deg;
+    --palette-primary-background1-color: #ffcb0026;
+}
+
+::deep .palette-minijam {
+    --palette-primary-color: #ff6087;
+    --palette-primary-hue: 345deg;
+    --palette-primary-background1-color: #ff3e6e25;
+}
+
+::deep .palette-outoftheblue {
+    --palette-primary-color: #85b3ff;
+    --palette-primary-hue: 217deg;
+    --palette-primary-background1-color: #0060ff25;
+}
+
 ::deep .palette-gamejam {
     --palette-primary-color: #92ff9a;
     --palette-primary-hue: 91deg;

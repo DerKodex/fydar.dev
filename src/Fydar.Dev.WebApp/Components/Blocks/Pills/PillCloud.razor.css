@@ -10,7 +10,7 @@
         border: solid 1px var(--palette-primary-color);
         color: var(--palette-primary-color);
         border-radius: 8px;
-        padding: 0 0.3125em 0 0.3125em;
+        padding: 0 0.5em 0 0.3125em;
         display: flex;
         letter-spacing: 0;
         align-items: center;
@@ -39,35 +39,6 @@
             pointer-events: none;
         }
 
-        .pill-cloud ::deep .pill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            border-radius: 8px;
-            opacity: 0;
-            transition: opacity ease-in-out 0.125s;
-            pointer-events: none;
-            box-shadow: 0 0 10px hsl(var(--palette-primary-hue), 100%, 65%, 0.8);
-        }
-
-        .pill-cloud ::deep .pill:hover,
-        .pill-cloud ::deep .pill:focus-visible {
-            outline: 0;
-        }
-
-            .pill-cloud ::deep .pill:hover::before,
-            .pill-cloud ::deep .pill:focus-visible::before {
-                opacity: 1;
-            }
-
-            .pill-cloud ::deep .pill:hover::after,
-            .pill-cloud ::deep .pill:focus-visible::after {
-                opacity: 1;
-            }
-
         .pill-cloud ::deep .pill svg:first-child {
             width: 1.5em;
             height: 1.5em;
@@ -78,7 +49,36 @@
         .pill-cloud ::deep .pill svg.external-link-icon {
             width: 0.75em;
             height: 0.75em;
-            margin: 0.25em 0 0 0.1875em;
+            margin: 0.25em -0.1875em 0 0.1875em;
             align-self: start;
             pointer-events: none;
+        }
+
+    .pill-cloud ::deep a.pill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: 8px;
+        opacity: 0;
+        transition: opacity ease-in-out 0.125s;
+        pointer-events: none;
+        box-shadow: 0 0 10px hsl(var(--palette-primary-hue), 100%, 65%, 0.8);
+    }
+
+    .pill-cloud ::deep a.pill:hover,
+    .pill-cloud ::deep a.pill:focus-visible {
+        outline: 0;
+    }
+
+        .pill-cloud ::deep a.pill:hover::before,
+        .pill-cloud ::deep a.pill:focus-visible::before {
+            opacity: 1;
+        }
+
+        .pill-cloud ::deep a.pill:hover::after,
+        .pill-cloud ::deep a.pill:focus-visible::after {
+            opacity: 1;
         }
