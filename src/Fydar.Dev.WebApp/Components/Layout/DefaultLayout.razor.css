@@ -273,13 +273,16 @@ main {
         line-height: 1.45;
         letter-spacing: 0.075px;
         text-align: left;
-        color: #8d8d8d;
         font-size: 1rem;
-        font-weight: 400;
     }
 
 ::deep b {
     font-weight: 600;
+}
+
+::deep .subtle {
+    color: #8d8d8d;
+    font-weight: 400;
 }
 
 ::deep .palette-northbrook {
