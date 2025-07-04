@@ -1,0 +1,71 @@
+@layout GameLayout
+@page "/play/endlessplatform"
+@{
+    var openGraphModel = new OpenGraphModel()
+    {
+        Title = "Play Endless Platform - Fydar",
+        Description = "A fully procedurally generated spline-based terrain for a 2D platformer.",
+        CanonicalUrl = "https://fydar.dev/play/endlessplatform",
+        Properties = [
+            new OpenGraphModelImage()
+            {
+                Url = "https://fydar.dev/media/endlessplatform/social.webp",
+                Alt = "Promotional material for the game 'Endless Platform'."
+            }
+        ]
+    };
+    var linkData = new LinkData()
+    {
+        new LinkDataBreadcrumbList()
+        {
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Play",
+                Item = "https://fydar.dev/play/"
+            },
+            new LinkDataBreadcrumbListItem()
+            {
+                Name = "Endless Platform",
+                Item = "https://fydar.dev/play/endlessplatform"
+            }
+        }
+    };
+}
+
+<HeadContent>
+    <OpenGraphComponent Model="@openGraphModel" />
+    <LinkDataComponent Model="@linkData" />
+    <meta name="theme-color" content="#2c3840">
+    <link rel="shortcut icon" href="@Assets["/play/endlessplatform/favicon.ico"]">
+    <link rel="manifest" href="@Assets["/play/endlessplatform/manifest.webmanifest"]">
+</HeadContent>
+
+<EmbedUnity>
+    <Configuration>
+        <script>
+            var config = {
+                companyName: "Fydar",
+                productName: "Endless Platform",
+                productVersion: "v0.1.0",
+                dataUrl: "@Assets["play/endlessplatform/build/endlessplatform.data.br"]",
+                codeUrl: "@Assets["play/endlessplatform/build/endlessplatform.wasm.br"]",
+                frameworkUrl: "@Assets["play/endlessplatform/build/endlessplatform.framework.js.br"]",
+                streamingAssetsUrl: "/play/endlessplatform/StreamingAssets",
+                arguments: [],
+            };
+            var loaderUrl = "@Assets["play/endlessplatform/build/endlessplatform.loader.js"]";
+        </script>
+    </Configuration>
+    <Placeholder>
+        <img src="@Assets["play/endlessplatform/favicon.ico"]" alt="The logo for 'Endless Platform'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+    </Placeholder>
+</EmbedUnity>
+
+<script>
+    var serviceWorkerUrl = "@Assets["play/endlessplatform/ServiceWorker.js"]";
+    window.addEventListener("load", function () {
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register(serviceWorkerUrl);
+        }
+    });
+</script>
