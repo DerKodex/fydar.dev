@@ -1,0 +1,12 @@
+<div class="cover-date" data-nosnippet>
+    <p class="cover-date-label">@Date</p>
+    @ChildContent
+</div>
+
+@code {
+    [Parameter]
+    public string? Date { get; set; }
+
+    [Parameter, EditorRequired]
+    public RenderFragment? ChildContent { get; set; }
+}
