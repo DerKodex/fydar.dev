@@ -659,6 +659,7 @@ footer,
     width: 100%;
     min-height: 100vh;
     position: relative;
+    overflow-x: clip;
 }
 
     ::deep section.fullscreen .parallax-frame {
