@@ -479,6 +479,11 @@
     --palette-primary-background1-color: #DA3C1025;
 }
 
+.palette-outoftheblue {
+    --palette-primary-color: #5378d8;
+    --palette-primary-background1-color: #5378d825;
+}
+
 .palette-backend {
     --palette-primary-color: #4393C5;
     --palette-primary-background1-color: #4393C525;
