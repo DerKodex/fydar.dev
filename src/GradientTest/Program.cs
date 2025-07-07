@@ -14,13 +14,61 @@ internal class Program
 		RadialGradientGenerator.GenerateRadialGradientsCss("images/astralswarm.webp");
 		RadialGradientGenerator.GenerateRadialGradientsCss("images/asylum.jpg");
 		RadialGradientGenerator.GenerateRadialGradientsCss("images/over.png");
-		RadialGradientGenerator.GenerateRadialGradientsCss("images/test.png");
 		RadialGradientGenerator.GenerateRadialGradientsCss("images/lilypad.png");
 		RadialGradientGenerator.GenerateRadialGradientsCss("images/test.jpg");
 
 		Console.ReadLine();
 	}
 }
+
+public class GeneLinearGradient
+{
+	public float Angle { get; set; }
+
+	public GeneLinearGradientKeyframe Start { get; set; }
+	public GeneLinearGradientKeyframe End { get; set; }
+
+	public GeneLinearGradient()
+	{
+
+	}
+
+	public GeneLinearGradient(float angle, Rgb color)
+	{
+		Angle = angle;
+		Start = new GeneLinearGradientKeyframe
+		{
+			Color = color
+		};
+		End = new GeneLinearGradientKeyframe
+		{
+			Color = color
+		};
+	}
+
+	public GeneLinearGradient Clone()
+	{
+		return new GeneLinearGradient()
+		{
+			Angle = Angle,
+			Start = new GeneLinearGradientKeyframe()
+			{
+				Color = Start.Color
+			},
+			End = new GeneLinearGradientKeyframe()
+			{
+				Color = End.Color
+			}
+		};
+	}
+}
+
+public class GeneLinearGradientKeyframe
+{
+	public Rgb Color { get; set; }
+}
+
+
 
 public class RadialGradientGenerator
 {
@@ -49,21 +97,21 @@ public class RadialGradientGenerator
 
 	private class GradientChromosome
 	{
-		public Rgb BackgroundColor { get; set; }
+		public GeneLinearGradient Background { get; set; }
 		public List<GradientGene> Genes { get; set; }
 		public float Fitness { get; set; } = float.MaxValue;
 
 		public GradientChromosome(
-			Rgb backgroundColor,
+			GeneLinearGradient background,
 			int numberOfGenes)
 		{
-			BackgroundColor = backgroundColor;
+			Background = background;
 			Genes = new List<GradientGene>(numberOfGenes);
 		}
 
 		public GradientChromosome Clone()
 		{
-			return new GradientChromosome(BackgroundColor, Genes.Count)
+			return new GradientChromosome(Background, Genes.Count)
 			{
 				Genes = Genes.Select(g => g.Clone()).ToList(),
 				Fitness = Fitness
@@ -122,7 +170,9 @@ public class RadialGradientGenerator
 		{
 			var backgroundColor = availableColors[Rng.Next(availableColors.Count)];
 
-			var chromosome = new GradientChromosome(backgroundColor, numberOfGradients);
+			var background = new GeneLinearGradient((float)Rng.NextDouble() * 180.0f, backgroundColor);
+
+			var chromosome = new GradientChromosome(background, numberOfGradients);
 			for (int j = 0; j < numberOfGradients; j++)
 			{
 				chromosome.Genes.Add(new GradientGene
@@ -188,9 +238,9 @@ public class RadialGradientGenerator
 		GradientChromosome parent1,
 		GradientChromosome parent2)
 	{
-		var child = new GradientChromosome(parent1.BackgroundColor, parent1.Genes.Count)
+		var child = new GradientChromosome(parent1.Background, parent1.Genes.Count)
 		{
-			BackgroundColor = Rng.NextDouble() < 0.5 ? parent1.BackgroundColor : parent2.BackgroundColor
+			Background = Rng.NextDouble() < 0.5 ? parent1.Background.Clone() : parent2.Background.Clone()
 		};
 		for (int i = 0; i < parent1.Genes.Count; i++)
 		{
@@ -205,10 +255,15 @@ public class RadialGradientGenerator
 		// Mutate background color
 		if (Rng.NextDouble() < MutationRate)
 		{
-			chromosome.BackgroundColor = new Rgb(
-				Math.Clamp(chromosome.BackgroundColor.R + Range(-0.08f, 0.08f), 0.0f, 1.0f),
-				Math.Clamp(chromosome.BackgroundColor.G + Range(-0.08f, 0.08f), 0.0f, 1.0f),
-				Math.Clamp(chromosome.BackgroundColor.B + Range(-0.08f, 0.08f), 0.0f, 1.0f));
+			chromosome.Background.Start.Color = new Rgb(
+				Math.Clamp(chromosome.Background.Start.Color.R + Range(-0.08f, 0.08f), 0.0f, 1.0f),
+				Math.Clamp(chromosome.Background.Start.Color.G + Range(-0.08f, 0.08f), 0.0f, 1.0f),
+				Math.Clamp(chromosome.Background.Start.Color.B + Range(-0.08f, 0.08f), 0.0f, 1.0f));
+
+			chromosome.Background.End.Color = new Rgb(
+				Math.Clamp(chromosome.Background.End.Color.R + Range(-0.08f, 0.08f), 0.0f, 1.0f),
+				Math.Clamp(chromosome.Background.End.Color.G + Range(-0.08f, 0.08f), 0.0f, 1.0f),
+				Math.Clamp(chromosome.Background.End.Color.B + Range(-0.08f, 0.08f), 0.0f, 1.0f));
 		}
 
 		foreach (var gene in chromosome.Genes)
@@ -269,7 +324,30 @@ public class RadialGradientGenerator
 		Point position,
 		float imageDiagonal)
 	{
-		var total = chromosome.BackgroundColor;
+		float angleRad = chromosome.Background.Angle * MathF.PI / 180.0f;
+        float vx = MathF.Sin(angleRad);
+        float vy = -MathF.Cos(angleRad);
+
+        // Calculate the projected distances of the rectangle's corners onto the gradient vector.
+        // These define the min and max "d" values for normalization.
+        // The corners are considered relative to the top-left of the gradient area (0,0).
+        float d00 = 0 * vx + 0 * vy;
+        float d10 = dimensions.Width * vx + 0 * vy;
+        float d01 = 0 * vx + dimensions.Height * vy;
+		float d11 = dimensions.Width * vx + dimensions.Height * vy;
+
+		float min_d = Math.Min(d00, Math.Min(d10, Math.Min(d01, d11)));
+		float max_d = Math.Max(d00, Math.Max(d10, Math.Max(d01, d11)));
+
+		float range = max_d - min_d;
+		float d = position.X * vx + position.Y * vy;
+
+        float time = (d - min_d) / range;
+        time = MathF.Max(0.0f, MathF.Min(1.0f, time));
+
+		var total = Lerp(chromosome.Background.Start.Color, chromosome.Background.End.Color, time);
+
+		// var total = chromosome.Background;
 
 		foreach (var gene in chromosome.Genes)
 		{
@@ -456,14 +534,17 @@ public class RadialGradientGenerator
 			gradients.Add($"radial-gradient(at {positionX:0.#}% {positionY:0.#}%, {Rgba32ToHexString(gene.Color)} 0, {Rgba32ToTransparentHexString(gene.Color)} {gene.Radius * 100:0.#}%)");
 		}
 
-		string cssBackgroundColor = $"background-color: {Rgba32ToHexString(chromosome.BackgroundColor)};";
-		if (gradients.Count == 0)
-		{
-			return cssBackgroundColor;
-		}
+		// string cssBackgroundColor = $"background-color: {Rgba32ToHexString(chromosome.BackgroundColor)};";
+		// if (gradients.Count == 0)
+		// {
+		// 	return cssBackgroundColor;
+		// }
+		// 
+		// string cssGradients = $"background-image: {string.Join(", ", gradients)};";
+		// return $"{cssBackgroundColor}\n{cssGradients}";
 
-		string cssGradients = $"background-image: {string.Join(", ", gradients)};";
-		return $"{cssBackgroundColor}\n{cssGradients}";
+		string cssGradients = $"background-image: {string.Join(", ", gradients)}, linear-gradient({chromosome.Background.Angle:0}deg, {Rgba32ToHexString(chromosome.Background.Start.Color)}, {Rgba32ToHexString(chromosome.Background.End.Color)});";
+		return $"{cssGradients}";
 	}
 
 	public static string Rgba32ToHexString(Rgba32 color)
