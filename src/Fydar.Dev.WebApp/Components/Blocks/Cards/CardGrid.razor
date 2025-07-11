@@ -1,12 +1,12 @@
 @using System.ComponentModel
 
-<div class="card-grid card-grid-@Size card-grid-@(Cards.Count)cells">
+<ol class="card-grid card-grid-@Size card-grid-@(Cards.Count)cells">
 
     <CascadingValue Name="CardGrid" Value="this">
         @ChildContent
     </CascadingValue>
 
-</div>
+</ol>
 
 @code {
     [Parameter]

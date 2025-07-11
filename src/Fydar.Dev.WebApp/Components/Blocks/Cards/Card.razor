@@ -1,9 +1,11 @@
-<a @attributes="AdditionalAttributes" class="card pointer-relative" style="aspect-ratio:@AspectRatio">
+<li class="card pointer-relative">
 
     @FeaturedImage
 
     <div class="card-border-subtle"></div>
     <div class="card-border-secondary"></div>
+    <a class="card-link" href="@href" target="@target" download="@download"></a>
+
     <div class="card-hover">
         @if (Signed)
         {
@@ -21,10 +23,10 @@
         </div>
         <div class="card-border-primary"></div>
     </div>
-
+     
     @ChildContent
 
-</a>
+</li>
 
 @code {
     [Parameter]
@@ -34,13 +36,16 @@
     public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
-    public string AspectRatio { get; set; } = string.Empty;
-
-    [Parameter]
     public bool Signed { get; set; } = false;
 
-    [Parameter(CaptureUnmatchedValues = true)]
-    public IDictionary<string, object>? AdditionalAttributes { get; set; }
+    [Parameter, EditorRequired]
+    public string href { get; set; } = "";
+
+    [Parameter]
+    public string target { get; set; } = "_self";
+
+    [Parameter]
+    public string? download { get; set; } = null;
 
     [CascadingParameter(Name = "CardGrid")]
     public CardGrid? CardGrid { get; set; }

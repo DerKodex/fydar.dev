@@ -12,6 +12,14 @@
     --border-bottom-right-radius: 0px;
 }
 
+    .card a.card-link {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
     .card ::deep .card-signed {
         position: absolute;
         top: 16px;
@@ -23,6 +31,7 @@
         background-attachment: fixed;
         width: 160px;
         height: 90px;
+        pointer-events: none;
     }
 
     /* Containers */
@@ -60,10 +69,11 @@
         color: white;
         transition: filter 0.15s ease-in-out;
         align-self: center;
+        pointer-events: none;
     }
 
-    .card:hover ::deep.card-keyicon,
-    .card:focus ::deep.card-keyicon {
+    .card:has(a:hover) ::deep.card-keyicon,
+    .card:has(a:focus) ::deep.card-keyicon {
         filter: drop-shadow(0 0 1px #ffffff60) drop-shadow(0 0 6px var(--palette-primary-color));
     }
 
@@ -78,6 +88,7 @@
         color: var(--color-text-primary);
         font-feature-settings: "ss03" 1;
         line-height: 1.25;
+        pointer-events: none;
     }
 
         .card ::deep.card-header span.subtle {
@@ -101,6 +112,7 @@
         color: #9b9b9b;
         font-size: 1rem;
         font-weight: 400;
+        pointer-events: none;
     }
 
         .card ::deep.card-description b {
@@ -113,6 +125,7 @@
         width: 100%;
         padding-top: 75%;
         margin-bottom: -12px;
+        pointer-events: none;
     }
 
     /* Card images */
@@ -128,6 +141,7 @@
         filter: grayscale(1);
         z-index: -1;
         mask: linear-gradient(to top, #ffffff00 0px, #ffffffad 24px, #ffffff 48px, #ffffff);
+        pointer-events: none;
     }
 
     .card > ::deep .card-image:first-child,
@@ -145,6 +159,7 @@
     /* Glow */
     .card .card-outerglow {
         --glow-distance: 40px;
+        pointer-events: none;
     }
 
         .card .card-outerglow .card-outerglow-tl,
@@ -157,7 +172,6 @@
         .card .card-outerglow .card-outerglow-b,
         .card .card-outerglow .card-outerglow-br {
             position: absolute;
-            pointer-events: none;
             background: radial-gradient(500px 500px at var(--pointer-fixed), hsl(var(--palette-primary-hue), 100%, 50%, 0.25) 0, hsl(var(--palette-primary-hue), 100%, 50%, 0) 100%);
             background-attachment: fixed;
         }
@@ -295,32 +309,32 @@
         opacity: 0;
     }
 
-    .card:focus {
+    .card a:focus {
         outline: 0;
     }
 
-    .card:focus-visible .card-hover {
+    .card:has() .card-hover {
         opacity: 1;
     }
 
-    .card:focus-visible.pointer-none .card-border-secondary,
-    .card:focus-visible.pointer-none .card-border-primary {
+    .card:has(a:focus-visible).pointer-none .card::after,
+    .card:has(a:focus-visible).pointer-none .card-border-primary {
         opacity: 1;
     }
 
-    .card:focus-visible .card-outerglow .card-outerglow-tl,
-    .card:focus-visible .card-outerglow .card-outerglow-t,
-    .card:focus-visible .card-outerglow .card-outerglow-tr,
-    .card:focus-visible .card-outerglow .card-outerglow-ml,
-    .card:focus-visible .card-outerglow .card-outerglow-m,
-    .card:focus-visible .card-outerglow .card-outerglow-mr,
-    .card:focus-visible .card-outerglow .card-outerglow-bl,
-    .card:focus-visible .card-outerglow .card-outerglow-b,
-    .card:focus-visible .card-outerglow .card-outerglow-br {
-        background: hsl(var(--palette-primary-hue), 100%, 50%, 0.25);
-    }
-
-    .card:focus-visible .card-border-primary {
+    .card:has(a:focus-visible) .card-border-primary {
         background: radial-gradient(350px 350px at var(--pointer-fixed), #ffffff 0, var(--palette-primary-color) 40%);
         background-attachment: fixed;
+    }
+
+    .card:has(a:focus-visible) .card-outerglow .card-outerglow-1::before,
+    .card:has(a:focus-visible) .card-outerglow .card-outerglow::before,
+    .card:has(a:focus-visible) .card-outerglow .card-outerglow-1::after,
+    .card:has(a:focus-visible) .card-outerglow .card-outerglow-1,
+    .card:has(a:focus-visible) .card-outerglow .card-outerglow-m,
+    .card:has(a:focus-visible) .card-outerglow .card-outerglow-2,
+    .card:has(a:focus-visible) .card-outerglow .card-outerglow-2::before,
+    .card:has(a:focus-visible) .card-outerglow .card-outerglow::after,
+    .card:has(a:focus-visible) .card-outerglow .card-outerglow-2::after {
+        background: hsl(var(--palette-primary-hue), 100%, 50%, 0.25);
     }
