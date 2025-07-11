@@ -72,8 +72,8 @@
         pointer-events: none;
     }
 
-    .card:has(a:hover) ::deep.card-keyicon,
-    .card:has(a:focus) ::deep.card-keyicon {
+    .card:has(> a:hover) ::deep.card-keyicon,
+    .card:has(> a:focus) ::deep.card-keyicon {
         filter: drop-shadow(0 0 1px #ffffff60) drop-shadow(0 0 6px var(--palette-primary-color));
     }
 
@@ -243,9 +243,10 @@
         }
 
     /* Overlapping Effects */
-    .card .card-border-subtle,
-    .card .card-border-secondary,
-    .card .card-border-primary {
+    .card::before,
+    .card::after,
+    .card .card-hover::after {
+        content: '';
         position: absolute;
         top: -1px;
         bottom: -1px;
@@ -254,43 +255,32 @@
         padding: 1.75px;
         box-sizing: border-box;
         pointer-events: none;
-    }
-
-    .card .card-border-subtle {
-        transition: opacity 0.15s ease-in-out;
         border-top-left-radius: var(--border-top-left-radius);
         border-top-right-radius: var(--border-top-right-radius);
         border-bottom-left-radius: var(--border-bottom-left-radius);
         border-bottom-right-radius: var(--border-bottom-right-radius);
+    }
+
+    .card::before {
         border: 2px solid #ffffff14;
     }
 
-    .card .card-border-primary,
-    .card .card-border-secondary {
+    .card::after {
+        background: radial-gradient(250px 250px at var(--pointer-fixed), var(--palette-primary-color) 0, transparent 100%);
+        background-attachment: fixed;
+    }
+
+    .card .card-hover::after {
+        background: radial-gradient(350px 350px at var(--pointer-fixed), #ffffff 0, var(--palette-primary-color) 40%, #3e3934 100%);
+        background-attachment: fixed;
+    }
+
+    .card::after,
+    .card .card-hover::after {
         mask: linear-gradient(#ffffff 0 0) content-box, linear-gradient(#ffffff 0 0);
         -webkit-mask: linear-gradient(#ffffff 0 0) content-box, linear-gradient(#ffffff 0 0);
         mask-composite: exclude;
         -webkit-mask-composite: xor;
-    }
-
-    .card .card-border-secondary {
-        transition: opacity 0.15s ease-in-out;
-        background: radial-gradient(250px 250px at var(--pointer-fixed), var(--palette-primary-color) 0, transparent 100%);
-        background-attachment: fixed;
-        border-top-left-radius: var(--border-top-left-radius);
-        border-top-right-radius: var(--border-top-right-radius);
-        border-bottom-left-radius: var(--border-bottom-left-radius);
-        border-bottom-right-radius: var(--border-bottom-right-radius);
-    }
-
-    .card .card-border-primary {
-        transition: opacity 0.15s ease-in-out;
-        background: radial-gradient(350px 350px at var(--pointer-fixed), #ffffff 0, var(--palette-primary-color) 40%, #3e3934 100%);
-        background-attachment: fixed;
-        border-top-left-radius: var(--border-top-left-radius);
-        border-top-right-radius: var(--border-top-right-radius);
-        border-bottom-left-radius: var(--border-bottom-left-radius);
-        border-bottom-right-radius: var(--border-bottom-right-radius);
     }
 
     .card .card-hover {
@@ -304,37 +294,37 @@
         opacity: 1;
     }
 
-    .card.pointer-none .card-border-secondary,
-    .card.pointer-none .card-border-primary {
+    .card.pointer-none::after,
+    .card.pointer-none .card-hover::after {
         opacity: 0;
     }
 
-    .card a:focus {
+    .card a:focus-visible {
         outline: 0;
     }
 
-    .card:has() .card-hover {
+    .card:has(> a:focus-visible) .card-hover {
         opacity: 1;
     }
 
-    .card:has(a:focus-visible).pointer-none .card::after,
-    .card:has(a:focus-visible).pointer-none .card-border-primary {
+    .card:has(> a:focus-visible).pointer-none .card::after,
+    .card:has(> a:focus-visible).pointer-none .card-hover::after {
         opacity: 1;
     }
 
-    .card:has(a:focus-visible) .card-border-primary {
+    .card:has(> a:focus-visible) .card-hover::after {
         background: radial-gradient(350px 350px at var(--pointer-fixed), #ffffff 0, var(--palette-primary-color) 40%);
         background-attachment: fixed;
     }
 
-    .card:has(a:focus-visible) .card-outerglow .card-outerglow-1::before,
-    .card:has(a:focus-visible) .card-outerglow .card-outerglow::before,
-    .card:has(a:focus-visible) .card-outerglow .card-outerglow-1::after,
-    .card:has(a:focus-visible) .card-outerglow .card-outerglow-1,
-    .card:has(a:focus-visible) .card-outerglow .card-outerglow-m,
-    .card:has(a:focus-visible) .card-outerglow .card-outerglow-2,
-    .card:has(a:focus-visible) .card-outerglow .card-outerglow-2::before,
-    .card:has(a:focus-visible) .card-outerglow .card-outerglow::after,
-    .card:has(a:focus-visible) .card-outerglow .card-outerglow-2::after {
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-1::before,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow::before,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-1::after,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-1,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-m,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-2,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-2::before,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow::after,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-2::after {
         background: hsl(var(--palette-primary-hue), 100%, 50%, 0.25);
     }
