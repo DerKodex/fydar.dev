@@ -317,14 +317,14 @@
         background-attachment: fixed;
     }
 
-    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-1::before,
-    .card:has(> a:focus-visible) .card-outerglow .card-outerglow::before,
-    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-1::after,
-    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-1,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-tl,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-t,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-tr,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-ml,
     .card:has(> a:focus-visible) .card-outerglow .card-outerglow-m,
-    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-2,
-    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-2::before,
-    .card:has(> a:focus-visible) .card-outerglow .card-outerglow::after,
-    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-2::after {
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-mr,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-bl,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-b,
+    .card:has(> a:focus-visible) .card-outerglow .card-outerglow-br {
         background: hsl(var(--palette-primary-hue), 100%, 50%, 0.25);
     }
