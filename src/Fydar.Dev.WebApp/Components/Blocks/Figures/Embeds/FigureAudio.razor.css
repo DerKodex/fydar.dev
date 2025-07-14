@@ -46,6 +46,10 @@ figure.figure-audio {
                 margin-top: 0;
             }
 
+            figure.figure-audio .figure-audio-player .figure-audio-player-description ::deep p:last-child {
+                margin-bottom: 0;
+            }
+
         figure.figure-audio .figure-audio-player audio {
             width: 100%;
             grid-column: 2 / 3;
