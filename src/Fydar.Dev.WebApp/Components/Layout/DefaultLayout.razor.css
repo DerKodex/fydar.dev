@@ -247,6 +247,10 @@ main {
     margin-block-start: 4em;
 }
 
+::deep h2 + h3 {
+    margin-block-start: 3em;
+}
+
 ::deep p {
     text-align: justify;
 }

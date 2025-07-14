@@ -105,17 +105,81 @@
     <section class="container">
 
         <Heading Level="2" Identifier="gameboy-shader">
-            <Prefix>Implementing the </Prefix>
+            <Prefix>Implementing the</Prefix>
             <Text>Gameboy Shader</Text>
             <Content>
 
-                <Callout Type="construction">
-                    <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
-                    <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
-                </Callout>
 
             </Content>
         </Heading>
+
+        <Heading Level="2" Identifier="soundtrack">
+            <Prefix>Composing the</Prefix>
+            <Text>Soundtrack</Text>
+            <Content>
+
+                <h3>Main Menu Music</h3>
+
+                <p>I composed this track for the main menu of the game. I took elements of traditional work songs with the lower BPM and simple drums to keep pace. I worked elements into the track gradually, starting with just the drums and adding the baseline, finally adding the ostinato.</p>
+
+                <FigureAudio DefaultVolume="0.125">
+                    <TrackName><b>Track 1:</b> Main Menu Music</TrackName>
+                    <Description>
+                        <p>by Fydar</p>
+                    </Description>
+                    <AlbumCover>
+                        <img src="@Assets["media/miniminer/miniminer-mainmenu.png"]" alt="The main menu of Mini Miner." loading="lazy" />
+                    </AlbumCover>
+                    <Sources>
+                        <source src="@Assets["media/miniminer/music-menu.ogg"]" type="audio/ogg">
+                        <source src="@Assets["media/miniminer/music-menu.mp3"]" type="audio/mpeg">
+                    </Sources>
+                </FigureAudio>
+
+                <h3>Introduction Music</h3>
+
+                <p>The introduction of the game is conducted by <b>The Mine Director</b>, a mole with a shovel, mining hat, and glasses. I imagine moles to be quite energetic, and the design I chose for the mole makes them look like cartoon character, so I chose to a baseline that is somewhat goofy in nature.</p>
+
+                <FigureAudio DefaultVolume="0.125">
+                    <TrackName><b>Track 2:</b> Intro Music</TrackName>
+                    <Description>
+                        <p>by Fydar</p>
+                    </Description>
+                    <AlbumCover>
+                        <img src="@Assets["media/miniminer/miniminer-intro.png"]" alt="The intro sequence of Mini Miner." loading="lazy" />
+                    </AlbumCover>
+                    <Sources>
+                        <source src="@Assets["media/miniminer/music-intro.ogg"]" type="audio/ogg">
+                        <source src="@Assets["media/miniminer/music-intro.mp3"]" type="audio/mpeg">
+                    </Sources>
+                </FigureAudio>
+
+                <h3>Mining Music</h3>
+
+                <p>This track needs to be able to loop as I'm going to be using it in the background of the gameplay. The raw sine wave instruments that I used in the previous tracks is rather harsh (to the point where I wouldn't want to listen to it for an extended period of time) I moved the ostinato onto a much lower and softer toned instrument.</p>
+
+                <FigureAudio DefaultVolume="0.125">
+                    <TrackName><b>Track 3:</b> Mining Music</TrackName>
+                    <Description>
+                        <p>by Fydar</p>
+                    </Description>
+                    <AlbumCover>
+                        <img src="@Assets["media/miniminer/miniminer-overworld.png"]" alt="The overworld of Mini Miner." loading="lazy" />
+                    </AlbumCover>
+                    <Sources>
+                        <source src="@Assets["media/miniminer/music-mining.ogg"]" type="audio/ogg">
+                        <source src="@Assets["media/miniminer/music-mining.mp3"]" type="audio/mpeg">
+                    </Sources>
+                </FigureAudio>
+
+            </Content>
+        </Heading>
+
+
+        <Callout Type="construction">
+            <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
+            <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
+        </Callout>
 
     </section>
 </HeadingScope>
