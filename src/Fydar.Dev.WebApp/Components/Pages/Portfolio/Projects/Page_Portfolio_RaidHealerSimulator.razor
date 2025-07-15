@@ -108,9 +108,43 @@
             <Text>Spell System</Text>
             <Content>
 
-                <Callout Type="construction">
-                    <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
-                    <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
+                <p>The ability system is architected so that each ability instance manages its own state machine. This approach allows for flexible, modular, and extensible ability behaviors, supporting a wide range of gameplay mechanics such as cooldowns, warmups, channeling, and multi-phase effects.</p>
+
+                <h3>Key Classes</h3>
+
+                <ul>
+                    <li>The abstract <b>base class</b> (<code>Ability</code>) defines the essential interface and properties for all abilities.</li>
+                    <li>The basic <b>stateful ability</b> (<code>BasicAbility</code>) contains a basic state machine with passive, warming up, and running down states.</li>
+                    <li>The <b>specialised ability</b> (<code>BasicBeamAbility</code>) extends <code>BasicAbility</code> and adds new states to the state machines and logic for applying an effect every few ticks over a period of time.</li>
+                </ul>
+                
+                <h3>Benefits</h3>
+
+                <Callout>
+                    <Icon><SvgSprite Link="/icons.svg?v=1#icon-seal-check-fill" Alt="Check" /></Icon>
+                    <ChildContent>
+                        <p><b>Flexibility</b></p>
+                        <p>Supports a wide variety of ability types, from instant attacks to complex, multi-phase spells.</p>
+                    </ChildContent>
+                </Callout>
+
+                <Callout>
+                    <Icon><SvgSprite Link="/icons.svg?v=1#icon-seal-check-fill" Alt="Check" /></Icon>
+                    <ChildContent>
+                        <p><b>Maintainability</b></p>
+                        <p>Clear state transitions and encapsulation make the system easy to extend and debug.</p>
+                    </ChildContent>
+                </Callout>
+
+                <h3>Drawbacks</h3>
+
+                <Callout Type="danger">
+                    <Icon><SvgSprite Link="/icons.svg?v=1#icon-seal-check-fill" Alt="Check" /></Icon>
+                    <ChildContent>
+                        <p><b>Ticks are required</b></p>
+                        <p>Every ability needs to be processed every frame. If this was an MMO where every player had one hundred abilities, this would require a lot of processing.</p>
+                        <p>It would be much more efficient if ability was able to schedule a time for when they next change state and for an invocation to only happen then.</p>
+                    </ChildContent>
                 </Callout>
 
             </Content>

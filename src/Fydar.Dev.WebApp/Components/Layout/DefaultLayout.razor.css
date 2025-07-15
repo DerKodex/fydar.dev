@@ -284,6 +284,16 @@ main {
     font-weight: 600;
 }
 
+::deep code {
+    border: 1px solid #ffcf965e;
+    display: inline-block;
+    background: #ff8a0028;
+    border-radius: 4px;
+    line-height: 1.4;
+    padding: 0 4px 0 4px;
+    margin: 0 2px 0 2px;
+}
+
 ::deep .subtle {
     color: #8d8d8d;
     font-weight: 400;
