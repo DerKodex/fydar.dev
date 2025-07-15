@@ -23,6 +23,11 @@
     .callout .callout-body {
     }
 
+        .callout .callout-body ::deep > p {
+            margin-top: 0.25em;
+            margin-bottom: 0.25em;
+        }
+
         .callout .callout-body ::deep > *:first-child {
             margin-top: 0;
         }
@@ -42,6 +47,20 @@
         .callout.callout-success ::deep *::selection,
         .callout.callout-success::selection {
             background-color: #8ed239;
+            color: black;
+        }
+
+    .callout.callout-danger {
+        background-color: #71303040;
+    }
+
+        .callout.callout-danger ::deep svg {
+            color: #d23939;
+        }
+
+        .callout.callout-danger ::deep *::selection,
+        .callout.callout-danger::selection {
+            background-color: #d23939;
             color: black;
         }
 
