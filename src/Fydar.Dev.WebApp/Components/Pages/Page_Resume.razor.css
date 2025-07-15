@@ -420,7 +420,7 @@
             grid-column: 2 / 3;
             margin: 0 0 6pt 0;
             padding: 3pt 10pt 3pt 38pt;
-            background: linear-gradient(90deg, var(--palette-primary-background1-color), transparent 150%);
+            background: var(--palette-primary-background1-color);
             border-radius: 3pt;
         }
 
