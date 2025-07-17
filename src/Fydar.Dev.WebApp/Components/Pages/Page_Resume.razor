@@ -1,5 +1,6 @@
 @layout DefaultLayout
 @page "/resume"
+@using Fydar.Dev.WebApp.Components.Blocks.Resume;
 
 @inject NavigationManager NavigationManager
 @{
@@ -94,7 +95,7 @@
 
         <div class="spacer"></div>
 
-        <p>In addition to my professional experience in the above disciplines, I'm also a very active hobbyist developer. I regularly participate in game jams, many of which are available on my portfolio website. These serve as a great opportunity for me to push the boundaries of my knowledge with new techniques and the latest technologies.</p>
+        <p>I also do regular <a href="@explicitBaseUri/portfolio/gamejams" class="textual-link" target="_blank">game jams<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>. These serve as a great opportunity for me to push technical boundaries and experiment with the latest technologies.</p>
 
         <div class="spacer"></div>
 
@@ -110,21 +111,91 @@
 
     <section class="page page-experience">
 
-        <h1 id="experience">Professional Experience</h1>
 
-        <div class="capsule-tag-cloud" style="margin-bottom: 12pt;">
-            <a class="capsule-tag palette-systems" href="@explicitBaseUri/portfolio/systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>Systems Engineering</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-            <a class="capsule-tag palette-backend" href="@explicitBaseUri/portfolio/backend" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" /><p>Backend Engineering</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-            <a class="capsule-tag palette-tools" href="@explicitBaseUri/portfolio/tools" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" /><p>Tools Programming</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-            <a class="capsule-tag palette-gameplay" href="@explicitBaseUri/portfolio/gameplay" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Gameplay Programming</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-            <a class="capsule-tag palette-multiplayer" href="@explicitBaseUri/portfolio/multiplayer" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--users-group" Alt="Multiplayer Programming" /><p>Multiplayer Programming</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-            <a class="capsule-tag palette-technicalart" href="@explicitBaseUri/portfolio/technicalart" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--brush" Alt="Technical Art" /><p>Technical Art</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-        </div>
+        <h1 id="skills">Skills</h1>
 
+        
+        <a class="callout palette-systems" target="_blank" href="@explicitBaseUri/portfolio/systems">
+            <SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" />
+            <h3>Systems Engineering<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></h3>
+            <ul class="textual-tags">
+                <li class="textual-tag">C# and C++</li>
+                <li class="textual-tag">RPG Systems</li>
+                <li class="textual-tag">Physics</li>
+                <li class="textual-tag">SIMD</li>
+            </ul>
+        </a>
+        
+        <a class="callout palette-backend" target="_blank" href="@explicitBaseUri/portfolio/backend">
+            <SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Systems Engineering" />
+            <h3>Backend Engineering<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></h3>
+            <ul class="textual-tags">
+                <li class="textual-tag">ASP.NET Core</li>
+                <li class="textual-tag">Docker</li>
+                <li class="textual-tag">AWS/Azure</li>
+            </ul>
+        </a>
+
+        <a class="callout palette-tools" target="_blank" href="@explicitBaseUri/portfolio/tools">
+            <SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Systems Engineering" />
+            <h3>Tools Programming<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></h3>
+            <ul class="textual-tags">
+                <li class="textual-tag">Blazor</li>
+                <li class="textual-tag">WPF</li>
+                <li class="textual-tag">MAUI</li>
+                <li class="textual-tag">Qt</li>
+                <li class="textual-tag">CLI</li>
+                <li class="textual-tag">Unity</li>
+            </ul>
+        </a>
+
+        <a class="callout palette-gameplay" target="_blank" href="@explicitBaseUri/portfolio/gameplay">
+            <SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Systems Engineering" />
+            <h3>Gameplay Programming<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></h3>
+            <ul class="textual-tags">
+                <li class="textual-tag">Camera Controllers</li>
+                <li class="textual-tag">Bug Fixing</li>
+                <li class="textual-tag">AI</li>
+                <li class="textual-tag">UI/UX</li>
+            </ul>
+        </a>
+
+        <a class="callout palette-multiplayer" target="_blank" href="@explicitBaseUri/portfolio/multiplayer">
+            <SvgSprite Link="/icons.svg?v=1#tabler--users-group" Alt="Systems Engineering" />
+            <h3>Multiplayer Programming<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></h3>
+            <ul class="textual-tags">
+                <li class="textual-tag">Photon</li>
+                <li class="textual-tag">UNet</li>
+                <li class="textual-tag">Deterministic</li>
+                <li class="textual-tag">Custom Solutions</li>
+            </ul>
+        </a>
+
+        <a class="callout palette-technicalart" target="_blank" href="@explicitBaseUri/portfolio/technicalart">
+            <SvgSprite Link="/icons.svg?v=1#tabler--brush" Alt="Technical Art" />
+            <h3>Technical Art<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></h3>
+            <ul class="textual-tags">
+                <li class="textual-tag">GLSL</li>
+                <li class="textual-tag">UI</li>
+                <li class="textual-tag">Substance Designer</li>
+                <li class="textual-tag">Optimization</li>
+                <li class="textual-tag">Particles</li>
+            </ul>
+        </a>
+        
         <div style="height: 52pt;"></div>
 
-        <div class="timeline">
+        <h1 id="experience">Professional Experience</h1>
 
+        <a class="callout palette-technicalart" target="_blank" href="https://www.gamesindustry.biz/technical-art-roles-what-they-are-and-how-to-get-one">
+            <SvgSprite Link="/icons.svg?v=1#tabler--brush" Alt="Technical Art" />
+            <h3>EGX 2023 Panellist<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></h3>
+            <ul class="textual-tags">
+                <li class="textual-tag">'Technical art roles: What they are, and how to get one'</li>
+            </ul>
+        </a>
+
+        <div class="timeline">
             <div class="timeline-icon">
                 <picture>
                     <img src="@Assets["media/companies/kineticgames/logo_200x200.png"]" alt="The logo for 'Kinetic Games'.">
@@ -136,44 +207,56 @@
             </div>
 
             <div class="timeline-header">
-                <h2>Kinetic Games</h2>
-                <p class="subtitle2">
-                    <span class="textual-tag">Full-time</span>
-                    <span class="textual-tag">Indie</span>
-                    <span class="textual-tag">4 months</span>
-                </p>
-                <p class="subtitle3">
-                    <span class="textual-tag">Southampton, United Kingdom</span>
-                    <span class="textual-tag">Hybrid</span>
-                </p>
+                <div class="timeline-header-company">
+                    <h2>Kinetic Games</h2>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Basis_FullTime />
+                        <Resume_Tag_Size_Indie />
+                        <Resume_Tag_Duration Text="4 months" />
+                    </ul>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Location Address="Southampton, United Kingdom" />
+                        <Resume_Tag_Site_Hybrid />
+                    </ul>
+                </div>
+                <div class="timeline-header-product">
+                    <h3>Phasmophobia</h3>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Engine_Unity />
+                        <Resume_Tag_VR />
+                    </ul>
+                    <ul class="textual-tags">
+                        <li class="textual-tag">
+                            <SvgSprite Link="/icons.svg?v=1#icon-steam" />
+                            <SvgSprite Link="/icons.svg?v=1#icon-playstation" />
+                            <SvgSprite Link="/icons.svg?v=1#icon-xbox" />
+                        </li>
+                    </ul>
+                </div>
+                <img class="timeline-header-media" src="@Assets["media/phasmophobia/capsule_350x200.webp"]" alt="Landscape promotional material for the game 'Phasmophobia'." />
             </div>
 
-            <a class="timeline-media-header" target="_blank" href="@explicitBaseUri/portfolio/phasmophobia">Phasmophobia<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
+            <div class="callout palette-gameplay">
+                <SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" />
+                <h3>Senior Gameplay Programmer</h3>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="December 2024 – March 2025" />
+                    <li class="textual-tag">4 mos</li>
+                </ul>
+            </div>
+
             <div class="timeline-media">
-                <img src="@Assets["media/phasmophobia/capsule_350x200.webp"]" alt="Landscape promotional material for the game 'Phasmophobia'." />
                 <div class="timeline-media-body">
                     <div class="capsule-tag-cloud">
                         <a class="capsule-tag palette-gameplay" href="@explicitBaseUri/portfolio/phasmophobia#more-to-come" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Future Updates</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
                         <a class="capsule-tag palette-gameplay" href="@explicitBaseUri/portfolio/phasmophobia#more-to-come" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Bug Fixing</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-                        <div style="width: 90pt"></div>
                         <a class="capsule-tag palette-technicalart" href="@explicitBaseUri/portfolio/phasmophobia#setpass-calls" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--brush" Alt="Technical Art" /><p>Technical Art</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
                     </div>
                 </div>
             </div>
-
-            <div class="timeline-position palette-gameplay">
-                <SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" />
-                <h3>Senior Gameplay Programmer</h3>
-                <p class="subtitle2">
-                    <span class="textual-tag">December 2024 – March 2025</span>
-                    <span class="textual-tag">4 mos</span>
-                </p>
-            </div>
-
         </div>
 
         <div class="timeline">
-
             <div class="timeline-icon">
                 <picture>
                     <img src="@Assets["media/companies/snapfingerclick/logo_200x200.png"]" alt="The logo for 'Snap Finger Click'.">
@@ -181,49 +264,65 @@
             </div>
 
             <div class="timeline-years">
+                <div class="timeline-year">2024</div>
             </div>
 
             <div class="timeline-header">
-                <h2>Snap Finger Click</h2>
-                <p class="subtitle2">
-                    <span class="textual-tag">Full-time</span>
-                    <span class="textual-tag">AA</span>
-                    <span class="textual-tag">5 months</span>
-                </p>
-                <p class="subtitle3">
-                    <span class="textual-tag">Brighton, United Kingdom</span>
-                    <span class="textual-tag">Remote</span>
-                </p>
+                <div class="timeline-header-company">
+                    <h2>Snap Finger Click</h2>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Basis_FullTime />
+                        <Resume_Tag_Size_AA />
+                        <Resume_Tag_Duration Text="5 months" />
+                    </ul>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Location Address="Brighton, United Kingdom" />
+                        <Resume_Tag_Site_Remote />
+                    </ul>
+                </div>
+                <div class="timeline-header-product">
+                    <h3>UNO™</h3>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Engine_Unity />
+                    </ul>
+                    <ul class="textual-tags">
+                        <li class="textual-tag">
+                            <SvgSprite Link="/icons.svg?v=1#icon-steam" />
+                            <SvgSprite Link="/icons.svg?v=1#icon-playstation" />
+                            <SvgSprite Link="/icons.svg?v=1#icon-xbox" />
+                            <SvgSprite Link="/icons.svg?v=1#icon-nintendoswitch" />
+                        </li>
+                    </ul>
+                </div>
+                <img class="timeline-header-media" src="@Assets["media/uno/capsule_350x200.webp"]" alt="Landscape promotional material for the game 'UNO™'." />
             </div>
 
-            <a class="timeline-media-header" target="_blank" href="@explicitBaseUri/portfolio/uno">UNO™<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
+            <div class="callout palette-gameplay">
+                <SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" />
+                <h3>Senior Gameplay Programmer</h3>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="July 2024 – November 2024" />
+                    <li class="textual-tag">5 mos</li>
+                </ul>
+            </div>
 
             <div class="timeline-media">
-                <img src="@Assets["media/uno/capsule_350x200.webp"]" alt="Landscape promotional material for the game 'UNO™'." />
                 <div class="timeline-media-body">
-
                     <div class="capsule-tag-cloud">
                         <a class="capsule-tag palette-gameplay" href="@explicitBaseUri/portfolio/uno#button-behaviour" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Main Menu Buttons</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
                         <a class="capsule-tag palette-gameplay" href="@explicitBaseUri/portfolio/uno#legacy-codebase" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Bug Fixing</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-                        <div style="width: 90pt"></div>
                         <a class="capsule-tag palette-technicalart" href="@explicitBaseUri/portfolio/uno#overdraw" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--brush" Alt="Technical Art" /><p>Technical Art</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
                     </div>
                 </div>
             </div>
-
-            <div class="timeline-position palette-gameplay">
-                <SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" />
-                <h3>Senior Gameplay Programmer</h3>
-                <p class="subtitle2">
-                    <span class="textual-tag">July 2024 – November 2024</span>
-                    <span class="textual-tag">5 mos</span>
-                </p>
-            </div>
-
         </div>
+    </section>
+
+
+    <section class="page page-projects">
+        
 
         <div class="timeline">
-
             <div class="timeline-icon">
                 <picture>
                     <img src="@Assets["media/companies/radicalforge/logo_200x200.jpg"]" alt="The logo for 'Radical Forge'.">
@@ -233,26 +332,45 @@
             <div class="timeline-years">
                 <div class="timeline-year">2024</div>
                 <div class="timeline-year">2023</div>
-                <div class="timeline-year">2022</div>
             </div>
 
             <div class="timeline-header">
-                <h2>Radical Forge</h2>
-                <p class="subtitle2">
-                    <span class="textual-tag">Full-time</span>
-                    <span class="textual-tag">AA</span>
-                    <span class="textual-tag">1 year, 7 months</span>
-                </p>
-                <p class="subtitle3">
-                    <span class="textual-tag">Middlesbrough, United Kingdom</span>
-                    <span class="textual-tag">Remote</span>
-                </p>
+                <div class="timeline-header-company">
+                    <h2>Radical Forge</h2>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Basis_FullTime />
+                        <Resume_Tag_Size_AA />
+                        <Resume_Tag_Duration Text="1 year, 7 months" />
+                    </ul>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Location Address="Middlesbrough, United Kingdom" />
+                        <Resume_Tag_Site_Remote />
+                    </ul>
+                </div>
+                <div class="timeline-header-product">
+                    <h3>Southfield</h3>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Engine_Unity />
+                    </ul>
+                    <ul class="textual-tags">
+                        <li class="textual-tag">
+                            <SvgSprite Link="/icons.svg?v=1#icon-steam" />
+                        </li>
+                    </ul>
+                </div>
+                <img class="timeline-header-media" src="@Assets["media/southfield/capsule_350x200.webp"]" alt="Landscape promotional material for the game 'Southfield'." />
             </div>
 
-            <a class="timeline-media-header" target="_blank" href="@explicitBaseUri/portfolio/southfield">Southfield<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
+            <div class="callout palette-tools">
+                <SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" />
+                <h3>Senior Tools Programmer</h3>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="September 2022 – March 2024" />
+                    <li class="textual-tag">1 yr, 7 mos</li>
+                </ul>
+            </div>
 
             <div class="timeline-media">
-                <img src="@Assets["media/southfield/capsule_350x200.webp"]" alt="Landscape promotional material for the game 'Southfield'." />
                 <div class="timeline-media-body">
                     <div class="capsule-tag-cloud">
                         <a class="capsule-tag palette-tools" href="@explicitBaseUri/portfolio/southfield#gradient-recolouring" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" /><p>Gradient Recolouring</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
@@ -263,38 +381,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="timeline-position palette-tools">
-                <SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" />
-                <h3>Senior Tools Programmer</h3>
-                <p class="subtitle2">
-                    <span class="textual-tag">September 2022 – March 2024</span>
-                    <span class="textual-tag">1 yr, 7 mos</span>
-                </p>
-            </div>
-
-            <a class="timeline-position palette-technicalart" target="_blank" href="https://www.gamesindustry.biz/technical-art-roles-what-they-are-and-how-to-get-one">
-                <SvgSprite Link="/icons.svg?v=1#tabler--brush" Alt="Technical Art" />
-                <h3>EGX 2023 Panellist<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></h3>
-                <p class="subtitle2">'Technical art roles: What they are, and how to get one'</p>
-            </a>
-
-            <!--
-            <a href="https://www.gamesindustry.biz/technical-art-roles-what-they-are-and-how-to-get-one" target="_blank" class="timeline-media">
-                <img src="@Assets["media/companies/radicalforge/egx-thumbnail.webp"]" alt="From left to right, Fydar, Luna, Piotr, and Bruce at EGX." />
-                <div class="timeline-media-body">
-                    <p class="timeline-media-body-name">EGX 2023 Panellist<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-                    <p class="timeline-media-body-description">I represented Radical Forge at <b>EGX 2023</b> on a <b>GamesIndustry.biz</b> panel called <b>'Technical art roles: What they are, and how to get one'</b>.</p>
-                </div>
-            </a>
-            -->
-
         </div>
-
-    </section>
-
-
-    <section class="page page-projects">
 
         <div class="timeline">
 
@@ -306,38 +393,48 @@
             </div>
 
             <div class="timeline-header">
-                <h2>Hardball Games</h2>
-                <p class="subtitle2">
-                    <span class="textual-tag">Full-time</span>
-                    <span class="textual-tag">AA</span>
-                    <span class="textual-tag">3 months</span>
-                </p>
-                <p class="subtitle3">
-                    <span class="textual-tag">Brighton, United Kingdom</span>
-                    <span class="textual-tag">Hybrid</span>
-                </p>
+                <div class="timeline-header-company">
+                    <h2>Hardball Games</h2>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Basis_FullTime />
+                        <Resume_Tag_Size_AA />
+                        <Resume_Tag_Duration Text="3 months" />
+                    </ul>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Location Address="Middlesbrough, United Kingdom" />
+                        <Resume_Tag_Site_Hybrid />
+                    </ul>
+                </div>
+                <div class="timeline-header-product">
+                    <h3>OutRage: Fight Fest</h3>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Engine_Unity />
+                    </ul>
+                    <ul class="textual-tags">
+                        <li class="textual-tag">
+                            <SvgSprite Link="/icons.svg?v=1#icon-steam" />
+                        </li>
+                    </ul>
+                </div>
+                <img class="timeline-header-media" src="@Assets["media/outrage/capsule_350x200.webp"]" alt="Landscape promotional material for the game 'OutRage: Fight Fest'." />
             </div>
 
-            <a class="timeline-media-header" target="_blank" href="@explicitBaseUri/portfolio/outrage">OutRage: Fight Fest<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
+            <div class="callout palette-gameplay">
+                <SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" />
+                <h3>Senior Gameplay Programmer</h3>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="April 2022 – June 2022" />
+                    <li class="textual-tag">3 mos</li>
+                </ul>
+            </div>
 
             <div target="_blank" class="timeline-media">
-                <img src="@Assets["media/outrage/capsule_350x200.webp"]" alt="Landscape promotional material for the game 'OutRage: Fight Fest'." />
                 <div class="timeline-media-body">
                     <div class="capsule-tag-cloud">
                         <a class="capsule-tag palette-gameplay" href="@explicitBaseUri/portfolio/outrage#throwing-props" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" /><p>Environmental Combat</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-                        <div style="width: 90pt"></div>
                         <a class="capsule-tag palette-multiplayer" href="@explicitBaseUri/portfolio/outrage#deterministic-simulation" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--users-group" Alt="Multiplayer Programming" /><p>Deterministic Simulation</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
                     </div>
                 </div>
-            </div>
-
-            <div class="timeline-position palette-gameplay">
-                <SvgSprite Link="/icons.svg?v=1#tabler--pacman" Alt="Gameplay Programming" />
-                <h3>Senior Gameplay Programmer</h3>
-                <p class="subtitle2">
-                    <span class="textual-tag">April 2022 – June 2022</span>
-                    <span class="textual-tag">3 mos</span>
-                </p>
             </div>
 
         </div>
@@ -354,41 +451,51 @@
             </div>
 
             <div class="timeline-header">
-                <h2>Cloud Imperium Games</h2>
-                <p class="subtitle2">
-                    <span class="textual-tag">Full-time</span>
-                    <span class="textual-tag">AAA</span>
-                    <span class="textual-tag">1 years, 8 months</span>
-                </p>
-                <p class="subtitle3">
-                    <span class="textual-tag">Wilmslow, United Kingdom</span>
-                    <span class="textual-tag">Remote</span>
-                </p>
+                <div class="timeline-header-company">
+                    <h2>Cloud Imperium Games</h2>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Basis_FullTime />
+                        <Resume_Tag_Size_AAA />
+                        <Resume_Tag_Duration Text="1 years, 8 months" />
+                    </ul>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Location Address="Wilmslow, United Kingdom" />
+                        <Resume_Tag_Site_Remote />
+                    </ul>
+                </div>
+                <div class="timeline-header-product">
+                    <h3>Star Citizen</h3>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Engine_InHouse />
+                    </ul>
+                    <ul class="textual-tags">
+                        <li class="textual-tag">
+                            <SvgSprite Link="/icons.svg?v=1#icon-steam" />
+                        </li>
+                    </ul>
+                </div>
+                <img class="timeline-header-media" src="@Assets["media/starcitizen/capsule_350x200.webp"]" alt="Landscape promotional material for the game 'Star Citizen'." />
             </div>
 
-            <a class="timeline-media-header" target="_blank" href="@explicitBaseUri/portfolio/starcitizen">Star Citizen and Squadron 42<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
+            <div class="callout palette-tools">
+                <SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" />
+                <h3>Tools Programmer</h3>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="September 2020 – April 2022" />
+                    <li class="textual-tag">1 yrs 8 mos</li>
+                </ul>
+            </div>
 
             <div class="timeline-media">
-                <img src="@Assets["media/starcitizen/capsule_350x200.webp"]" alt="Landscape promotional material for the game 'Star Citizen'." />
                 <div class="timeline-media-body">
                     <div class="capsule-tag-cloud">
                         <a class="capsule-tag palette-backend" href="@explicitBaseUri/portfolio/starcitizen#asset-reference-database" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" /><p>Asset Reference Database</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
                         <a class="capsule-tag palette-tools" href="@explicitBaseUri/portfolio/starcitizen#data-forge" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" /><p>Data Editor</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
                         <a class="capsule-tag palette-tools" href="@explicitBaseUri/portfolio/starcitizen#copy-build" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" /><p>Install Manager</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-                        <a class="capsule-tag palette-systems" href="@explicitBaseUri/portfolio/starcitizen#core-game-systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>Core Game Systems</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
+                        <a class="capsule-tag palette-systems" href="@explicitBaseUri/portfolio/starcitizen#core-game-systems" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>Core</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
                     </div>
                 </div>
             </div>
-
-            <div class="timeline-position palette-tools">
-                <SvgSprite Link="/icons.svg?v=1#tabler--tools" Alt="Tools Programming" />
-                <h3>Tools Programmer</h3>
-                <p class="subtitle2">
-                    <span class="textual-tag">September 2020 – April 2022</span>
-                    <span class="textual-tag">1 yrs 8 mos</span>
-                </p>
-            </div>
-
         </div>
 
         <div class="timeline">
@@ -405,51 +512,61 @@
             </div>
 
             <div class="timeline-header">
-                <h2>TT Games</h2>
-                <p class="subtitle2">
-                    <span class="textual-tag">Full-time</span>
-                    <span class="textual-tag">AA</span>
-                    <span class="textual-tag">2 years, 3 months</span>
-                </p>
-                <p class="subtitle3">
-                    <span class="textual-tag">Brighton, United Kingdom</span>
-                    <span class="textual-tag">On-site</span>
-                </p>
+                <div class="timeline-header-company">
+                    <h2>TT Games</h2>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Basis_FullTime />
+                        <Resume_Tag_Size_AA />
+                        <Resume_Tag_Duration Text="2 years, 3 months" />
+                    </ul>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Location Address="Brighton, United Kingdom" />
+                        <Resume_Tag_Site_OnSite />
+                    </ul>
+                </div>
+                <div class="timeline-header-product">
+                    <h3>LEGO® Star Wars™&hellip;</h3>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Engine_Unity />
+                    </ul>
+                    <ul class="textual-tags">
+                        <li class="textual-tag">
+                            <SvgSprite Link="/icons.svg?v=1#icon-applearcade" />
+                        </li>
+                    </ul>
+                </div>
+                <img class="timeline-header-media" src="@Assets["media/legostarwarsbattles/capsule_350x200.webp"]" alt="Landscape promotional material for the game 'LEGO® Star Wars™ Battles'." />
             </div>
 
-            <a class="timeline-media-header" target="_blank" href="@explicitBaseUri/portfolio/legostarwarsbattles">LEGO® Star Wars™ Battles<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
+            <div class="callout palette-backend">
+                <SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" />
+                <h3>Server Programmer</h3>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="May 2019 – September 2020" />
+                    <li class="textual-tag">1 yr 5 mos</li>
+                </ul>
+            </div>
+
+            <div class="callout palette-backend">
+                <SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" />
+                <h3>Junior Server Programmer</h3>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="July 2018 – May 2019" />
+                    <li class="textual-tag">10 mos</li>
+                </ul>
+            </div>
 
             <div target="_blank" class="timeline-media">
-                <img src="@Assets["media/legostarwarsbattles/capsule_350x200.webp"]" alt="Landscape promotional material for the game 'LEGO® Star Wars™ Battles'." />
                 <div class="timeline-media-body">
                     <div class="capsule-tag-cloud">
                         <a class="capsule-tag palette-backend" href="@explicitBaseUri/portfolio/legostarwarsbattles#leaderboards" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" /><p>Leaderboards</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
                         <a class="capsule-tag palette-backend" href="@explicitBaseUri/portfolio/legostarwarsbattles#clans" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" /><p>Clans</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-                        <a class="capsule-tag palette-backend" href="@explicitBaseUri/portfolio/legostarwarsbattles#username-moderation" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" /><p>Username Moderation</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-                        <a class="capsule-tag palette-backend" href="@explicitBaseUri/portfolio/legostarwarsbattles#server-side-receipt-validation" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" /><p>Receipt Validation</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
-                        <a class="capsule-tag palette-backend" href="@explicitBaseUri/portfolio/legostarwarsbattles#updates-and-data-delivery" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" /><p>Data Delivery</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
+                        <a class="capsule-tag palette-backend" href="@explicitBaseUri/portfolio/legostarwarsbattles#username-moderation" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" /><p>Moderation</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
+                        <a class="capsule-tag palette-backend" href="@explicitBaseUri/portfolio/legostarwarsbattles#server-side-receipt-validation" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" /><p>IAP APIs</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
+                        <a class="capsule-tag palette-backend" href="@explicitBaseUri/portfolio/legostarwarsbattles#updates-and-data-delivery" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" /><p>Downloads</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
                     </div>
                 </div>
             </div>
-
-            <div class="timeline-position palette-backend">
-                <SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" />
-                <h3>Server Programmer</h3>
-                <p class="subtitle2">
-                    <span class="textual-tag">May 2019 – September 2020</span>
-                    <span class="textual-tag">1 yr 5 mos</span>
-                </p>
-            </div>
-
-            <div class="timeline-position palette-backend">
-                <SvgSprite Link="/icons.svg?v=1#tabler--server-2" Alt="Backend Engineering" />
-                <h3>Junior Server Programmer</h3>
-                <p class="subtitle2">
-                    <span class="textual-tag">July 2018 – May 2019</span>
-                    <span class="textual-tag">10 mos</span>
-                </p>
-            </div>
-
         </div>
 
         <div class="timeline">
@@ -466,22 +583,44 @@
             </div>
 
             <div class="timeline-header">
-                <h2>Eneme Entertainment</h2>
-                <p class="subtitle2">
-                    <span class="textual-tag">Full-time</span>
-                    <span class="textual-tag">Indie</span>
-                    <span class="textual-tag">1 year</span>
-                </p>
-                <p class="subtitle3">
-                    <span class="textual-tag">London, United Kingdom</span>
-                    <span class="textual-tag">Remote</span>
-                </p>
+                <div class="timeline-header-company">
+                    <h2>Eneme Entertainment</h2>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Basis_FullTime />
+                        <Resume_Tag_Size_Indie />
+                        <Resume_Tag_Duration Text="1 year" />
+                    </ul>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Location Address="London, United Kingdom" />
+                        <Resume_Tag_Site_Remote />
+                    </ul>
+                </div>
+                <div class="timeline-header-product">
+                    <h3>EITR</h3>
+                    <ul class="textual-tags">
+                        <Resume_Tag_Engine_Unity />
+                    </ul>
+                    <ul class="textual-tags">
+                        <li class="textual-tag">
+                            <SvgSprite Link="/icons.svg?v=1#icon-steam" />
+                            <SvgSprite Link="/icons.svg?v=1#icon-xbox" />
+                            <SvgSprite Link="/icons.svg?v=1#icon-playstation" />
+                        </li>
+                    </ul>
+                </div>
+                <img class="timeline-header-media" src="@Assets["media/eitr/capsule_350x200.jpg"]" alt="Landscape promotional material for the game 'LEGO® Star Wars™ Battles'." />
             </div>
 
-            <a class="timeline-media-header" target="_blank" href="@explicitBaseUri/portfolio/eitr">EITR<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
+            <div class="callout palette-systems">
+                <SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" />
+                <h3>Systems Programmer</h3>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="July 2017 – July 2018" />
+                    <li class="textual-tag">1 yr</li>
+                </ul>
+            </div>
 
             <div target="_blank" class="timeline-media">
-                <img src="@Assets["media/eitr/capsule_350x200.jpg"]" alt="Landscape promotional material for the game 'EITR'." />
                 <div class="timeline-media-body">
                     <div class="capsule-tag-cloud">
                         <a class="capsule-tag palette-systems" href="@explicitBaseUri/portfolio/eitr#inventories" target="_blank"><SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" /><p>Inventories</p><SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a>
@@ -494,20 +633,11 @@
                     </div>
                 </div>
             </div>
-
-            <div class="timeline-position palette-systems">
-                <SvgSprite Link="/icons.svg?v=1#tabler--settings" Alt="Systems Engineering" />
-                <h3>Systems Programmer</h3>
-                <p class="subtitle2">
-                    <span class="textual-tag">July 2017 – July 2018</span>
-                    <span class="textual-tag">1 yr</span>
-                </p>
-            </div>
-
         </div>
 
     </section>
 
+    <!--
     <section class="page page-projects">
 
         <h1 id="education">Education</h1>
@@ -526,18 +656,21 @@
 
             <div class="timeline-header">
                 <h2>Northbrook College<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></h2>
-                <p class="subtitle3">Worthing, United Kingdom</p>
+                
+                <ul class="textual-tags">
+                    <Resume_Tag_Location Address="Worthing, United Kingdom" />
+                </ul>
             </div>
 
             <a class="timeline-header-link" target="_blank" href="@explicitBaseUri/portfolio/northbrook"></a>
 
-            <a class="timeline-position" target="_blank" href="@explicitBaseUri/portfolio/northbrook#extended-diploma" style="margin-top: 16pt;">
+            <a class="callout" target="_blank" href="@explicitBaseUri/portfolio/northbrook#extended-diploma" style="margin-top: 16pt;">
                 <SvgSprite Link="/icons.svg?v=1#icon-northbrook-college" Alt="Northbrook College" style="color: #DA3C10; width: 28pt; height: 28pt; left: 6pt; transform: translateY(-14pt);" />
                 <h3>Extended Diploma in Games Development<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></h3>
-                <p class="subtitle2">
-                    <span class="textual-tag">2017 – 2018</span>
-                    <span class="textual-tag">Distinction</span>
-                </p>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="2017 - 2018" />
+                    <li class="textual-tag">Distinction</li>
+                </ul>
             </a>
 
             <div class="timeline-position-details">
@@ -560,17 +693,17 @@
                 </div>
             </a>
 
-            <!--
-            <a class="timeline-position palette-outoftheblue" target="_blank" href="@explicitBaseUri/portfolio/northbrook#summer" style="margin-top: 16pt;">
+            <a class="callout palette-outoftheblue" target="_blank" href="@explicitBaseUri/portfolio/northbrook#summer" style="margin-top: 16pt;">
                 <SvgSprite Link="/icons.svg?v=1#icon-outoftheblue" Alt="Out of the Blue Studios" style="color: #5378d8; width: 28pt; height: 28pt; left: 6pt; transform: translateY(-14pt);" />
                 <h3>Summer Break<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></h3>
-                <p class="subtitle2">
-                    <span class="textual-tag">2017</span>
-                </p>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="2017" />
+                    <li class="textual-tag">Out of the Blue Studios</li>
+                </ul>
             </a>
 
             <div class="timeline-position-details">
-                <p>It was over the summer break that I joined up with the team from 'Out of the Blue Studios' to work on some collaborative projects.</p>
+                <p>Over the summer break, I joined up with a team to work on some collaborative projects.</p>
             </div>
 
             <a href="@explicitBaseUri/portfolio/lilypadleap" target="_blank" class="timeline-media">
@@ -588,15 +721,14 @@
                     <p class="timeline-media-body-description">Battle endless swarms of enemy space ships across the galaxy.</p>
                 </div>
             </a>
-            -->
 
-            <a class="timeline-position" target="_blank" href="@explicitBaseUri/portfolio/northbrook#diploma" style="margin-top: 16pt;">
+            <a class="callout" target="_blank" href="@explicitBaseUri/portfolio/northbrook#diploma" style="margin-top: 16pt;">
                 <SvgSprite Link="/icons.svg?v=1#icon-northbrook-college" Alt="Northbrook College" style="color: #DA3C10; width: 28pt; height: 28pt; left: 6pt; transform: translateY(-14pt);" />
                 <h3>Diploma in Games Development<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></h3>
-                <p class="subtitle2">
-                    <span class="textual-tag">2016 – 2017</span>
-                    <span class="textual-tag">Distinction</span>
-                </p>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="2016 - 2017" />
+                    <li class="textual-tag">Distinction</li>
+                </ul>
             </a>
 
             <div class="timeline-position-details">
@@ -635,11 +767,11 @@
 
             <div class="timeline-header">
                 <h2>GBJAM 8</h2>
-                <p class="subtitle2">
-                    <span class="textual-tag">September 2022</span>
-                    <span class="textual-tag">1 week</span>
-                    <span class="textual-tag">Solo</span>
-                </p>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="September 2022" />
+                    <li class="textual-tag">1 week</li>
+                    <li class="textual-tag">Solo</li>
+                </ul>
             </div>
 
             <div class="timeline-position-details">
@@ -667,11 +799,11 @@
 
             <div class="timeline-header">
                 <h2>Ludum Dare 46 Compo</h2>
-                <p class="subtitle2">
-                    <span class="textual-tag">April 2020</span>
-                    <span class="textual-tag">48 hours</span>
-                    <span class="textual-tag">Solo</span>
-                </p>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="April 2020" />
+                    <li class="textual-tag">48 hours</li>
+                    <li class="textual-tag">Solo</li>
+                </ul>
             </div>
 
             <div class="timeline-position-details">
@@ -701,11 +833,11 @@
 
             <div class="timeline-header">
                 <h2>Asteroids Clone</h2>
-                <p class="subtitle2">
-                    <span class="textual-tag">July 2018</span>
-                    <span class="textual-tag">8 hours</span>
-                    <span class="textual-tag">Solo</span>
-                </p>
+                <ul class="textual-tags">
+                    <Resume_Tag_Duration Text="July 2018" />
+                    <li class="textual-tag">8 hours</li>
+                    <li class="textual-tag">Solo</li>
+                </ul>
             </div>
 
             <div class="timeline-position-details">
@@ -725,6 +857,7 @@
         </div>
 
     </section>
+    -->
 
     <!--
     <section class="page page-experience">
@@ -740,7 +873,7 @@
                 <p class="subtitle3">Once Annually · 48 hours</p>
             </div>
 
-            <div class="timeline-position palette-magenta">
+            <div class="callout palette-magenta">
                 <h3>Global Game Jam 2021</h3>
                 <p class="subtitle2">January 2021 · Themed 'Lost and Found' · Solo</p>
             </div>
@@ -757,7 +890,7 @@
                 </div>
             </a>
 
-            <div class="timeline-position palette-magenta">
+            <div class="callout palette-magenta">
                 <h3>Global Game Jam 2020</h3>
                 <p class="subtitle2">January 2020 · Themed 'Repair' · Team of 3</p>
             </div>
@@ -776,7 +909,7 @@
                 </div>
             </a>
 
-            <div class="timeline-position palette-magenta">
+            <div class="callout palette-magenta">
                 <h3>Global Game Jam 2019</h3>
                 <p class="subtitle2">January 2019 · Themed 'Home' · Team of 6</p>
             </div>
@@ -795,7 +928,7 @@
                 </div>
             </a>
 
-            <div class="timeline-position palette-magenta">
+            <div class="callout palette-magenta">
                 <h3>Global Game Jam 2018</h3>
                 <p class="subtitle2">January 2018 · Themed 'Transmission' · Team of 5</p>
             </div>

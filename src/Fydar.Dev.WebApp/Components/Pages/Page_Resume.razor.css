@@ -13,6 +13,34 @@
         background-color: #a3c0d9;
     }
 
+    .resume h1 {
+        font-size: 18pt;
+        font-weight: 400;
+        color: #404040;
+        margin: 20pt 0 20pt 0;
+        letter-spacing: 0.25pt;
+    }
+
+    .resume h2 {
+        font-size: 13pt;
+        font-weight: 600;
+        color: #404040;
+        letter-spacing: 0.25pt;
+    }
+
+    .resume h3 {
+        font-size: 10pt;
+        font-weight: 600;
+        color: var(--palette-primary-color);
+        letter-spacing: 0.25pt;
+    }
+
+    .resume p {
+        page-break-inside: avoid;
+        margin-top: 6pt;
+        margin-bottom: 6pt;
+    }
+
     .resume .page {
         min-width: 210mm;
         width: 210mm;
@@ -34,43 +62,37 @@
         --palette-primary-color: #595959;
     }
 
-    .resume h1 {
-        font-size: 18pt;
-        font-weight: 400;
-        color: #404040;
-        margin: 0 0 20pt 0;
-        letter-spacing: 0.25pt;
-    }
+        .resume .page h1:first-child {
+            margin-top: 0;
+        }
 
-    .resume h2 {
-        font-size: 13pt;
-        font-weight: bold;
-        color: #404040;
-        letter-spacing: 0.25pt;
-    }
-
-    .resume h3 {
-        font-size: 10pt;
-        font-weight: 600;
+    .resume ::deep .textual-tags {
         color: var(--palette-primary-color);
-        letter-spacing: 0.25pt;
+        display: flex;
+        flex-direction: row;
+        font-size: 10.5pt;
+        padding: 0;
+        margin: 3pt 0 6pt 0;
     }
 
-    .resume p {
-        page-break-inside: avoid;
-        margin-top: 6pt;
-        margin-bottom: 6pt;
+    .resume ::deep .textual-tag {
+        display: flex;
+        flex-direction: row;
+        gap: 3pt;
+        line-height: 1;
     }
 
-    .resume .textual-tag {
-    }
-
-        .resume .textual-tag + .textual-tag::before {
+        .resume ::deep .textual-tag + .textual-tag::before {
             content: "\00b7 ";
             font-weight: bold;
             white-space: pre;
-            padding-left: 2pt;
+            padding-left: 4pt;
             padding-right: 2pt;
+        }
+
+        .resume ::deep .textual-tag svg {
+            width: 1.07143em;
+            height: 1.07143em;
         }
 
     .resume ::deep a {
@@ -109,10 +131,16 @@
 
     .resume .subtitle2 {
         color: var(--palette-primary-color);
+        display: flex;
+        flex-direction: row;
+        font-size: 10.5pt;
     }
 
     .resume .subtitle3 {
-        color: #a6a6a6;
+        color: var(--palette-primary-color);
+        display: flex;
+        flex-direction: row;
+        font-size: 10.5pt;
     }
 
     .resume .subtitle4 {
@@ -156,7 +184,7 @@
     .resume .capsule-tag-cloud {
         display: flex;
         flex-wrap: wrap;
-        gap: 6pt;
+        gap: 4pt;
     }
 
     .resume .capsule-tag {
@@ -171,6 +199,7 @@
         font-weight: 600;
         letter-spacing: 0.25pt;
         align-items: center;
+        position: relative;
     }
 
         .resume .capsule-tag p {
@@ -258,7 +287,7 @@
         display: grid;
         grid-template-columns: 46pt auto;
         gap: 0 12pt;
-        margin-bottom: 20pt;
+        margin-bottom: 24pt;
         page-break-inside: avoid;
     }
 
@@ -292,8 +321,8 @@
             color: #404040;
             margin-top: 5pt;
             margin-bottom: 5pt;
-            margin: 0 0 8pt 0;
-            gap: 6pt;
+            margin: 4pt 0 8pt 0;
+            gap: 4pt;
         }
 
             .resume .timeline .timeline-media img {
@@ -362,7 +391,7 @@
                 color: #b6b6b6;
                 display: flex;
                 flex-direction: column;
-                font-weight: 600;
+                font-weight: 500;
                 align-items: center;
                 flex-grow: 1;
                 font-size: 11pt;
@@ -372,7 +401,7 @@
                 .resume .timeline .timeline-years::before,
                 .resume .timeline .timeline-years .timeline-year::after {
                     content: '';
-                    width: 3pt;
+                    width: 2pt;
                     margin-top: 6pt;
                     margin-bottom: 4pt;
                     background-color: #e6e6e6;
@@ -398,6 +427,9 @@
             grid-row: 1;
             grid-column: 2 / 3;
             align-self: center;
+            display: flex;
+            flex-direction: row;
+            line-height: 1;
         }
 
             .resume .timeline .timeline-header *:first-child {
@@ -408,6 +440,42 @@
                 margin-bottom: 0
             }
 
+            .resume .timeline .timeline-header .timeline-header-company {
+                flex-grow: 1;
+                --palette-primary-color: #777777;
+            }
+
+                .resume .timeline .timeline-header .timeline-header-company h2 {
+                    margin-bottom: 5pt;
+                }
+
+            .resume .timeline .timeline-header .timeline-header-product {
+                flex-grow: 1;
+                justify-self: right;
+                --palette-primary-color: #777777;
+                justify-items: right;
+            }
+
+                .resume .timeline .timeline-header .timeline-header-product h3 {
+                    text-align: right;
+                    font-size: 12.5pt;
+                    font-weight: 500;
+                    color: #404040;
+                    letter-spacing: 0.25pt;
+                    margin-bottom: 5pt;
+                }
+
+            .resume .timeline .timeline-header .timeline-header-media {
+                margin-left: 6pt;
+                width: 82pt;
+                height: 47pt;
+                border-radius: 4pt;
+                object-fit: cover;
+                background-color: #293138;
+                color: #eeeeee;
+            }
+
+
         .resume .timeline .timeline-header-link {
             grid-row: 1;
             grid-column: 1 / 3;
@@ -415,43 +483,8 @@
             height: 100%;
         }
 
-        .resume .timeline .timeline-position {
-            position: relative;
-            grid-column: 2 / 3;
-            margin: 0 0 6pt 0;
-            padding: 3pt 10pt 3pt 38pt;
-            background: var(--palette-primary-background1-color);
-            border-radius: 3pt;
-        }
 
-            .resume .timeline .timeline-position > ::deep svg:first-child {
-                position: absolute;
-                width: 24pt;
-                height: 24pt;
-                left: 9pt;
-                top: 50%;
-                transform: translateY(-12pt);
-                color: var(--palette-primary-color);
-            }
-
-            .resume .timeline .timeline-position::before {
-                content: '';
-                position: absolute;
-                width: 3pt;
-                height: 100%;
-                left: 0;
-                top: 0;
-                background-color: var(--palette-primary-color);
-                border-top-left-radius: 3pt;
-                border-bottom-left-radius: 3pt;
-            }
-
-            .resume .timeline .timeline-position + .timeline-position {
-                margin-top: 0;
-            }
-
-
-        .resume .timeline .timeline-position-details + .timeline-position {
+        .resume .timeline .timeline-position-details + .callout {
             margin-top: 18pt;
         }
 
@@ -467,6 +500,51 @@
             .resume .timeline .timeline-position-details *:last-child {
                 margin-bottom: 0;
             }
+
+    .resume .callout {
+        position: relative;
+        grid-column: 2 / 3;
+        margin: 6pt 0 1pt 0;
+        padding: 3pt 10pt 5pt 38pt;
+        background: var(--palette-primary-background1-color);
+        border-radius: 3pt;
+        display: block;
+    }
+
+        .resume .callout *:first-child {
+            margin-top: 0;
+        }
+
+        .resume .callout *:last-child {
+            margin-bottom: 0;
+        }
+
+        .resume .callout > ::deep svg:first-child {
+            position: absolute;
+            width: 24pt;
+            height: 24pt;
+            left: 9pt;
+            top: 50%;
+            transform: translateY(-12pt);
+            color: var(--palette-primary-color);
+        }
+
+        .resume .callout::after {
+            content: '';
+            position: absolute;
+            width: 3pt;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: var(--palette-primary-color);
+            border-top-left-radius: 3pt;
+            border-bottom-left-radius: 3pt;
+        }
+
+        .resume .callout + .callout {
+            margin-top: 0;
+        }
+
 
 .palette-magenta {
     --palette-primary-color: #c54394;
