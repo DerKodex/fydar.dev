@@ -95,6 +95,21 @@
             height: 1.07143em;
         }
 
+    .resume ::deep .heading-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin: 3pt 0 6pt 0;
+    }
+        .resume ::deep .heading-row h3 {
+            margin: 0;
+        }
+
+        .resume ::deep .heading-row .textual-tags {
+            margin: 0;
+        }
+
     .resume ::deep a {
         text-decoration: none;
         color: #0055b6;
@@ -505,7 +520,7 @@
         position: relative;
         grid-column: 2 / 3;
         margin: 6pt 0 1pt 0;
-        padding: 3pt 10pt 5pt 38pt;
+        padding: 3pt 10pt 5pt 32pt;
         background: var(--palette-primary-background1-color);
         border-radius: 3pt;
         display: block;
@@ -521,11 +536,11 @@
 
         .resume .callout > ::deep svg:first-child {
             position: absolute;
-            width: 24pt;
-            height: 24pt;
+            width: 19pt;
+            height: 19pt;
             left: 9pt;
             top: 50%;
-            transform: translateY(-12pt);
+            transform: translateY(-9.5pt);
             color: var(--palette-primary-color);
         }
 
