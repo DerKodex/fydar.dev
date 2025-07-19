@@ -14,173 +14,128 @@
 }
 
 ::deep .feature-signature {
-    width: 90%;
+    width: 100%;
     height: auto;
     display: block;
     aspect-ratio: 2.16;
+    margin: auto;
+    max-width: 500px;
+}
+
+.landing-aside {
+}
+
+    .landing-aside h1 {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        line-height: 1;
+    }
+
+    .landing-aside .subheading {
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+        .landing-aside .subheading b {
+        }
+
+.landing-container {
+    padding-top: 5em;
+}
+
+.toc-aside {
+    display: none;
+}
+
+/* Low-Resolution Desktop */
+@media screen and (min-width: 992px) {
+
+
+    ::deep .feature-signature {
+        width: 90%;
+        max-width: none;
+    }
+
+    .landing-aside {
+        padding-top: 3em;
+    }
+
+    .toc-aside {
+        display: block;
+    }
 }
 
 
-.portrait {
-    grid-column: aside / span 1;
-    overflow: hidden;
-    padding-top: 5rem;
-    justify-self: center;
-    align-self: end;
-    margin-bottom: 30px;
+.phonetics {
+    display: inline-block;
+    position: relative;
+    margin-top: 64px;
+    margin-bottom: 0;
+    margin-right: -20px;
+    padding-top: 4px;
+    padding-bottom: 20px;
+    font-size: 1.5rem;
+    letter-spacing: 16px;
+    color: #ffffff60;
+    cursor: pointer;
+    font-weight: 400;
+    white-space: nowrap;
+    background: none;
+    border: 0;
 }
 
-    .portrait img {
-        width: 100%;
-        max-width: 490px;
+    .phonetics:before,
+    .phonetics:after {
+        content: "";
+        height: 0;
+        left: 32px;
+        position: absolute;
+        z-index: -1;
+        bottom: 8px;
     }
 
-.nameplate {
-    grid-column: container / span 1;
-    align-self: end;
-    letter-spacing: 0.625px;
-    padding-top: 5rem;
-    margin-bottom: 2rem;
-}
-
-    .nameplate .award-row {
-        gap: 3.8rem;
-        margin-top: 2rem;
-        margin-bottom: 2.5rem;
-        justify-content: center;
+    .phonetics .syllable1:before {
+        content: "";
+        height: 0;
+        left: 12px;
+        bottom: 5px;
+        position: absolute;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-left: 12px solid #ffffff20;
+        transition: border-left 0.1s linear;
     }
 
-    .nameplate .row-download {
-        margin-top: 1.5rem;
-        margin-bottom: 0.5rem;
-        justify-content: center;
+    .phonetics:hover .syllable1:before,
+    .phonetics:focus-visible .syllable1:before {
+        border-left-color: #ffffff80;
     }
 
-        .nameplate .row-download ::deep .card {
-            --border-top-left-radius: 16px;
-            --border-top-right-radius: 16px;
-            --border-bottom-left-radius: 16px;
-            --border-bottom-right-radius: 16px;
-        }
-
-    .nameplate .award {
-        position: relative;
-        padding: 0 30px;
-        min-height: 96px;
-        display: flex;
-        flex-direction: column;
+    .phonetics:before {
+        right: 20px;
+        border-bottom: 2px solid #ffffff20;
     }
 
-        .nameplate .award:nth-of-type(2) {
-            animation-delay: 0.4s;
-        }
-
-        .nameplate .award .award-value {
-            min-width: 118px;
-            height: 96px;
-            font-size: 3.5rem;
-            color: #ffffff;
-            display: flex;
-            width: 100%;
-            align-items: center;
-            place-content: center;
-        }
-
-            .nameplate .award .award-value ::deep .laurel-left,
-            .nameplate .award .award-value ::deep .laurel-right {
-                content: '';
-                display: block;
-                position: absolute;
-                width: 48px;
-                height: 96px;
-                background-size: 100%;
-                top: 0;
-            }
-
-            .nameplate .award .award-value ::deep .laurel-left {
-                left: 0;
-            }
-
-            .nameplate .award .award-value ::deep .laurel-right {
-                right: 0;
-                transform: scaleX(-1);
-            }
-
-        .nameplate .award .award-name {
-            padding-top: 6px;
-            width: 100%;
-            font-size: 1.2rem;
-            text-align: center;
-            white-space: nowrap;
-            letter-spacing: 1px;
-        }
-
-    .nameplate .phonetics {
-        display: inline-block;
-        position: relative;
-        margin-top: 24px;
-        margin-bottom: 24px;
-        margin-right: -20px;
-        padding-top: 4px;
-        padding-bottom: 20px;
-        font-size: 2.25rem;
-        letter-spacing: 20px;
-        color: #ffffff60;
-        cursor: pointer;
-        font-weight: 400;
-        white-space: nowrap;
-        background: none;
-        border: 0;
+    .phonetics:after {
+        border-bottom: 2px solid #e2b384;
     }
 
-        .nameplate .phonetics:before,
-        .nameplate .phonetics:after {
-            content: "";
-            height: 0;
-            left: 32px;
-            position: absolute;
-            z-index: -1;
-            bottom: 8px;
-        }
+    .phonetics.readanimation:after {
+        animation: readanimation-fydar 1s linear;
+    }
 
-        .nameplate .phonetics .syllable1:before {
-            content: "";
-            height: 0;
-            left: 12px;
-            bottom: 5px;
-            position: absolute;
-            border-top: 6px solid transparent;
-            border-bottom: 6px solid transparent;
-            border-left: 12px solid #ffffff20;
-            transition: border-left 0.1s linear;
-        }
-
-        .nameplate .phonetics:hover .syllable1:before,
-        .nameplate .phonetics:focus-visible .syllable1:before {
-            border-left-color: #ffffff80;
-        }
-
-        .nameplate .phonetics:before {
-            right: 20px;
-            border-bottom: 2px solid #ffffff20;
-        }
-
-        .nameplate .phonetics:after {
-            border-bottom: 2px solid #e2b384;
-        }
-
-        .nameplate .phonetics.readanimation:after {
-            animation: readanimation-fydar 1s linear;
-        }
-
-        .nameplate .phonetics.readanimation .syllable1 {
-            animation: readanimation-syllable1 1s linear;
-        }
+    .phonetics.readanimation .syllable1 {
+        animation: readanimation-syllable1 1s linear;
+    }
 
 
-        .nameplate .phonetics.readanimation .syllable2 {
-            animation: readanimation-syllable2 1s linear;
-        }
+    .phonetics.readanimation .syllable2 {
+        animation: readanimation-syllable2 1s linear;
+    }
 
 @keyframes readanimation-fydar {
     0% {
@@ -255,27 +210,11 @@
     }
 }
 
-.nameplate h1 {
-    font-size: 98px;
-    letter-spacing: 20px;
-    margin: 0;
-    padding-top: 4px;
-    color: white;
+ul li {
+    line-height: 1.5;
+    margin: 4px 0;
+    font-weight: 400;
 }
-
-.nameplate p {
-    text-align: left;
-}
-
-.nameplate ul {
-    padding-left: 32px;
-}
-
-    .nameplate ul li {
-        line-height: 1.5;
-        margin: 4px 0;
-        font-weight: 400;
-    }
 
 .row-readmore {
     margin-top: 1.75rem;
@@ -288,4 +227,77 @@
         --border-top-right-radius: 16px;
         --border-bottom-left-radius: 16px;
         --border-bottom-right-radius: 16px;
+    }
+
+
+
+.row-download {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    justify-content: center;
+}
+
+    .row-download ::deep .card {
+        --border-top-left-radius: 16px;
+        --border-top-right-radius: 16px;
+        --border-bottom-left-radius: 16px;
+        --border-bottom-right-radius: 16px;
+    }
+
+.award-row {
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+    justify-content: space-around;
+}
+
+.award {
+    position: relative;
+    padding: 0 24px;
+    min-height: 96px;
+    display: flex;
+    flex-direction: column;
+}
+
+    .award:nth-of-type(2) {
+        animation-delay: 0.4s;
+    }
+
+    .award .award-value {
+        min-width: 64px;
+        height: 68px;
+        font-size: 2.5rem;
+        color: #ffffff;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        place-content: center;
+        line-height: 1;
+    }
+
+        .award .award-value ::deep .laurel-left,
+        .award .award-value ::deep .laurel-right {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 32px;
+            height: 64px;
+            background-size: 100%;
+            top: 0;
+        }
+
+        .award .award-value ::deep .laurel-left {
+            left: 0;
+        }
+
+        .award .award-value ::deep .laurel-right {
+            right: 0;
+            transform: scaleX(-1);
+        }
+
+    .award .award-name {
+        width: 100%;
+        font-size: 1.0rem;
+        text-align: center;
+        white-space: nowrap;
+        letter-spacing: 1px;
     }
