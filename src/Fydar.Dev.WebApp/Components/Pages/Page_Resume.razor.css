@@ -156,6 +156,10 @@
         color: #898989;
     }
 
+    .resume .link-tag-cloud {
+        padding-left: 16pt;
+    }
+
     .resume .link-tag {
         background-color: #f6f8fa;
         border: solid 1pt rgb(209, 213, 218);
@@ -286,7 +290,7 @@
                 }
 
     .resume .spacer {
-        height: 12pt;
+        height: 14pt;
     }
 
 
