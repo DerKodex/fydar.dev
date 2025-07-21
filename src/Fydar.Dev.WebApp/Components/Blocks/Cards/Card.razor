@@ -2,7 +2,7 @@
 
     @FeaturedImage
 
-    <a class="card-link" href="@href" target="@target" download="@download"></a>
+    <a class="card-link" href="@href" target="@target" download="@download">@HeaderText</a>
 
     <div class="card-hover">
         @if (Signed)
@@ -28,6 +28,9 @@
 @code {
     [Parameter]
     public RenderFragment? FeaturedImage { get; set; }
+
+    [Parameter, EditorRequired]
+    public RenderFragment HeaderText { get; set; }
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
