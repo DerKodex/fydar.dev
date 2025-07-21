@@ -86,6 +86,7 @@
     white-space: nowrap;
     background: none;
     border: 0;
+    width: 240px;
 }
 
     .phonetics:before,
