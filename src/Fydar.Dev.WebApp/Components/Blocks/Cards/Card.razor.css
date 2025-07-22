@@ -22,20 +22,6 @@
         color: transparent;
     }
 
-    .card ::deep .card-signed {
-        position: absolute;
-        top: 16px;
-        right: 16px;
-        mask-image: url(/icons.svg?v=1#icon-fydar-signature);
-        mask-size: contain;
-        mask-repeat: no-repeat;
-        background: radial-gradient(350px 350px at var(--pointer-fixed), #ffffff 0, #e2b384 40%, #3e3934 100%);
-        background-attachment: fixed;
-        width: 160px;
-        height: 90px;
-        pointer-events: none;
-    }
-
     /* Containers */
     .card ::deep .card-container {
         padding: 1.5rem 16px 1.5rem 16px;
