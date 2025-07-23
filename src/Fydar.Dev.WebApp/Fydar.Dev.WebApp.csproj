@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.2" />
-    <PackageReference Include="AWSSDK.SimpleEmail" Version="4.0.0.14" />
+    <PackageReference Include="AWSSDK.SimpleEmail" Version="4.0.0.15" />
     <PackageReference Include="LettuceEncrypt" Version="1.3.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.7" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
