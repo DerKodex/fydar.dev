@@ -75,6 +75,17 @@ public class Program
 
 		// Add services to the container.
 		builder.Services.AddHealthChecks();
+		builder.Services.AddCors(options =>
+		{
+			options.AddDefaultPolicy(policy =>
+			{
+				policy.AllowAnyOrigin()
+					.AllowAnyMethod()
+					.AllowAnyHeader()
+					.WithExposedHeaders(HeaderNames.ContentDisposition)
+					.SetIsOriginAllowedToAllowWildcardSubdomains();
+			});
+		});
 
 		builder.Services.AddAntiforgery();
 		builder.Services.RemoveAntiforgeryNoStore();
@@ -188,6 +199,8 @@ public class Program
 			app.UseHsts();
 			app.UseExceptionHandler("/error");
 		}
+
+		app.UseCors();
 
 		app.UseStatusCodePagesWithReExecute("/error/{0}");
 
