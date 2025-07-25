@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Options;
 using Microsoft.Net.Http.Headers;
 using Serilog;
 using Serilog.Events;
@@ -98,6 +99,13 @@ public class Program
 			options.Providers.Add<GzipCompressionProvider>();
 			options.MimeTypes = ResponseCompressionDefaults.MimeTypes
 				.Concat(["image/svg+xml"]);
+		});
+
+		builder.Services.Configure<IOptions<HstsOptions>>(options =>
+		{
+			options.Value.MaxAge = TimeSpan.FromDays(365);
+			options.Value.IncludeSubDomains = true;
+			options.Value.Preload = true;
 		});
 
 		builder.Services.AddRazorComponents()
