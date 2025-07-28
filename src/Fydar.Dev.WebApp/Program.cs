@@ -1,5 +1,6 @@
 using Amazon.S3;
 using Amazon.SimpleEmail;
+using Fydar.AspNetCore.CSP;
 using Fydar.Dev.Services.EmailTickets;
 using Fydar.Dev.WebApp.Client.Components.Pages;
 using Fydar.Dev.WebApp.Components;
@@ -80,13 +81,19 @@ public class Program
 		{
 			options.AddDefaultPolicy(policy =>
 			{
-				policy.AllowAnyOrigin()
-					.AllowAnyMethod()
+				policy
+					.AllowAnyOrigin()
 					.AllowAnyHeader()
-					.WithExposedHeaders(HeaderNames.ContentDisposition)
-					.SetIsOriginAllowedToAllowWildcardSubdomains();
+					.AllowAnyMethod();
 			});
 		});
+
+		builder.Services.AddContentSecurityPolicy(options =>
+		{
+			options.SupplyHeader = true;
+		});
+
+		builder.Services.AddHttpContextAccessor();
 
 		builder.Services.AddAntiforgery();
 		builder.Services.RemoveAntiforgeryNoStore();
@@ -177,6 +184,9 @@ public class Program
 
 		app.UseHealthChecks("/api/health");
 
+		app.UseContentSecurityPolicy();
+		app.UseCors();
+
 		app.Use(async (context, next) =>
 		{
 			if (context.Request.Path.Equals("/favicon.ico")
@@ -207,8 +217,6 @@ public class Program
 			app.UseHsts();
 			app.UseExceptionHandler("/error");
 		}
-
-		app.UseCors();
 
 		app.UseStatusCodePagesWithReExecute("/error/{0}");
 

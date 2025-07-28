@@ -37,6 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipeline", "Pipeline", "{02
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientTest", "GradientTest\GradientTest.csproj", "{40D60E4B-0DF7-48BE-8E35-DE05001C708F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fydar.AspNetCore.CSP", "Fydar.AspNetCore.CSP\Fydar.AspNetCore.CSP.csproj", "{62AB1424-7448-4F28-98D5-C5086E38FCAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,14 @@ Global
 		{40D60E4B-0DF7-48BE-8E35-DE05001C708F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{40D60E4B-0DF7-48BE-8E35-DE05001C708F}.Release|x86.ActiveCfg = Release|Any CPU
 		{40D60E4B-0DF7-48BE-8E35-DE05001C708F}.Release|x86.Build.0 = Release|Any CPU
+		{62AB1424-7448-4F28-98D5-C5086E38FCAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62AB1424-7448-4F28-98D5-C5086E38FCAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62AB1424-7448-4F28-98D5-C5086E38FCAE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{62AB1424-7448-4F28-98D5-C5086E38FCAE}.Debug|x86.Build.0 = Debug|Any CPU
+		{62AB1424-7448-4F28-98D5-C5086E38FCAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62AB1424-7448-4F28-98D5-C5086E38FCAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62AB1424-7448-4F28-98D5-C5086E38FCAE}.Release|x86.ActiveCfg = Release|Any CPU
+		{62AB1424-7448-4F28-98D5-C5086E38FCAE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,6 +124,7 @@ Global
 		{F72E9AFC-E5E3-46E2-8825-0DBEE2A20158} = {1CA41541-0A8A-4E5E-84D2-E2BB2907FF81}
 		{269C10E2-62F3-4D8A-BF75-A9323EBDD87B} = {1CA41541-0A8A-4E5E-84D2-E2BB2907FF81}
 		{40D60E4B-0DF7-48BE-8E35-DE05001C708F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{62AB1424-7448-4F28-98D5-C5086E38FCAE} = {BD59496D-77B6-44F7-81DA-976D17E01AD4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8A760B08-A6FD-49DA-81C2-64E42FF8C180}

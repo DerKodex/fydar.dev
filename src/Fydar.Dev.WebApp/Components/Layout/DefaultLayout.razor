@@ -1,6 +1,25 @@
+@using Fydar.AspNetCore.CSP;
 @inherits LayoutComponentBase
 
+@inject IWebHostEnvironment environment;
 @inject NavigationManager NavigationManager
+
+<ContentSecurityPolicy_Allow Directive="default-src" Sources="'self'" />
+<ContentSecurityPolicy_Allow Directive="script-src" Sources="'self' 'unsafe-inline' 'wasm-unsafe-eval'" />
+<ContentSecurityPolicy_Allow Directive="style-src" Sources="'self' 'unsafe-inline'" />
+<ContentSecurityPolicy_Allow Directive="img-src" Sources="'self' data:" />
+<ContentSecurityPolicy_Allow Directive="font-src" Sources="'self'" />
+<ContentSecurityPolicy_Allow Directive="connect-src" Sources="'self'" />
+<ContentSecurityPolicy_Allow Directive="frame-src" Sources="https://youtube.com https://www.youtube.com https://www.youtube-nocookie.com/" />
+<ContentSecurityPolicy_Allow Directive="object-src" Sources="'none'" />
+<ContentSecurityPolicy_Allow Directive="base-uri" Sources="'self'" />
+<ContentSecurityPolicy_Allow Directive="form-action" Sources="'self'" />
+<ContentSecurityPolicy_Allow Directive="frame-ancestors" Sources="'self'" />
+
+@if (environment.IsDevelopment())
+{
+    <ContentSecurityPolicy_Allow Directive="connect-src" Sources="ws: http: ws://localhost:* wss://localhost:*" />
+}
 
 <SectionContent SectionName="layoutheadcontent">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
