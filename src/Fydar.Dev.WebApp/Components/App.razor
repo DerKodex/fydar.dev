@@ -1,5 +1,9 @@
+@inject Noncer noncer;
+
 <!DOCTYPE html>
 <html lang="en">
+
+<ContentSecurityPolicy_Allow Directive="script-src" Sources="@($"'nonce-{noncer.Nonce}'")" />
 
 <head>
     <meta charset="utf-8" />
@@ -14,7 +18,7 @@
 
     <BlazorErrorUI />
     <script src="/_framework/blazor.web.js" autostart="false"></script>
-    <script>
+    <script nonce="@noncer.Nonce">
         Blazor.start({
             ssr: { disableDomPreservation: true }
         });

@@ -1,5 +1,8 @@
 @layout DefaultLayout
 @page "/portfolio/astralelites"
+
+@inject Noncer noncer;
+
 @{
     var openGraphModel = new OpenGraphModel()
     {
@@ -41,7 +44,7 @@
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
         <EmbedUnity class="embed loading parallax-layer" style="--parallax-multiplier: 0.5">
             <Configuration>
-                <script>
+                <script nonce="@noncer.Nonce">
                     var config = {
                         companyName: "Fydar",
                         productName: "Astral Elites",

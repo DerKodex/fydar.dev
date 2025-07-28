@@ -1,11 +1,14 @@
+@using Microsoft.AspNetCore.OutputCaching;
+
 @layout DefaultLayout
 @page "/"
 @page "/portfolio"
-@using Microsoft.AspNetCore.OutputCaching
 
 @attribute [OutputCache(Duration = 600)]
 
 @inject NavigationManager NavigationManager
+@inject Noncer noncer;
+
 @{
     var openGraphModel = new OpenGraphModel()
     {
@@ -58,7 +61,7 @@
         <li><a href="https://assetstore.unity.com/publishers/13236" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-unity" Alt="Unity Asset Store" /></a></li>
     </menu>
 
-    <script>
+    <script nonce="@noncer.Nonce">
         const audio = document.getElementById('pronunciation-fydar');
         const text = document.getElementById('pronunciation-phonetics');
 

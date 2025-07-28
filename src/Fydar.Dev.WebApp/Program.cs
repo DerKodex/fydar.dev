@@ -93,6 +93,8 @@ public class Program
 			options.SupplyHeader = true;
 		});
 
+		builder.Services.AddScoped<Noncer>();
+
 		builder.Services.AddHttpContextAccessor();
 
 		builder.Services.AddAntiforgery();

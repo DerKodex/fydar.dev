@@ -1,10 +1,12 @@
 @using System.Text
 
+@inject Noncer noncer;
+
 <a class="antiscrape" href="" id="decodethis" @attributes="AdditionalAttributes">
     @ChildContent
 </a>
 
-<script>
+<script nonce="@noncer.Nonce">
     function decodeString(encodedText) {
         var decodedText = '';
         for (var i = 0; i < encodedText.length; i++) {

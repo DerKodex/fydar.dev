@@ -1,5 +1,8 @@
 @layout GameLayout
 @page "/play/endlessplatform"
+
+@inject Noncer noncer;
+
 @{
     var openGraphModel = new OpenGraphModel()
     {
@@ -42,7 +45,7 @@
 
 <EmbedUnity>
     <Configuration>
-        <script>
+        <script nonce="@noncer.Nonce">
             var config = {
                 companyName: "Fydar",
                 productName: "Endless Platform",
@@ -61,7 +64,7 @@
     </Placeholder>
 </EmbedUnity>
 
-<script>
+<script nonce="@noncer.Nonce">
     var serviceWorkerUrl = "@Assets["play/endlessplatform/ServiceWorker.js"]";
     window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {

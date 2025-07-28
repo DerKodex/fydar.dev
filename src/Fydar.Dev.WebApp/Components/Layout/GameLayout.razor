@@ -1,5 +1,7 @@
 @inherits LayoutComponentBase
 
+@inject Noncer noncer;
+
 <SectionContent SectionName="layoutheadcontent">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="@Assets["favicon.svg"]" />-->
@@ -22,7 +24,7 @@
 
 @Body
 
-<script>
+<script nonce="@noncer.Nonce">
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         var meta = document.createElement('meta');
         meta.name = 'viewport';
