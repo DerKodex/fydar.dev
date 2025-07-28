@@ -110,11 +110,11 @@ public class Program
 				.Concat(["image/svg+xml"]);
 		});
 
-		builder.Services.Configure<IOptions<HstsOptions>>(options =>
+		builder.Services.Configure<HstsOptions>(options =>
 		{
-			options.Value.MaxAge = TimeSpan.FromDays(365);
-			options.Value.IncludeSubDomains = true;
-			options.Value.Preload = true;
+			options.MaxAge = TimeSpan.FromDays(365);
+			options.IncludeSubDomains = true;
+			options.Preload = true;
 		});
 
 		builder.Services.AddRazorComponents()
