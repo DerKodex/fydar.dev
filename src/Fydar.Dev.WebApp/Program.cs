@@ -188,6 +188,11 @@ public class Program
 
 		app.UseContentSecurityPolicy();
 		app.UseCors();
+		app.Use(async (context, next) =>
+		{
+			context.Response.Headers["Cross-Origin-Opener-Policy"] = "same-origin";
+			await next.Invoke();
+		});
 
 		app.Use(async (context, next) =>
 		{
