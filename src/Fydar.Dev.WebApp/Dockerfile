@@ -12,10 +12,11 @@ SHELL ["/bin/bash", "-c"]
 ENV TERM=xterm-256color
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Fydar.Dev.WebApp/Fydar.Dev.WebApp.csproj", "Fydar.Dev.WebApp/"]
+COPY ["Fydar.AspNetCore.CSP/Fydar.AspNetCore.CSP.csproj", "Fydar.AspNetCore.CSP/"]
 COPY ["Fydar.Dev.Services.EmailTickets/Fydar.Dev.Services.EmailTickets.csproj", "Fydar.Dev.Services.EmailTickets/"]
 COPY ["Fydar.Dev.WebApp.Client/Fydar.Dev.WebApp.Client.csproj", "Fydar.Dev.WebApp.Client/"]
 COPY ["Fydar.Dev.WebApp.Toolkit.Icons/Fydar.Dev.WebApp.Toolkit.Icons.csproj", "Fydar.Dev.WebApp.Toolkit.Icons/"]
+COPY ["Fydar.Dev.WebApp/Fydar.Dev.WebApp.csproj", "Fydar.Dev.WebApp/"]
 RUN dotnet restore "./Fydar.Dev.WebApp/Fydar.Dev.WebApp.csproj"
 COPY . .
 WORKDIR "/src/Fydar.Dev.WebApp"
