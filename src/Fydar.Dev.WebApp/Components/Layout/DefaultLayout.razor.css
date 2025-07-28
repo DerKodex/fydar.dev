@@ -807,7 +807,7 @@ footer,
         transition: opacity 0.25s;
     }
 
-        ::deep .parallax-frame video.parallax-layer.loaded {
+        ::deep .parallax-frame video.parallax-layer:playing {
             opacity: 1;
         }
 
