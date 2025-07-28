@@ -24,7 +24,7 @@
 }
 @if (!string.IsNullOrWhiteSpace(Model.Description.OpenGraph))
 {
-    <meta property="og:title" content="@Model.Description.OpenGraph">
+    <meta property="og:description" content="@Model.Description.OpenGraph">
 }
 
 @foreach (var property in Model.Properties)
