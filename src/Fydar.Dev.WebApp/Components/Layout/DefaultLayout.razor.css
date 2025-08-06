@@ -691,6 +691,7 @@ footer,
         backdrop-filter: blur(4px);
         border-top: 1px solid #ffffff15;
     }
+
         ::deep section.fullscreen .fullscreen-footer .fullscreen-footer-container {
             position: relative;
             overflow: visible;

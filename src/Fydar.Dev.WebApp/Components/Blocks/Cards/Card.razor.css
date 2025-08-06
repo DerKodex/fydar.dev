@@ -81,7 +81,6 @@
 
         .card ::deep.card-header span.subtle {
             font-size: 1.4375rem;
-            letter-spacing: 1px;
             color: #ffffffa0;
             font-weight: 300;
             letter-spacing: 1.5px;
