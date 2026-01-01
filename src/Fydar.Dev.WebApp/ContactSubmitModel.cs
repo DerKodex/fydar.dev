@@ -1,4 +1,4 @@
-﻿namespace Fydar.Dev.WebApp;
+namespace Fydar.Dev.WebApp;
 
 public class ContactSubmitModel
 {
