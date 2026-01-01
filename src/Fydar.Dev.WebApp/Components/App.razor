@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <SectionOutlet SectionName="layoutheadcontent" />
     <HeadOutlet />
-    <link rel="preload" href="/_framework/blazor.web.js" as="script" fetchpriority="high" />
+	<link rel="preload" href="@Assets["/_framework/blazor.web.js"]" as="script" fetchpriority="high" />
     <SectionOutlet SectionName="layoutbodystyle" />
 </head>
 
@@ -17,7 +17,7 @@
     <Routes />
 
     <BlazorErrorUI />
-    <script src="/_framework/blazor.web.js" autostart="false"></script>
+	<script src="@Assets["/_framework/blazor.web.js"]" autostart="false"></script>
     <script nonce="@noncer.Nonce">
         Blazor.start({
             ssr: { disableDomPreservation: true }
