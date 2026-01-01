@@ -1,9 +1,9 @@
 @inject Noncer noncer;
 
+<ContentSecurityPolicy_Allow Directive="script-src" Sources="@($"'nonce-{noncer.Nonce}'")" />
+
 <!DOCTYPE html>
 <html lang="en">
-
-<ContentSecurityPolicy_Allow Directive="script-src" Sources="@($"'nonce-{noncer.Nonce}'")" />
 
 <head>
     <meta charset="utf-8" />
@@ -11,6 +11,7 @@
     <HeadOutlet />
 	<link rel="preload" href="@Assets["/_framework/blazor.web.js"]" as="script" fetchpriority="high" />
     <SectionOutlet SectionName="layoutbodystyle" />
+	<ImportMap nonce="@noncer.Nonce" />
 </head>
 
 <body>
