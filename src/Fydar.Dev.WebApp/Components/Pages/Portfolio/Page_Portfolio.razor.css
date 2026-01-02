@@ -73,20 +73,23 @@
 .phonetics {
     display: inline-block;
     position: relative;
+    text-align: left;
     margin-top: 64px;
     margin-bottom: 0;
     margin-right: -20px;
     padding-top: 4px;
     padding-bottom: 20px;
-    font-size: 1.5rem;
-    letter-spacing: 16px;
+    padding-left: 24px;
+    padding-right: 0;
+    font-size: 1.625rem;
+    letter-spacing: 8px;
     color: #ffffff80;
     cursor: pointer;
     font-weight: 400;
     white-space: nowrap;
     background: none;
     border: 0;
-    width: 240px;
+    width: 190px;
 }
 
     .phonetics:before,
@@ -117,7 +120,7 @@
     }
 
     .phonetics:before {
-        right: 20px;
+        right: 2px;
         border-bottom: 2px solid #ffffff20;
     }
 
@@ -140,25 +143,25 @@
 
 @keyframes readanimation-fydar {
     0% {
-        right: calc(100% - 20px);
+        right: calc(100% - 2px);
         opacity: 0;
     }
 
     5% {
-        right: calc(100% - 20px);
+        right: calc(100% - 2px);
         opacity: 1;
     }
 
     25% {
-        right: 52.5%;
+        right: 42.5%;
     }
 
     50% {
-        right: 52.5%;
+        right: 42.5%;
     }
 
     65% {
-        right: 20px;
+        right: 2px;
     }
 
     75% {
@@ -166,18 +169,18 @@
     }
 
     90% {
-        right: 20px;
+        right: 2px;
     }
 
     100% {
-        right: 20px;
+        right: 2px;
         opacity: 0;
     }
 }
 
 @keyframes readanimation-syllable1 {
     0% {
-        color: #ffffff60;
+        color: #ffffff80;
     }
 
     5% {
@@ -189,17 +192,17 @@
     }
 
     50% {
-        color: #ffffff60;
+        color: #ffffff80;
     }
 }
 
 @keyframes readanimation-syllable2 {
     0% {
-        color: #ffffff60;
+        color: #ffffff80;
     }
 
     50% {
-        color: #ffffff60;
+        color: #ffffff80;
     }
 
     55% {
@@ -207,7 +210,7 @@
     }
 
     100% {
-        color: #ffffff60;
+        color: #ffffff80;
     }
 }
 
