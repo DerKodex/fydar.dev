@@ -172,3 +172,97 @@ window.addEventListener("resize",
     }, { passive: true }
 );
 
+
+
+const getRequiredModifiers = () => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isMac = navigator.platform.toLowerCase().includes('mac');
+
+    // Check for Firefox: Modern browsers use userAgentData, 
+    // but Firefox doesn't support it yet, so we check the string.
+    const isFirefox = userAgent.includes('firefox') || userAgent.includes('fxios');
+
+    return {
+        requiresCtrl: isMac,
+        requiresAlt: true,
+        // Firefox on Windows/Linux requires Shift. On Mac, it uses Ctrl+Opt.
+        requiresShift: isFirefox && !isMac
+    };
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Is Access Keys supported by the browser? If so, use that implemention for Hyperlink activation.
+    if (!('accessKey' in document.createElement('a'))) return;
+
+    const config = getRequiredModifiers();
+
+    // Initialize state from sessionStorage (or default to false)
+    const savedState = JSON.parse(sessionStorage.getItem('accessKeyState')) || {};
+    let keysPressed = {
+        Alt: savedState.Alt || false,
+        Control: false,
+        Shift: savedState.Shift || false
+    };
+
+    const altCondition = keysPressed.Alt;
+    const ctrlCondition = config.requiresCtrl ? keysPressed.Control : true;
+    const shiftCondition = config.requiresShift ? keysPressed.Shift : true;
+
+    const shouldShow = altCondition && ctrlCondition && shiftCondition;
+
+    document.querySelectorAll('a + .access-hint').forEach(hint => {
+        if (shouldShow) {
+            hint.classList.toggle('show', true);
+            hint.classList.toggle('no-transition', true);
+        }
+    });
+
+    const updateHintVisibility = () => {
+        const altCondition = keysPressed.Alt;
+        const ctrlCondition = config.requiresCtrl ? keysPressed.Control : true;
+        const shiftCondition = config.requiresShift ? keysPressed.Shift : true;
+
+        const shouldShow = altCondition && ctrlCondition && shiftCondition;
+
+        document.querySelectorAll('a + .access-hint').forEach(hint => {
+            hint.classList.toggle('show', shouldShow);
+            hint.classList.toggle('no-transition', false);
+        });
+
+        // Save state for the next page load.
+        sessionStorage.setItem('accessKeyState', JSON.stringify({
+            Alt: keysPressed.Alt,
+            Shift: keysPressed.Shift
+        }));
+    };
+
+    const syncKeys = (e) => {
+        if (!e || typeof e.getModifierState !== 'function') return;
+
+        keysPressed.Alt = e.getModifierState("Alt");
+        keysPressed.Control = e.getModifierState("Control");
+        keysPressed.Shift = e.getModifierState("Shift");
+
+        updateHintVisibility();
+    };
+
+    // High-frequency syncs (only once to catch initial state)
+    window.addEventListener('mousemove', syncKeys, { once: true });
+    window.addEventListener('pointermove', syncKeys, { once: true });
+
+    // Interaction syncs
+    window.addEventListener('mousedown', syncKeys);
+    window.addEventListener('keydown', syncKeys);
+    window.addEventListener('keyup', syncKeys);
+    window.addEventListener('contextmenu', syncKeys);
+
+    // Navigation/Tab syncs
+    window.addEventListener('focus', syncKeys);
+    window.addEventListener('pageshow', syncKeys);
+
+    // Reset on blur to prevent "stuck" keys
+    window.addEventListener('blur', () => {
+        keysPressed = { Alt: false, Control: false, Shift: false };
+        updateHintVisibility();
+    });
+});

@@ -156,19 +156,19 @@
                 </li>
                 @if (NavigationManager.ToBaseRelativePath(NavigationManager.Uri) == "")
                 {
-                    <li class="nav-page"><NavLink href="/portfolio" class="active">Portfolio</NavLink></li>
+					<li class="nav-page"><NavLink href="/portfolio" accesskey="p" class="active">Portfolio</NavLink><AccessKeyHint>P</AccessKeyHint></li>
                 }
                 else
                 {
-                    <li class="nav-page"><NavLink href="/portfolio">Portfolio</NavLink></li>
+					<li class="nav-page"><NavLink href="/portfolio" accesskey="p">Portfolio</NavLink><AccessKeyHint>P</AccessKeyHint></li>
                 }
-                <li class="nav-page"><NavLink href="/resume">Resume</NavLink></li>
-                <li class="nav-page"><NavLink href="/contact">Contact</NavLink></li>
+				<li class="nav-page"><NavLink href="/resume" accesskey="r">Resume</NavLink><AccessKeyHint>R</AccessKeyHint></li>
+				<li class="nav-page"><NavLink href="/contact" accesskey="c">Contact</NavLink><AccessKeyHint>C</AccessKeyHint></li>
             </menu>
 
             <menu class="navbar-externallinks" aria-label="External links">
-                <li><a href="https://github.com/Fydar" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-github" Alt="GitHub" /></a></li>
-                <li><a href="https://www.linkedin.com/in/fydar" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-linkedin" Alt="LinkedIn" /></a></li>
+				<li><a href="https://github.com/Fydar" target="_blank" accesskey="g"><SvgSprite Link="/icons.svg?v=1#icon-github" Alt="GitHub" /></a><AccessKeyHint>G<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></AccessKeyHint></li>
+				<li><a href="https://www.linkedin.com/in/fydar" target="_blank" accesskey="l"><SvgSprite Link="/icons.svg?v=1#icon-linkedin" Alt="LinkedIn" /></a><AccessKeyHint>L<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></AccessKeyHint></li>
             </menu>
         </div>
     </div>

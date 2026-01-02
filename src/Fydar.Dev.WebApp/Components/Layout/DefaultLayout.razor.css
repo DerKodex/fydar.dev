@@ -54,6 +54,7 @@ header {
 
             header .topbar menu li {
                 display: flex;
+                position: relative;
                 height: 3em;
                 -webkit-box-align: center;
                 align-items: center;
@@ -62,6 +63,22 @@ header {
                 line-height: 1;
                 color: #ffffffdd;
             }
+
+                header .topbar menu li ::deep a {
+                    display: flex;
+                    height: 100%;
+                    min-width: 48px;
+                    font-weight: 400;
+                    letter-spacing: 1px;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    justify-content: center;
+                    box-sizing: border-box;
+                    user-select: none;
+                    color: #ffffff;
+                    text-decoration: none;
+                    filter: drop-shadow(0px 2px 4px black);
+                }
 
                 header .topbar menu li.nav-home {
                     letter-spacing: 2px;
@@ -81,73 +98,67 @@ header {
                     }
 
                 header .topbar menu li.nav-page {
-                    opacity: 0.7;
-                    transition: opacity 0.05s;
                 }
-
-                    header .topbar menu li.nav-page:has(a:active) {
-                        opacity: 1;
-                        border-bottom: 1px solid #ffffff55;
-                    }
-
-                    header .topbar menu li.nav-page:has(a.active) {
-                        opacity: 1;
-                        border-bottom: 1px solid #ffffffdd;
-                    }
-
-                    header .topbar menu li.nav-page:hover,
-                    header .topbar menu li.nav-page:focus-visible {
-                        opacity: 1;
-                        border-bottom: 1px solid #ffffff33;
-                    }
 
                     header .topbar menu li.nav-page ::deep a {
                         padding: 0 0.5em;
+                        color: #ffffff9b;
+                        transition: color 0.05s;
                     }
 
-                header .topbar menu li ::deep a {
-                    display: flex;
-                    height: 100%;
-                    min-width: 48px;
-                    font-weight: 400;
-                    letter-spacing: 1px;
-                    -webkit-box-align: center;
-                    align-items: center;
-                    justify-content: center;
-                    box-sizing: border-box;
-                    user-select: none;
-                    color: #ffffff;
-                    text-decoration: none;
-                    filter: drop-shadow(0px 2px 4px black);
-                }
+                    header .topbar menu li.nav-page:has(a:active) {
+                        border-bottom: 1px solid #ffffff55;
+                    }
+
+                        header .topbar menu li.nav-page:has(a:active) ::deep a {
+                            color: #ffffffdd;
+                        }
+
+                    header .topbar menu li.nav-page:has(a.active) {
+                        border-bottom: 1px solid #ffffffdd;
+                    }
+
+                        header .topbar menu li.nav-page:has(a.active) ::deep a {
+                            color: #ffffffdd;
+                        }
+
+                    header .topbar menu li.nav-page:hover,
+                    header .topbar menu li.nav-page:focus-visible {
+                        border-bottom: 1px solid #ffffff33;
+                    }
+
+                        header .topbar menu li.nav-page:hover ::deep a,
+                        header .topbar menu li.nav-page:focus-visible ::deep a {
+                            color: #ffffffdd;
+                        }
 
             header .topbar menu.navbar-externallinks {
                 gap: 4px;
                 margin-left: auto;
             }
 
-                header .topbar menu.navbar-externallinks li ::deep svg {
+                header .topbar menu.navbar-externallinks > li a ::deep svg {
                     height: 24px;
                     width: 24px;
                     margin: auto;
                 }
 
-                header .topbar menu.navbar-externallinks li a {
+                header .topbar menu.navbar-externallinks > li a {
                     transition: opacity 0.1s;
                     opacity: 0.35;
                 }
 
-                    header .topbar menu.navbar-externallinks li a ::deep svg {
+                    header .topbar menu.navbar-externallinks > li a ::deep svg {
                         transition: filter 0.1s;
                     }
 
-                    header .topbar menu.navbar-externallinks li a:hover,
-                    header .topbar menu.navbar-externallinks li a:focus-visible {
+                    header .topbar menu.navbar-externallinks > li a:hover,
+                    header .topbar menu.navbar-externallinks > li a:focus-visible {
                         opacity: 1;
                     }
 
-                        header .topbar menu.navbar-externallinks li a:hover ::deep svg,
-                        header .topbar menu.navbar-externallinks li a:focus-visible ::deep svg {
+                        header .topbar menu.navbar-externallinks > li a:hover ::deep svg,
+                        header .topbar menu.navbar-externallinks > li a:focus-visible ::deep svg {
                             filter: drop-shadow(0px 2px 4px black) drop-shadow(0 0 6px #e2b384);
                         }
 
@@ -637,7 +648,7 @@ main {
     width: 100%;
     padding-left: 24px;
     padding-right: 24px;
-    overflow: hidden;
+    overflow-x: clip;
 }
 
     ::deep .container.container-wide {
