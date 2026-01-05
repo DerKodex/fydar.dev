@@ -1,4 +1,4 @@
-header {
+nav {
     margin: 0;
     padding: 0;
     border: 0;
@@ -10,7 +10,7 @@ header {
     backdrop-filter: blur(6px);
 }
 
-    header::before {
+    nav::before {
         content: "";
         position: absolute;
         top: 0;
@@ -20,7 +20,7 @@ header {
         pointer-events: none;
     }
 
-    header::after {
+    nav::after {
         content: "";
         border-bottom: 1px solid #ffffff15;
         position: absolute;
@@ -29,7 +29,7 @@ header {
         right: 0;
     }
 
-    header .topbar {
+    nav .topbar {
         position: sticky;
         left: 0;
         display: flex;
@@ -39,12 +39,12 @@ header {
         width: 100%;
     }
 
-        header .topbar .row {
+        nav .topbar .row {
             align-items: center;
             flex-wrap: wrap-reverse;
         }
 
-        header .topbar menu {
+        nav .topbar menu {
             display: flex;
             height: 100%;
             gap: 14px;
@@ -52,7 +52,7 @@ header {
             padding: 0;
         }
 
-            header .topbar menu li {
+            nav .topbar menu li {
                 display: flex;
                 position: relative;
                 height: 3em;
@@ -64,7 +64,7 @@ header {
                 color: #ffffffdd;
             }
 
-                header .topbar menu li ::deep a {
+                nav .topbar menu li ::deep a {
                     display: flex;
                     height: 100%;
                     min-width: 48px;
@@ -80,85 +80,85 @@ header {
                     filter: drop-shadow(0px 2px 4px black);
                 }
 
-                header .topbar menu li.nav-home {
+                nav .topbar menu li.nav-home {
                     letter-spacing: 2px;
                     font-weight: 500;
                 }
 
-                    header .topbar menu li.nav-home a {
+                    nav .topbar menu li.nav-home a {
                         padding: 0 10px;
                         gap: 10px;
                     }
 
-                    header .topbar menu li.nav-home ::deep img,
-                    header .topbar menu li.nav-home ::deep svg {
+                    nav .topbar menu li.nav-home ::deep img,
+                    nav .topbar menu li.nav-home ::deep svg {
                         height: 24px;
                         width: 24px;
                         margin: auto;
                     }
 
-                header .topbar menu li.nav-page {
+                nav .topbar menu li.nav-page {
                 }
 
-                    header .topbar menu li.nav-page ::deep a {
+                    nav .topbar menu li.nav-page ::deep a {
                         padding: 0 0.5em;
                         color: #ffffff9b;
                         transition: color 0.05s;
                     }
 
-                    header .topbar menu li.nav-page:has(a:active) {
+                    nav .topbar menu li.nav-page:has(a:active) {
                         border-bottom: 1px solid #ffffff55;
                     }
 
-                        header .topbar menu li.nav-page:has(a:active) ::deep a {
+                        nav .topbar menu li.nav-page:has(a:active) ::deep a {
                             color: #ffffffdd;
                         }
 
-                    header .topbar menu li.nav-page:has(a.active) {
+                    nav .topbar menu li.nav-page:has(a.active) {
                         border-bottom: 1px solid #ffffffdd;
                     }
 
-                        header .topbar menu li.nav-page:has(a.active) ::deep a {
+                        nav .topbar menu li.nav-page:has(a.active) ::deep a {
                             color: #ffffffdd;
                         }
 
-                    header .topbar menu li.nav-page:hover,
-                    header .topbar menu li.nav-page:focus-visible {
+                    nav .topbar menu li.nav-page:hover,
+                    nav .topbar menu li.nav-page:focus-visible {
                         border-bottom: 1px solid #ffffff33;
                     }
 
-                        header .topbar menu li.nav-page:hover ::deep a,
-                        header .topbar menu li.nav-page:focus-visible ::deep a {
+                        nav .topbar menu li.nav-page:hover ::deep a,
+                        nav .topbar menu li.nav-page:focus-visible ::deep a {
                             color: #ffffffdd;
                         }
 
-            header .topbar menu.navbar-externallinks {
+            nav .topbar menu.navbar-externallinks {
                 gap: 4px;
                 margin-left: auto;
             }
 
-                header .topbar menu.navbar-externallinks > li a ::deep svg {
+                nav .topbar menu.navbar-externallinks > li a ::deep svg {
                     height: 24px;
                     width: 24px;
                     margin: auto;
                 }
 
-                header .topbar menu.navbar-externallinks > li a {
+                nav .topbar menu.navbar-externallinks > li a {
                     transition: opacity 0.1s;
                     opacity: 0.35;
                 }
 
-                    header .topbar menu.navbar-externallinks > li a ::deep svg {
+                    nav .topbar menu.navbar-externallinks > li a ::deep svg {
                         transition: filter 0.1s;
                     }
 
-                    header .topbar menu.navbar-externallinks > li a:hover,
-                    header .topbar menu.navbar-externallinks > li a:focus-visible {
+                    nav .topbar menu.navbar-externallinks > li a:hover,
+                    nav .topbar menu.navbar-externallinks > li a:focus-visible {
                         opacity: 1;
                     }
 
-                        header .topbar menu.navbar-externallinks > li a:hover ::deep svg,
-                        header .topbar menu.navbar-externallinks > li a:focus-visible ::deep svg {
+                        nav .topbar menu.navbar-externallinks > li a:hover ::deep svg,
+                        nav .topbar menu.navbar-externallinks > li a:focus-visible ::deep svg {
                             filter: drop-shadow(0px 2px 4px black) drop-shadow(0 0 6px #e2b384);
                         }
 
@@ -669,7 +669,7 @@ main {
     display: none;
 }
 
-header .topbar,
+nav .topbar,
 main,
 footer,
 ::deep .fullscreen-footer {
@@ -858,14 +858,14 @@ footer,
         margin-right: 40px;
     }
 
-    header .topbar,
+    nav .topbar,
     main,
     footer,
     ::deep .fullscreen-footer {
         /* grid-template-columns: auto [container] 720px auto; */
     }
 
-        header .topbar:has(aside),
+        nav .topbar:has(aside),
         main:has(aside),
         footer:has(aside),
         ::deep .fullscreen-footer:has(aside) {
@@ -894,7 +894,7 @@ footer,
         margin-bottom: 0;
     }
 
-    header .topbar,
+    nav .topbar,
     main,
     footer,
     ::deep section.section-feature,
@@ -907,14 +907,14 @@ footer,
             margin-right: 0;
         }
 
-        header .topbar:has(aside),
+        nav .topbar:has(aside),
         main:has(aside),
         footer:has(aside),
         ::deep .fullscreen-footer:has(aside) {
             grid-template-columns: auto [aside] 300px 32px [container] 564px auto;
         }
 
-            header .topbar:has(aside) > ::deep .container.container-wide,
+            nav .topbar:has(aside) > ::deep .container.container-wide,
             main:has(aside) > ::deep .container.container-wide,
             footer:has(aside) > ::deep .container.container-wide,
             ::deep .fullscreen-footer:has(aside) > .container.container-wide {
@@ -925,14 +925,14 @@ footer,
 
 @media screen and (min-width: 1200px) {
 
-    header .topbar,
+    nav .topbar,
     main,
     footer,
     ::deep .fullscreen-footer {
         grid-template-columns: auto [container] 1104px auto;
     }
 
-        header .topbar:has(aside),
+        nav .topbar:has(aside),
         main:has(aside),
         footer:has(aside),
         ::deep section.section-feature,
@@ -944,14 +944,14 @@ footer,
 
 @media screen and (min-width: 1400px) {
 
-    header .topbar,
+    nav .topbar,
     main,
     footer,
     ::deep .fullscreen-footer {
         grid-template-columns: auto [container] 1304px auto;
     }
 
-        header .topbar:has(aside),
+        nav .topbar:has(aside),
         main:has(aside),
         footer:has(aside),
         ::deep section.section-feature,
@@ -1049,7 +1049,7 @@ footer,
     display: none;
 }
 
-header .topbar menu {
+nav .topbar menu {
     gap: 4px;
 }
 
@@ -1080,7 +1080,7 @@ header .topbar menu {
         display: flex;
     }
 
-    header .topbar menu {
+    nav .topbar menu {
         gap: 11px;
     }
 
@@ -1104,7 +1104,7 @@ header .topbar menu {
 /* Tablet */
 @media screen and (min-width: 768px) {
 
-    header .topbar menu {
+    nav .topbar menu {
         gap: 14px;
     }
 
@@ -1190,7 +1190,7 @@ header .topbar menu {
 }
 
 @media print {
-    header .topbar,
+    nav .topbar,
     footer {
         display: none;
     }
