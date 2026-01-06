@@ -1,5 +1,14 @@
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
+@inject IHostEnvironment HostEnvironment
+
+<dialog id="blazor-error-ui" data-nosnippet>
+	@if (HostEnvironment.IsProduction())
+	{
+		<span>An error has occurred.</span>
+	}
+	else
+	{
+		<span>An unhandled exception occurred.</span>
+	}
     <a href="" class="reload">Reload</a>
     <button class="dismiss">🗙</button>
 
@@ -28,4 +37,4 @@
                 border: none;
             }
     </style>
-</div>
+</dialog>
