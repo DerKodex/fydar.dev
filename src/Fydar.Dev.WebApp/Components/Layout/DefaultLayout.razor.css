@@ -569,7 +569,16 @@ main {
     opacity: 1;
 }
 
-
+::deep h3 svg.external-link-icon,
+::deep p svg.external-link-icon {
+    width: 8pt;
+    height: 8pt;
+    transform: translateY(-0.25em);
+    margin: 0;
+    margin-left: 2px;
+    opacity: 0.9125;
+}
+    
 ::deep video {
     width: 100%;
 }

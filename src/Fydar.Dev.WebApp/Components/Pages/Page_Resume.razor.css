@@ -136,6 +136,8 @@
         height: 8pt;
         margin-left: 2pt;
         margin-top: 2pt;
+        transform: none;
+        opacity: 1;
     }
 
     .resume ul {
@@ -151,14 +153,18 @@
         font-size: 10pt;
     }
 
-    .resume .phonetics {
-        letter-spacing: 2.25pt;
+    .resume ::deep span.ipa {
+        letter-spacing: 1pt;
         color: #898989;
     }
 
-    .resume .link-tag-cloud {
-        padding-left: 16pt;
-    }
+        .resume ::deep span.ipa span.titled {
+            border-bottom: none;
+        }
+
+        .resume .link-tag-cloud {
+            padding-left: 16pt;
+        }
 
     .resume .link-tag {
         background-color: #f6f8fa;
