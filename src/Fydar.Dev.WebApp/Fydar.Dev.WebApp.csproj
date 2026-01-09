@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fydar.AspNetCore.CSP\Fydar.AspNetCore.CSP.csproj" />
+    <ProjectReference Include="..\Fydar.AspNetCore.OpenGraph\Fydar.AspNetCore.OpenGraph.csproj" />
     <ProjectReference Include="..\Fydar.Dev.Services.EmailTickets\Fydar.Dev.Services.EmailTickets.csproj" />
     <ProjectReference Include="..\Fydar.Dev.WebApp.Client\Fydar.Dev.WebApp.Client.csproj" />
     <ProjectReference Include="..\Fydar.Dev.WebApp.Toolkit.Icons\Fydar.Dev.WebApp.Toolkit.Icons.csproj" />

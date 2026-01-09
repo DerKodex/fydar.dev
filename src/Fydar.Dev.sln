@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.3.11310.294 d18.3
+VisualStudioVersion = 18.3.11310.294
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5C8A9A56-5DD6-4A0D-AB74-4487EB729ADF}"
 	ProjectSection(SolutionItems) = preProject
@@ -38,6 +38,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradientTest", "GradientTest\GradientTest.csproj", "{40D60E4B-0DF7-48BE-8E35-DE05001C708F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fydar.AspNetCore.CSP", "Fydar.AspNetCore.CSP\Fydar.AspNetCore.CSP.csproj", "{62AB1424-7448-4F28-98D5-C5086E38FCAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fydar.AspNetCore.OpenGraph", "Fydar.AspNetCore.OpenGraph\Fydar.AspNetCore.OpenGraph.csproj", "{FE170DA9-A865-ED57-C1D9-2807C79C1324}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,14 @@ Global
 		{62AB1424-7448-4F28-98D5-C5086E38FCAE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{62AB1424-7448-4F28-98D5-C5086E38FCAE}.Release|x86.ActiveCfg = Release|Any CPU
 		{62AB1424-7448-4F28-98D5-C5086E38FCAE}.Release|x86.Build.0 = Release|Any CPU
+		{FE170DA9-A865-ED57-C1D9-2807C79C1324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE170DA9-A865-ED57-C1D9-2807C79C1324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE170DA9-A865-ED57-C1D9-2807C79C1324}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FE170DA9-A865-ED57-C1D9-2807C79C1324}.Debug|x86.Build.0 = Debug|Any CPU
+		{FE170DA9-A865-ED57-C1D9-2807C79C1324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE170DA9-A865-ED57-C1D9-2807C79C1324}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE170DA9-A865-ED57-C1D9-2807C79C1324}.Release|x86.ActiveCfg = Release|Any CPU
+		{FE170DA9-A865-ED57-C1D9-2807C79C1324}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +135,7 @@ Global
 		{269C10E2-62F3-4D8A-BF75-A9323EBDD87B} = {1CA41541-0A8A-4E5E-84D2-E2BB2907FF81}
 		{40D60E4B-0DF7-48BE-8E35-DE05001C708F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{62AB1424-7448-4F28-98D5-C5086E38FCAE} = {BD59496D-77B6-44F7-81DA-976D17E01AD4}
+		{FE170DA9-A865-ED57-C1D9-2807C79C1324} = {BD59496D-77B6-44F7-81DA-976D17E01AD4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8A760B08-A6FD-49DA-81C2-64E42FF8C180}

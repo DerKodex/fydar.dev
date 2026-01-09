@@ -13,6 +13,7 @@ ENV TERM=xterm-256color
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Fydar.AspNetCore.CSP/Fydar.AspNetCore.CSP.csproj", "Fydar.AspNetCore.CSP/"]
+COPY ["Fydar.AspNetCore.CSP/Fydar.AspNetCore.OpenGraph.csproj", "Fydar.AspNetCore.OpenGraph/"]
 COPY ["Fydar.Dev.Services.EmailTickets/Fydar.Dev.Services.EmailTickets.csproj", "Fydar.Dev.Services.EmailTickets/"]
 COPY ["Fydar.Dev.WebApp.Client/Fydar.Dev.WebApp.Client.csproj", "Fydar.Dev.WebApp.Client/"]
 COPY ["Fydar.Dev.WebApp.Toolkit.Icons/Fydar.Dev.WebApp.Toolkit.Icons.csproj", "Fydar.Dev.WebApp.Toolkit.Icons/"]
