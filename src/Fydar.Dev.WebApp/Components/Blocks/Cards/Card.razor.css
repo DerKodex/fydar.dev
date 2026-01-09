@@ -249,7 +249,8 @@
     }
 
     .card::before {
-        border: 2px solid #ffffff14;
+        /*border: 2px solid #ffffff14;*/
+        border: 2px solid #28282a;
     }
 
     .card::after {
