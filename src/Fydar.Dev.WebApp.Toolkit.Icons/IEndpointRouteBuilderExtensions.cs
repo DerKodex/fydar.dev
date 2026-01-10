@@ -1,12 +1,14 @@
-using Fydar.Dev.WebApp.Toolkit.Icons;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using System.Text;
 
-namespace Fydar.Dev.WebApp.Internal;
+namespace Fydar.Dev.WebApp.Toolkit.Icons;
 
-internal static class IEndpointRouteBuilderExtensions
+public static class IEndpointRouteBuilderExtensions
 {
 	public static RouteHandlerBuilder MapIconLibrary<TIconLibrary>(this IEndpointRouteBuilder endpoints, string pattern)
 		where TIconLibrary : IconLibrary
