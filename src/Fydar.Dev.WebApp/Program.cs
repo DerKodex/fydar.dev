@@ -228,6 +228,7 @@ public class Program
 
 		app.UseStatusCodePagesWithReExecute("/error/{0}");
 
+		app.MapSocialRedirects();
 		app.MapIconLibrary<SiteIcons>("/icons.svg");
 		app.UseStaticUnityFiles();
 
