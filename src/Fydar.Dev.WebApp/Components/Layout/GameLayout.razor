@@ -2,6 +2,12 @@
 
 @inject Noncer noncer;
 
+<ContentSecurityPolicy_Allow Directive="default-src" Sources="'self'" />
+<ContentSecurityPolicy_Allow Directive="script-src" Sources="'self' 'unsafe-inline' 'wasm-unsafe-eval'" />
+<ContentSecurityPolicy_Allow Directive="style-src" Sources="'self' 'unsafe-inline'" />
+<ContentSecurityPolicy_Allow Directive="img-src" Sources="'self' data:" />
+<ContentSecurityPolicy_Allow Directive="media-src" Sources="'self' data: blob:;" />
+
 <SectionContent SectionName="layoutheadcontent">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="@Assets["favicon.svg"]" />-->
