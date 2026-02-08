@@ -1,4 +1,4 @@
-const cacheName = "fydar-astralelites-v0.1.0";
+const cacheName = "fydar-astralelites-v0.1.1";
 const contentToCache = [
     "./",
     "build/astralelites.loader.js",
