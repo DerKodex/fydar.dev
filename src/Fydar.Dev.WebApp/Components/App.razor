@@ -1,7 +1,5 @@
 @inject Noncer noncer;
 
-<ContentSecurityPolicy_Allow Directive="script-src" Sources="@($"'nonce-{noncer.Nonce}'")" />
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,21 +7,13 @@
     <meta charset="utf-8" />
     <SectionOutlet SectionName="layoutheadcontent" />
     <HeadOutlet />
-    <link rel="preload" href="@Assets["/_framework/blazor.web.js"]" as="script" fetchpriority="high" />
     <SectionOutlet SectionName="layoutbodystyle" />
-    <ImportMap nonce="@noncer.Nonce" />
 </head>
 
 <body>
     <Routes />
     <BlazorErrorUI />
     <SectionOutlet SectionName="layoutbodyscript" />
-    <script src="@Assets["/_framework/blazor.web.js"]" autostart="false"></script>
-    <script nonce="@noncer.Nonce">
-        Blazor.start({
-            ssr: { disableDomPreservation: true }
-        });
-    </script>
 </body>
 
 </html>
