@@ -48,7 +48,14 @@
                 container.style.setProperty('--loading-percentage', 100 * progress + "%");
             }).then((unityInstance) => {
                 container.style.setProperty('--loading-percentage', "100%");
-                container.classList.remove("loading");
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        setTimeout(() => {
+                        container.classList.remove("loading");
+                        }, 100);
+                    });
+                });
             }).catch((message) => {
                 alert(message);
             });
@@ -73,7 +80,8 @@
             overflow: hidden;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s;
+            transition: opacity 0.25s;
+            background: #161618;
         }
 
             .embed div.embed-placeholder .progress {
