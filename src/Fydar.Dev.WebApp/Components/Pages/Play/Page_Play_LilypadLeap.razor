@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/lilypadleap/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "Lilypad Leap",
-                productVersion: "v0.1.0",
-                dataUrl: "@Assets["play/lilypadleap/build/lilypadleap.data.br"]",
-                codeUrl: "@Assets["play/lilypadleap/build/lilypadleap.wasm.br"]",
-                frameworkUrl: "@Assets["play/lilypadleap/build/lilypadleap.framework.js.br"]",
-                streamingAssetsUrl: "/play/lilypadleap/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/lilypadleap/build/lilypadleap.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "Lilypad Leap",
+        ProductVersion = new Version(0, 1, 0),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/lilypadleap/build/lilypadleap.loader.js"],
+        FrameworkUrl = Assets["/play/lilypadleap/build/lilypadleap.framework.js.br"],
+        CodeUrl = Assets["/play/lilypadleap/build/lilypadleap.wasm.br"],
+        DataUrl = Assets["/play/lilypadleap/build/lilypadleap.data.br"],
+        StreamingAssetsUrl = "/play/lilypadleap/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["play/lilypadleap/favicon.ico"]" alt="The logo for 'Lilypad Leap'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+        <img decoding="async" src="@Assets["play/lilypadleap/favicon.ico"]" alt="The logo for 'Lilypad Leap'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
     </Placeholder>
 </EmbedUnity>
 

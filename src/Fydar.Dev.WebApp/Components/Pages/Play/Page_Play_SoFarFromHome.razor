@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/sofarfromhome/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "So Far From Home",
-                productVersion: "v0.0.1",
-                dataUrl: "@Assets["play/sofarfromhome/build/sofarfromhome.data.br"]",
-                codeUrl: "@Assets["play/sofarfromhome/build/sofarfromhome.wasm.br"]",
-                frameworkUrl: "@Assets["play/sofarfromhome/build/sofarfromhome.framework.js.br"]",
-                streamingAssetsUrl: "/play/sofarfromhome/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/sofarfromhome/build/sofarfromhome.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "Lost in Static",
+        ProductVersion = new Version(0, 1, 0),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/sofarfromhome/build/sofarfromhome.loader.js"],
+        FrameworkUrl = Assets["/play/sofarfromhome/build/sofarfromhome.framework.js.br"],
+        CodeUrl = Assets["/play/sofarfromhome/build/sofarfromhome.wasm.br"],
+        DataUrl = Assets["/play/sofarfromhome/build/sofarfromhome.data.br"],
+        StreamingAssetsUrl = "/play/sofarfromhome/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["play/sofarfromhome/favicon.ico"]" alt="The logo for 'So Far From Home'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+        <img decoding="async" src="@Assets["play/sofarfromhome/favicon.ico"]" alt="The logo for 'So Far From Home'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
     </Placeholder>
 </EmbedUnity>
 

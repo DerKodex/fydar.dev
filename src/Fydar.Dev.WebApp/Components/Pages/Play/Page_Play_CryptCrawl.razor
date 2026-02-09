@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/cryptcrawl/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "Crypt Crawl",
-                productVersion: "v0.1.0",
-                dataUrl: "@Assets["play/cryptcrawl/build/cryptcrawl.data.br"]",
-                codeUrl: "@Assets["play/cryptcrawl/build/cryptcrawl.wasm.br"]",
-                frameworkUrl: "@Assets["play/cryptcrawl/build/cryptcrawl.framework.js.br"]",
-                streamingAssetsUrl: "/play/cryptcrawl/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/cryptcrawl/build/cryptcrawl.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "Crypt Crawl",
+        ProductVersion = new Version(0, 1, 0),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/cryptcrawl/build/cryptcrawl.loader.js"],
+        FrameworkUrl = Assets["/play/cryptcrawl/build/cryptcrawl.framework.js.br"],
+        CodeUrl = Assets["/play/cryptcrawl/build/cryptcrawl.wasm.br"],
+        DataUrl = Assets["/play/cryptcrawl/build/cryptcrawl.data.br"],
+        StreamingAssetsUrl = "/play/cryptcrawl/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["play/cryptcrawl/favicon.ico"]" alt="The logo for 'Crypt Crawl'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+        <img decoding="async" src="@Assets["play/cryptcrawl/favicon.ico"]" alt="The logo for 'Crypt Crawl'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
     </Placeholder>
 </EmbedUnity>
 

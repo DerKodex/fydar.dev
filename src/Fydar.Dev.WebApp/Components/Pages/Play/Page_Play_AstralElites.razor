@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/astralelites/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "Astral Elites",
-                productVersion: "astralelites",
-                dataUrl: "@Assets["play/astralelites/build/astralelites.data.br"]",
-                codeUrl: "@Assets["play/astralelites/build/astralelites.wasm.br"]",
-                frameworkUrl: "@Assets["play/astralelites/build/astralelites.framework.js.br"]",
-                streamingAssetsUrl: "/play/astralelites/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/astralelites/build/astralelites.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "Astral Elites",
+        ProductVersion = new Version(0, 1, 1),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/astralelites/build/astralelites.loader.js"],
+        FrameworkUrl = Assets["/play/astralelites/build/astralelites.framework.js.br"],
+        CodeUrl = Assets["/play/astralelites/build/astralelites.wasm.br"],
+        DataUrl = Assets["/play/astralelites/build/astralelites.data.br"],
+        StreamingAssetsUrl = "/play/astralelites/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["play/astralelites/favicon.ico"]" alt="The logo for 'Astral Elites'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+        <img decoding="async" src="@Assets["play/astralelites/favicon.ico"]" alt="The logo for 'Astral Elites'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
     </Placeholder>
 </EmbedUnity>
 

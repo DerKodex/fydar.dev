@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/bloodlust/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "Bloodlust",
-                productVersion: "bloodlust",
-                dataUrl: "@Assets["play/bloodlust/build/bloodlust.data.br"]",
-                codeUrl: "@Assets["play/bloodlust/build/bloodlust.wasm.br"]",
-                frameworkUrl: "@Assets["play/bloodlust/build/bloodlust.framework.js.br"]",
-                streamingAssetsUrl: "/play/bloodlust/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/bloodlust/build/bloodlust.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "Bloodlust",
+        ProductVersion = new Version(0, 1, 0),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/bloodlust/build/bloodlust.loader.js"],
+        FrameworkUrl = Assets["/play/bloodlust/build/bloodlust.framework.js.br"],
+        CodeUrl = Assets["/play/bloodlust/build/bloodlust.wasm.br"],
+        DataUrl = Assets["/play/bloodlust/build/bloodlust.data.br"],
+        StreamingAssetsUrl = "/play/bloodlust/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["play/bloodlust/favicon.ico"]" alt="The logo for 'Bloodlust'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+        <img decoding="async" src="@Assets["play/bloodlust/favicon.ico"]" alt="The logo for 'Bloodlust'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
     </Placeholder>
 </EmbedUnity>
 

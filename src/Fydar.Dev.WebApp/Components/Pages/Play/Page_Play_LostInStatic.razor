@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/lostinstatic/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "Lost in Static",
-                productVersion: "v0.0.1",
-                dataUrl: "@Assets["play/lostinstatic/build/lostinstatic.data.br"]",
-                codeUrl: "@Assets["play/lostinstatic/build/lostinstatic.wasm.br"]",
-                frameworkUrl: "@Assets["play/lostinstatic/build/lostinstatic.framework.js.br"]",
-                streamingAssetsUrl: "/play/lostinstatic/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/lostinstatic/build/lostinstatic.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "Lost in Static",
+        ProductVersion = new Version(0, 1, 0),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/lostinstatic/build/lostinstatic.loader.js"],
+        FrameworkUrl = Assets["/play/lostinstatic/build/lostinstatic.framework.js.br"],
+        CodeUrl = Assets["/play/lostinstatic/build/lostinstatic.wasm.br"],
+        DataUrl = Assets["/play/lostinstatic/build/lostinstatic.data.br"],
+        StreamingAssetsUrl = "/play/lostinstatic/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["play/lostinstatic/favicon.ico"]" alt="The logo for 'Lost in Static'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+        <img decoding="async" src="@Assets["play/lostinstatic/favicon.ico"]" alt="The logo for 'Lost in Static'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
     </Placeholder>
 </EmbedUnity>
 

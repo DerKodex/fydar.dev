@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/void/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "Void",
-                productVersion: "v0.1.0",
-                dataUrl: "@Assets["play/void/build/void.data.br"]",
-                codeUrl: "@Assets["play/void/build/void.wasm.br"]",
-                frameworkUrl: "@Assets["play/void/build/void.framework.js.br"]",
-                streamingAssetsUrl: "/play/void/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/void/build/void.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "Void",
+        ProductVersion = new Version(0, 1, 0),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/void/build/void.loader.js"],
+        FrameworkUrl = Assets["/play/void/build/void.framework.js.br"],
+        CodeUrl = Assets["/play/void/build/void.wasm.br"],
+        DataUrl = Assets["/play/void/build/void.data.br"],
+        StreamingAssetsUrl = "/play/void/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["play/void/favicon.ico"]" alt="The logo for 'Void'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+        <img decoding="async" src="@Assets["play/void/favicon.ico"]" alt="The logo for 'Void'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
     </Placeholder>
 </EmbedUnity>
 

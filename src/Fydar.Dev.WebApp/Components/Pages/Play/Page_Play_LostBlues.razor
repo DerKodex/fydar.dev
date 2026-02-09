@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/lostblues/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "Lost Blues",
-                productVersion: "v0.1.1",
-                dataUrl: "@Assets["play/lostblues/build/lostblues.data.br"]",
-                codeUrl: "@Assets["play/lostblues/build/lostblues.wasm.br"]",
-                frameworkUrl: "@Assets["play/lostblues/build/lostblues.framework.js.br"]",
-                streamingAssetsUrl: "/play/lostblues/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/lostblues/build/lostblues.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "Lost Blues",
+        ProductVersion = new Version(0, 1, 1),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/lostblues/build/lostblues.loader.js"],
+        FrameworkUrl = Assets["/play/lostblues/build/lostblues.framework.js.br"],
+        CodeUrl = Assets["/play/lostblues/build/lostblues.wasm.br"],
+        DataUrl = Assets["/play/lostblues/build/lostblues.data.br"],
+        StreamingAssetsUrl = "/play/lostblues/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["play/lostblues/favicon.ico"]" alt="The logo for 'Lost Blues'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+        <img decoding="async" src="@Assets["play/lostblues/favicon.ico"]" alt="The logo for 'Lost Blues'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
     </Placeholder>
 </EmbedUnity>
 

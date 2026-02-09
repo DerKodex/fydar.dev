@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/raidhealersimulator/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "Raid Healer Simulator",
-                productVersion: "v0.0.1",
-                dataUrl: "@Assets["play/raidhealersimulator/build/raidhealersimulator.data.br"]",
-                codeUrl: "@Assets["play/raidhealersimulator/build/raidhealersimulator.wasm.br"]",
-                frameworkUrl: "@Assets["play/raidhealersimulator/build/raidhealersimulator.framework.js.br"]",
-                streamingAssetsUrl: "/play/raidhealersimulator/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/raidhealersimulator/build/raidhealersimulator.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "Raid Healer Simulator",
+        ProductVersion = new Version(0, 1, 0),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/raidhealersimulator/build/raidhealersimulator.loader.js"],
+        FrameworkUrl = Assets["/play/raidhealersimulator/build/raidhealersimulator.framework.js.br"],
+        CodeUrl = Assets["/play/raidhealersimulator/build/raidhealersimulator.wasm.br"],
+        DataUrl = Assets["/play/raidhealersimulator/build/raidhealersimulator.data.br"],
+        StreamingAssetsUrl = "/play/raidhealersimulator/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["play/raidhealersimulator/favicon.ico"]" alt="The logo for 'Raid Healer Simulator'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+        <img decoding="async" src="@Assets["play/raidhealersimulator/favicon.ico"]" alt="The logo for 'Raid Healer Simulator'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
     </Placeholder>
 </EmbedUnity>
 

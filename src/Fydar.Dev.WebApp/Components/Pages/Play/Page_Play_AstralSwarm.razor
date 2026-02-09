@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/astralswarm/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "Astral Swarm",
-                productVersion: "v0.1.0",
-                dataUrl: "@Assets["play/astralswarm/build/astralswarm.data.br"]",
-                codeUrl: "@Assets["play/astralswarm/build/astralswarm.wasm.br"]",
-                frameworkUrl: "@Assets["play/astralswarm/build/astralswarm.framework.js.br"]",
-                streamingAssetsUrl: "/play/astralswarm/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/astralswarm/build/astralswarm.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "Astral Swarm",
+        ProductVersion = new Version(0, 1, 0),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/astralswarm/build/astralswarm.loader.js"],
+        FrameworkUrl = Assets["/play/astralswarm/build/astralswarm.framework.js.br"],
+        CodeUrl = Assets["/play/astralswarm/build/astralswarm.wasm.br"],
+        DataUrl = Assets["/play/astralswarm/build/astralswarm.data.br"],
+        StreamingAssetsUrl = "/play/astralswarm/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["play/astralswarm/favicon.ico"]" alt="The logo for 'Astral Swarm'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+        <img decoding="async" src="@Assets["play/astralswarm/favicon.ico"]" alt="The logo for 'Astral Swarm'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
     </Placeholder>
 </EmbedUnity>
 

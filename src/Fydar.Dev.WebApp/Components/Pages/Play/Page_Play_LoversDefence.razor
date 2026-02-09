@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/loversdefence/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "Lovers Defence",
-                productVersion: "v1.0.0",
-                dataUrl: "@Assets["play/loversdefence/build/loversdefence.data.br"]",
-                codeUrl: "@Assets["play/loversdefence/build/loversdefence.wasm.br"]",
-                frameworkUrl: "@Assets["play/loversdefence/build/loversdefence.framework.js.br"]",
-                streamingAssetsUrl: "/play/loversdefence/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/loversdefence/build/loversdefence.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "Lovers Defence",
+        ProductVersion = new Version(0, 1, 0),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/loversdefence/build/loversdefence.loader.js"],
+        FrameworkUrl = Assets["/play/loversdefence/build/loversdefence.framework.js.br"],
+        CodeUrl = Assets["/play/loversdefence/build/loversdefence.wasm.br"],
+        DataUrl = Assets["/play/loversdefence/build/loversdefence.data.br"],
+        StreamingAssetsUrl = "/play/loversdefence/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["media/loversdefence/titlecard.png"]" alt="Title card for the game 'Lovers Defence'." style="width: 200px; max-width: 90%; margin-bottom: 32px; image-rendering: pixelated;" />
+        <img decoding="async" src="@Assets["media/loversdefence/titlecard.png"]" alt="Title card for the game 'Lovers Defence'." style="width: 200px; max-width: 90%; margin-bottom: 32px; image-rendering: pixelated;" />
     </Placeholder>
 </EmbedUnity>
 

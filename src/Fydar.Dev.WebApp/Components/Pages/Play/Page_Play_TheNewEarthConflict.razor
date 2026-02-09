@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/thenewearthconflict/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "The New Earth Conflict",
-                productVersion: "v0.1.0",
-                dataUrl: "@Assets["play/thenewearthconflict/build/thenewearthconflict.data.br"]",
-                codeUrl: "@Assets["play/thenewearthconflict/build/thenewearthconflict.wasm.br"]",
-                frameworkUrl: "@Assets["play/thenewearthconflict/build/thenewearthconflict.framework.js.br"]",
-                streamingAssetsUrl: "/play/thenewearthconflict/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/thenewearthconflict/build/thenewearthconflict.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "The New Earth Conflict",
+        ProductVersion = new Version(0, 1, 0),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/thenewearthconflict/build/thenewearthconflict.loader.js"],
+        FrameworkUrl = Assets["/play/thenewearthconflict/build/thenewearthconflict.framework.js.br"],
+        CodeUrl = Assets["/play/thenewearthconflict/build/thenewearthconflict.wasm.br"],
+        DataUrl = Assets["/play/thenewearthconflict/build/thenewearthconflict.data.br"],
+        StreamingAssetsUrl = "/play/thenewearthconflict/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["play/thenewearthconflict/favicon.ico"]" alt="The logo for 'The New Earth Conflict'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+        <img decoding="async" src="@Assets["play/thenewearthconflict/favicon.ico"]" alt="The logo for 'The New Earth Conflict'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
     </Placeholder>
 </EmbedUnity>
 

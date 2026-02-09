@@ -43,24 +43,24 @@
     <link rel="manifest" href="@Assets["/play/thedwellers/manifest.webmanifest"]">
 </HeadContent>
 
-<EmbedUnity>
-    <Configuration>
-        <script nonce="@noncer.Nonce">
-            var config = {
-                companyName: "Fydar",
-                productName: "The Dwellers",
-                productVersion: "v0.1.0",
-                dataUrl: "@Assets["play/thedwellers/build/thedwellers.data.br"]",
-                codeUrl: "@Assets["play/thedwellers/build/thedwellers.wasm.br"]",
-                frameworkUrl: "@Assets["play/thedwellers/build/thedwellers.framework.js.br"]",
-                streamingAssetsUrl: "/play/thedwellers/StreamingAssets",
-                arguments: [],
-            };
-            var loaderUrl = "@Assets["play/thedwellers/build/thedwellers.loader.js"]";
-        </script>
-    </Configuration>
+@{
+    var embedUnityConfig = new EmbedUnityConfig()
+    {
+        ProductName = "The Dwellers",
+        ProductVersion = new Version(0, 1, 0),
+        CompanyName = "Fydar",
+        LoaderUrl = Assets["/play/thedwellers/build/thedwellers.loader.js"],
+        FrameworkUrl = Assets["/play/thedwellers/build/thedwellers.framework.js.br"],
+        CodeUrl = Assets["/play/thedwellers/build/thedwellers.wasm.br"],
+        DataUrl = Assets["/play/thedwellers/build/thedwellers.data.br"],
+        StreamingAssetsUrl = "/play/thedwellers/StreamingAssets",
+        Arguments = [],
+    };
+}
+
+<EmbedUnity Config="embedUnityConfig">
     <Placeholder>
-        <img decoding="async"src="@Assets["play/thedwellers/favicon.ico"]" alt="The logo for 'The Dwellers'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
+        <img decoding="async" src="@Assets["play/thedwellers/favicon.ico"]" alt="The logo for 'The Dwellers'." style="width: 200px; max-width: 90%; margin-bottom: 32px;" />
     </Placeholder>
 </EmbedUnity>
 
