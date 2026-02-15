@@ -7,6 +7,12 @@
 
 <div id="@instanceId" class="embed loading" style="--loading-percentage: 0%;" @attributes="AdditionalAttributes">
     <canvas class="embed--canvas" id="@canvasId" width=960 height=600 tabindex="-1"></canvas>
+    @if (Interactive != null)
+    {
+        <div class="embed--interactive">
+            @Interactive(instanceId)
+        </div>
+    }
     <div class="embed--placeholder">
         <div class="embed--placeholdermain">
             @Placeholder
@@ -52,11 +58,11 @@
                     dataUrl: "@Config.DataUrl",
                     @if (!string.IsNullOrEmpty(Config.SymbolsUrl))
                     {
-                                <text>symbolsUrl: "@Config.SymbolsUrl",</text>
+                                    <text>symbolsUrl: "@Config.SymbolsUrl",</text>
                     }
                     @if (!string.IsNullOrEmpty(Config.MemoryUrl))
                     {
-                                <text>memoryUrl: "@Config.MemoryUrl",</text>
+                                    <text>memoryUrl: "@Config.MemoryUrl",</text>
                     }
                     streamingAssetsUrl: "@Config.StreamingAssetsUrl",
                     arguments: [@((MarkupString)(Config.Arguments.Length > 0 ? $"\"{string.Join("\", \"", Config.Arguments)}\"" : ""))]
@@ -113,12 +119,20 @@
             position: relative;
         }
 
-            .embed div.embed--placeholder {
+            .embed div.embed--interactive {
                 position: absolute;
                 width: 100%;
                 height: 100%;
                 overflow: hidden;
+                pointer-events: none;
+            }
+
+            .embed div.embed--placeholder {
+                position: absolute;
+                width: 100%;
+                height: 100%;
                 opacity: 0;
+                overflow: hidden;
                 pointer-events: none;
                 transition: opacity 0.25s;
                 background: #161618;
@@ -234,6 +248,9 @@
 @code {
     [Parameter]
     public EmbedUnityConfig Config { get; set; }
+
+    [Parameter]
+    public RenderFragment<string>? Interactive { get; set; }
 
     [Parameter]
     public RenderFragment? Placeholder { get; set; }
