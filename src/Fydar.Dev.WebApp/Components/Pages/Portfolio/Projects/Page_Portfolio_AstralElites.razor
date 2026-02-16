@@ -38,20 +38,20 @@
 <HeadContent>
     <OpenGraphComponent Model="@openGraphModel" />
     <LinkDataComponent Model="@linkData" />
-    <link rel="preload" href="@Assets["/play/astralelites/build/astralelites.loader.js"]" as="script" fetchpriority="high" />
+    <link rel="preload" href="@Assets["/play/astralelites/build/0.1.2.4.loader.js"]" as="script" fetchpriority="high" />
 </HeadContent>
 
 <section class="fullscreen" data-nosnippet>
     <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
         <div class="parallax-layer" style="--parallax-multiplier: 0.5">
-            <EmbedUnity__AstralElites />
+            <EmbedUnity__AstralElites IsBackground="true" />
         </div>
     </div>
 
     <div class="fullscreen-footer">
         <div class="fullscreen-footer-container container container-wide">
             <picture>
-                <img decoding="async"class="titlecard" src="@Assets["media/astralelites/titlecard.svg"]" alt="Title card for the game 'Astral Elites'." />
+                <img decoding="async" class="titlecard" src="@Assets["media/astralelites/titlecard.svg"]" alt="Title card for the game 'Astral Elites'." />
             </picture>
 
             <div class="titlerow">

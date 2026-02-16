@@ -5,6 +5,8 @@
     var canvasId = $"{instanceId}_canvas";
 }
 
+<ContentSecurityPolicy_Allow Directive="media-src" Sources="'self' data: blob:" />
+
 <div id="@instanceId" class="embed loading" style="--loading-percentage: 0%;" @attributes="AdditionalAttributes">
     <canvas class="embed--canvas" id="@canvasId" width=960 height=600 tabindex="-1"></canvas>
     @if (Interactive != null)
