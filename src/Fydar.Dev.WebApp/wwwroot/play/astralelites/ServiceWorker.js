@@ -1,10 +1,10 @@
-const cacheName = "fydar-astralelites-v0.1.2.4";
+const cacheName = "fydar-astralelites-v0.1.2.8";
 const contentToCache = [
     "./",
-    "Build/0.1.2.4.loader.js",
-    "Build/0.1.2.4.framework.js.br",
-    "Build/0.1.2.4.data.br",
-    "Build/0.1.2.4.wasm.br",
+    "Build/0.1.2.8.loader.js",
+    "Build/0.1.2.8.framework.js.br",
+    "Build/0.1.2.8.data.br",
+    "Build/0.1.2.8.wasm.br",
     "StreamingAssets/AssetBundles/audio.data"
 ];
 
