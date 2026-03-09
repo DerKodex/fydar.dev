@@ -7,10 +7,9 @@ div.graph-node {
     border-radius: var(--node-border-radius);
     font-size: 10px;
     font-family: 'Inter', sans-serif;
-    font-feature-settings: 'ss02' 1;
+    font-feature-settings: 'ss03' 1;
     font-weight: 500;
     letter-spacing: 0.1em;
-    text-transform: uppercase;
     user-select: none;
     transition: transform 0.0175s linear;
 }
