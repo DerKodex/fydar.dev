@@ -114,71 +114,90 @@ window.document.addEventListener("pointerenter",
 
 
 
-// Cache section positions to avoid layout thrashing during scroll
+
 let sectionCache = [];
+let visibleMenus = [];
+const menus = document.querySelectorAll("menu.toc");
 
-function updateSectionCache() {
-    sectionCache = Array.from(document.querySelectorAll("menu.toc li > a")).map(link => {
-        const id = link.getAttribute("href").split('#').pop();
+function BuildCache() {
+    sectionCache = [];
+    visibleMenus = [];
+
+    // Cache which menus are currently visible
+    menus.forEach(menu => {
+        if (menu.offsetParent !== null) {
+            visibleMenus.push(menu);
+        }
+    });
+
+    if (visibleMenus.length === 0) return;
+
+    // Use the first visible menu to find the target sections
+    const links = visibleMenus[0].querySelectorAll("li > a");
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    links.forEach(link => {
+        // Use the native .hash property, which ignores the full URL prefix
+        // It returns "#id", so we substring(1) to get just "id"
+        const id = link.hash ? link.hash.substring(1) : null;
+
+        if (!id) return; // Skip links that don't point to an anchor
+
         const section = document.getElementById(id);
-        if (!section) return null;
+        if (section) {
+            const rect = section.getBoundingClientRect();
 
-        // We only read these when the window resizes or loads
-        const rect = section.getBoundingClientRect();
-        const top = rect.top + window.scrollY;
-        return {
-            link,
-            top: top,
-            bottom: top + section.offsetHeight,
-            center: top + (section.offsetHeight / 2)
-        };
-    }).filter(Boolean);
+            // Calculate absolute positions relative to the document
+            const absoluteTop = rect.top + scrollTop;
+            const absoluteBottom = rect.bottom + scrollTop;
+
+            sectionCache.push({
+                id: id,
+                top: absoluteTop,
+                bottom: absoluteBottom,
+                center: absoluteTop + (rect.height / 2)
+            });
+        }
+    });
 }
 
-// Initialize cache and update on resize
-window.addEventListener('resize', updateSectionCache);
-updateSectionCache();
-
 function NavHighlighter() {
-    const menus = document.querySelectorAll("menu.toc");
+    if (sectionCache.length === 0 || visibleMenus.length === 0) return;
+
     const scrollY = window.scrollY;
     const viewportHeight = window.innerHeight;
     const viewportCenter = scrollY + (viewportHeight * 0.333);
 
-    menus.forEach(menu => {
-        // 1. Guard: Check if display: none
-        // offsetParent is null if the element or any ancestor is display: none
-        if (menu.offsetParent === null) return;
+    let closestId = null;
+    let minDistance = Infinity;
 
-        // 2. Guard: Check if menu is visible on screen (scrolled past)
-        const menuRect = menu.getBoundingClientRect();
-        const isMenuVisible = menuRect.top < viewportHeight && menuRect.bottom > 0;
-        if (!isMenuVisible) return;
+    // Find the closest DOM section.
+    sectionCache.forEach((data) => {
+        const distance = Math.abs(viewportCenter - data.center);
+        if (distance < minDistance) {
+            minDistance = distance;
+            closestId = data.id;
+        }
+    });
 
-        let closestLink = null;
-        let minDistance = Infinity;
+    const firstTop = sectionCache[0]?.top ?? 0;
+    const lastBottom = sectionCache[sectionCache.length - 1]?.bottom ?? 0;
 
-        // 3. Use cached values (No Recalculate Style calls here!)
-        sectionCache.forEach((data) => {
-            const distance = Math.abs(viewportCenter - data.center);
-            if (distance < minDistance) {
-                minDistance = distance;
-                closestLink = data.link;
-            }
-        });
+    const isBeforeFirst = scrollY < (firstTop - (viewportHeight * 0.333));
+    const isAfterLast = (scrollY + viewportHeight) > (lastBottom + (viewportHeight * 0.333));
+    const isOutOfBounds = isBeforeFirst || isAfterLast;
 
-        const firstTop = sectionCache[0]?.top ?? 0;
-        const lastBottom = sectionCache[sectionCache.length - 1]?.bottom ?? 0;
+    if (isOutOfBounds) {
+        closestId = null;
+    }
 
-        const isBeforeFirst = scrollY < (firstTop - (viewportHeight * 0.333));
-        const isAfterLast = (scrollY + viewportHeight) > (lastBottom + (viewportHeight * 0.333));
-        const isOutOfBounds = isBeforeFirst || isAfterLast;
-
-        // 4. Batch the Writes (DOM updates) at the end
+    // Update the DOM to match the new closest scroll section.
+    visibleMenus.forEach(menu => {
         const links = menu.querySelectorAll("li > a");
         links.forEach(link => {
-            const shouldBeActive = !isOutOfBounds && link === closestLink;
-            // Only update DOM if state actually changed to minimize paint
+            const linkId = link.hash ? link.hash.substring(1) : null;
+            const shouldBeActive = linkId !== null && linkId === closestId;
+
             if (link.classList.contains("active") !== shouldBeActive) {
                 link.classList.toggle("active", shouldBeActive);
             }
@@ -186,14 +205,13 @@ function NavHighlighter() {
     });
 }
 
-NavHighlighter();
+// Initialize on load
+document.addEventListener("DOMContentLoaded", () => {
+    BuildCache();
+    NavHighlighter();
+});
 
-// window.addEventListener("scroll",
-//     eventArgs => {
-//         NavHighlighter();
-//     }, { passive: true }
-// );
-
+// Performant scroll listener
 let scrollTick = false;
 window.addEventListener("scroll", () => {
     if (!scrollTick) {
@@ -205,33 +223,15 @@ window.addEventListener("scroll", () => {
     }
 }, { passive: true });
 
-// let throttleTimeout = null;
-// let lastRun = 0;
-// function throttledNavHighlighter() {
-//     const now = Date.now();
-//     const limit = 100; // 0.1 seconds
-// 
-//     if (now - lastRun < limit) {
-//         // If we scroll again within 50ms, clear the previous "eventual" 
-//         // run and schedule a new one.
-//         clearTimeout(throttleTimeout);
-//         throttleTimeout = setTimeout(() => {
-//             lastRun = now;
-//             NavHighlighter();
-//         }, limit);
-//     } else {
-//         // If it's been longer than 50ms, run immediately
-//         lastRun = now;
-//         NavHighlighter();
-//     }
-// }
-// window.addEventListener("scroll", throttledNavHighlighter, { passive: true });
-
-window.addEventListener("resize",
-    eventArgs => {
+// Rebuild cache on resize
+let resizeTimeout;
+window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        BuildCache();
         NavHighlighter();
-    }, { passive: true }
-);
+    }, 150);
+}, { passive: true });
 
 
 
