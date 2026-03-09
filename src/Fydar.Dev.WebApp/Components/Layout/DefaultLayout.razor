@@ -33,7 +33,7 @@
 
 	<!-- Preloaded resources for page -->
 	<link rel="preload" href="@Assets["inter/inter.css"]" as="style" />
-	<link rel="preload" href="inter/Inter-roman.var.woff2?v=3.19" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
 	<link rel="preload" href="@Assets["Fydar.Dev.WebApp.styles.css"]" as="style" />
     <link rel="preload" href="@Assets["site.js"]" as="script" />
     <link rel="preload" href="@Assets["/_framework/blazor.web.js"]" as="script" fetchpriority="high" />
@@ -57,6 +57,42 @@
 
 <SectionContent SectionName="layoutbodystyle">
 	<style>
+        /* "Inter" font with fallbacks. */
+        :root {
+            font-family: "Inter (Web)", "Inter", "Inter (Fallback: Apple)", "Inter (Fallback: Roboto)", "Inter (Fallback: Arial)", sans-serif;
+        }
+
+        @@supports (font-variation-settings: normal) {
+            :root {
+                font-family: "InterVariable (Web)", "InterVariable", "Inter (Fallback: Apple)", "Inter (Fallback: Roboto)", "Inter (Fallback: Arial)", sans-serif;
+                font-optical-sizing: auto;
+            }
+        }
+
+        @@font-face {
+            font-family: "Inter (Fallback: Apple)";
+            src: local(".SF NS"), local("SF Pro Text"), local("BlinkMacSystemFont"), local("Helvetica Neue");
+            size-adjust: 104.5%;
+            ascent-override: 93.33%;
+            descent-override: 21.50%;
+        }
+
+        @@font-face {
+            font-family: "Inter (Fallback: Roboto)";
+            src: local("Roboto");
+            size-adjust: 101.2%;
+            ascent-override: 96.37%;
+            descent-override: 22.20%;
+        }
+
+        @@font-face {
+            font-family: "Inter (Fallback: Arial)";
+            src: local("Arial");
+            size-adjust: 103.4%;
+            ascent-override: 90.81%;
+            descent-override: 20.92%;
+        }
+
 		html,
 		body {
 			padding: 0;
@@ -72,18 +108,11 @@
 			color: var(--color-text-primary);
 			font-weight: 300;
 			line-height: 1.75;
-			font-family: 'Inter', sans-serif;
 		}
 
 			body:has(main > section.fullscreen:first-child) > header {
 				position: fixed;
 			}
-
-		@@supports (font-variation-settings: normal) {
-			body {
-				font-family: 'Inter var', sans-serif;
-			}
-		}
 
 		@@media (pointer: coarse) {
 			body {
