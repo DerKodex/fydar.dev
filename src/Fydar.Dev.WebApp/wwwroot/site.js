@@ -118,43 +118,34 @@ window.document.addEventListener("pointerenter",
 let sectionCache = [];
 let visibleMenus = [];
 const menus = document.querySelectorAll("menu.toc");
+const mq = window.matchMedia("(min-width: 992px)");
+
+// Throttle/Debounce helpers
+let scrollTick = false;
+let resizeTimeout;
 
 function BuildCache() {
     sectionCache = [];
     visibleMenus = [];
-
-    // Cache which menus are currently visible
     menus.forEach(menu => {
-        if (menu.offsetParent !== null) {
-            visibleMenus.push(menu);
-        }
+        if (menu.offsetParent !== null) visibleMenus.push(menu);
     });
 
     if (visibleMenus.length === 0) return;
 
-    // Use the first visible menu to find the target sections
     const links = visibleMenus[0].querySelectorAll("li > a");
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
     links.forEach(link => {
-        // Use the native .hash property, which ignores the full URL prefix
-        // It returns "#id", so we substring(1) to get just "id"
         const id = link.hash ? link.hash.substring(1) : null;
-
-        if (!id) return; // Skip links that don't point to an anchor
-
-        const section = document.getElementById(id);
+        const section = id ? document.getElementById(id) : null;
         if (section) {
             const rect = section.getBoundingClientRect();
-
-            // Calculate absolute positions relative to the document
             const absoluteTop = rect.top + scrollTop;
-            const absoluteBottom = rect.bottom + scrollTop;
-
             sectionCache.push({
                 id: id,
                 top: absoluteTop,
-                bottom: absoluteBottom,
+                bottom: rect.bottom + scrollTop,
                 center: absoluteTop + (rect.height / 2)
             });
         }
@@ -171,7 +162,6 @@ function NavHighlighter() {
     let closestId = null;
     let minDistance = Infinity;
 
-    // Find the closest DOM section.
     sectionCache.forEach((data) => {
         const distance = Math.abs(viewportCenter - data.center);
         if (distance < minDistance) {
@@ -180,40 +170,23 @@ function NavHighlighter() {
         }
     });
 
-    const firstTop = sectionCache[0]?.top ?? 0;
-    const lastBottom = sectionCache[sectionCache.length - 1]?.bottom ?? 0;
-
-    const isBeforeFirst = scrollY < (firstTop - (viewportHeight * 0.333));
-    const isAfterLast = (scrollY + viewportHeight) > (lastBottom + (viewportHeight * 0.333));
-    const isOutOfBounds = isBeforeFirst || isAfterLast;
-
-    if (isOutOfBounds) {
+    // Out of bounds check
+    if (scrollY < (sectionCache[0].top - (viewportHeight * 0.333)) ||
+        (scrollY + viewportHeight) > (sectionCache[sectionCache.length - 1].bottom + (viewportHeight * 0.333))) {
         closestId = null;
     }
 
-    // Update the DOM to match the new closest scroll section.
     visibleMenus.forEach(menu => {
-        const links = menu.querySelectorAll("li > a");
-        links.forEach(link => {
+        menu.querySelectorAll("li > a").forEach(link => {
             const linkId = link.hash ? link.hash.substring(1) : null;
             const shouldBeActive = linkId !== null && linkId === closestId;
-
-            if (link.classList.contains("active") !== shouldBeActive) {
-                link.classList.toggle("active", shouldBeActive);
-            }
+            link.classList.toggle("active", shouldBeActive);
         });
     });
 }
 
-// Initialize on load
-document.addEventListener("DOMContentLoaded", () => {
-    BuildCache();
-    NavHighlighter();
-});
-
-// Performant scroll listener
-let scrollTick = false;
-window.addEventListener("scroll", () => {
+// Event Handlers
+const handleScroll = () => {
     if (!scrollTick) {
         window.requestAnimationFrame(() => {
             NavHighlighter();
@@ -221,17 +194,47 @@ window.addEventListener("scroll", () => {
         });
         scrollTick = true;
     }
-}, { passive: true });
+};
 
-// Rebuild cache on resize
-let resizeTimeout;
-window.addEventListener("resize", () => {
+const handleResize = () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
         BuildCache();
         NavHighlighter();
     }, 150);
-}, { passive: true });
+};
+
+function updateState() {
+    if (mq.matches) {
+        // Enable
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        window.addEventListener("resize", handleResize, { passive: true });
+        BuildCache();
+        NavHighlighter();
+    } else {
+        clearTimeout(resizeTimeout);
+
+        // Disable
+        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("resize", handleResize);
+
+        // Remove active classes when disabling
+        menus.forEach(menu => {
+            menu.querySelectorAll("li > a.active").forEach(a => a.classList.remove("active"));
+        });
+
+        sectionCache = [];
+        visibleMenus = [];
+    }
+}
+
+mq.addEventListener("change", updateState);
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", updateState);
+} else {
+    updateState();
+}
 
 
 
