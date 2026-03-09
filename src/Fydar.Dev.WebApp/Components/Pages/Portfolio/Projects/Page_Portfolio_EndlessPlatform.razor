@@ -37,97 +37,106 @@
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
-<section class="fullscreen" data-nosnippet>
-    <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-        <div class="parallax-layer" style="--parallax-multiplier: 0.5;">
-            <div class="blur" style="background: radial-gradient(100% 100% at 50% 50%, #302e32 25%, #1f2136 100%);">
+<article class="page-endlessplatform">
+
+    <div class="fullscreen" data-nosnippet>
+        <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
+            <div class="parallax-layer" style="--parallax-multiplier: 0.5;">
+                <div class="blur" style="background: radial-gradient(100% 100% at 50% 50%, #302e32 25%, #1f2136 100%);">
+                </div>
+            </div>
+
+            <video class="parallax-layer" style="--parallax-multiplier: 0.5" autoplay muted loop>
+                <source src="@Assets["media/endlessplatform/background.1080p.60fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
+                <source src="@Assets["media/endlessplatform/background.1080p.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
+            </video>
+        </div>
+
+        <div class="fullscreen-footer">
+            <div class="container">
+                <div class="titlerow">
+                    <div class="flexible-space"></div>
+                    <SteamPlayButton href="/play/endlessplatform">Play in Browser</SteamPlayButton>
+                </div>
             </div>
         </div>
 
-        <video class="parallax-layer" style="--parallax-multiplier: 0.5" autoplay muted loop>
-            <source src="@Assets["media/endlessplatform/background.1080p.60fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
-            <source src="@Assets["media/endlessplatform/background.1080p.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
-        </video>
-    </div>
-
-    <div class="fullscreen-footer">
-        <div class="fullscreen-footer-container container container-wide">
-            <div class="titlerow">
-                <div class="flexible-space"></div>
-                <SteamPlayButton href="/play/endlessplatform">Play in Browser</SteamPlayButton>
+        <div class="cascade-container">
+            <div class="cascade" style="background: linear-gradient(to right, #70434d00 0%, #dd7f4a30 75%, #4a634514 100%), url('media/noise.svg');">
             </div>
         </div>
     </div>
-</section>
 
-<div class="cascade-container">
-    <div class="cascade" style="background: linear-gradient(to right, #70434d00 0%, #dd7f4a30 75%, #4a634514 100%), url('media/noise.svg');">
-    </div>
-</div>
+    <div class="container">
+        <Block_ArticleHeader>
+            <h1 data-nosnippet>Endless Platform</h1>
+        </Block_ArticleHeader>
 
-<section class="container container-wide" data-nosnippet>
-    <h1>Endless Platform</h1>
-</section>
+        <Block_ArticleIntroduction>
+            <Sidebar>
+                <img decoding="async" class="article-featuredimage" src="@Assets["media/endlessplatform/social.webp"]" alt="Promotional material for the game 'Endless Platform'." />
 
-<aside class="project-summary">
-    <section>
-        <img decoding="async"class="project-featuredimage" src="@Assets["media/endlessplatform/social.webp"]" alt="Promotional material for the game 'Endless Platform'." />
+                <Block_PillCloud>
+                    <Pill_GameJam />
+                    <Pill_Unity />
+                    <Pill_CSharp />
+                </Block_PillCloud>
 
-        <PillCloud>
-            <Pill_GameJam />
-            <Pill_Unity />
-            <Pill_CSharp />
-        </PillCloud>
+                <p>@openGraphModel.Description.Default</p>
 
-        <p>@openGraphModel.Description.Default</p>
+                <menu class="externallinks" aria-label="Project External links">
+                </menu>
 
-        <menu class="externallinks" aria-label="Project External links">
-        </menu>
+                <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+            </Sidebar>
+            <Container>
+                <EmbedYouTube Url="REPLACE WITH YOUTUBE LINK" />
+            </Container>
+        </Block_ArticleIntroduction>
 
-        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
-    </section>
-</aside>
-
-<HeadingScope>
-    <aside>
-        <section style="position: sticky; top: 64px;" data-nosnippet>
-            <div style="height: 5rem"></div>
-            <TableOfContents />
-        </section>
-
-    </aside>
-
-    <section class="container">
-
-        <Heading Level="2" Identifier="biomes">
-            <Prefix>Creating the</Prefix>
-            <Text>Unique Biomes</Text>
+        <Block_ArticleOutlined>
+            <Sidebar>
+                <aside>
+                    <Block_TableOfContents />
+                </aside>
+            </Sidebar>
             <Content>
-                <figure class="figure-image">
-                    <video autoplay muted loop>
-                        <source src="@Assets["media/endlessplatform/dawn-1.1080p.60fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
-                        <source src="@Assets["media/endlessplatform/dawn-1.1080p.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
-                    </video>
-                    <figcaption>Rolling desert dunes using the "dawn" colour palette.</figcaption>
-                </figure>
-                
-                <figure class="figure-image">
-                    <video autoplay muted loop>
-                        <source src="@Assets["media/endlessplatform/dusk-1.1080p.60fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
-                        <source src="@Assets["media/endlessplatform/dusk-1.1080p.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
-                    </video>
-                    <figcaption>Rolling desert dunes using the "dusk" colour palette.</figcaption>
-                </figure>
 
-                <figure class="figure-image">
-                    <video autoplay muted loop>
-                        <source src="@Assets["media/endlessplatform/forest-1.1080p.60fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
-                        <source src="@Assets["media/endlessplatform/forest-1.1080p.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
-                    </video>
-                    <figcaption>Distant forested mountains and rolling hills.</figcaption>
-                </figure>
+                <OutlineSection Id="biomes" LinkName="Unique Biomes">
+                    <Block_ArticleHeading>
+                        <hgroup>
+                            <p>Creating the</p>
+                            <h2>Unique Biomes</h2>
+                        </hgroup>
+                    </Block_ArticleHeading>
+
+                    <figure class="figure-image">
+                        <video autoplay muted loop>
+                            <source src="@Assets["media/endlessplatform/dawn-1.1080p.60fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
+                            <source src="@Assets["media/endlessplatform/dawn-1.1080p.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
+                        </video>
+                        <figcaption>Rolling desert dunes using the "dawn" colour palette.</figcaption>
+                    </figure>
+
+                    <figure class="figure-image">
+                        <video autoplay muted loop>
+                            <source src="@Assets["media/endlessplatform/dusk-1.1080p.60fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
+                            <source src="@Assets["media/endlessplatform/dusk-1.1080p.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
+                        </video>
+                        <figcaption>Rolling desert dunes using the "dusk" colour palette.</figcaption>
+                    </figure>
+
+                    <figure class="figure-image">
+                        <video autoplay muted loop>
+                            <source src="@Assets["media/endlessplatform/forest-1.1080p.60fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
+                            <source src="@Assets["media/endlessplatform/forest-1.1080p.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
+                        </video>
+                        <figcaption>Distant forested mountains and rolling hills.</figcaption>
+                    </figure>
+
+                </OutlineSection>
+
             </Content>
-        </Heading>
-
-    </section>
-</HeadingScope>
+        </Block_ArticleOutlined>
+    </div>
+</article>

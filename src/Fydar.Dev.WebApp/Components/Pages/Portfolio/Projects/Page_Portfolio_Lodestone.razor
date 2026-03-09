@@ -37,70 +37,74 @@
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
-<section class="container container-wide" data-nosnippet>
-    <h1>Lodestone</h1>
-</section>
+<article class="page-lodestone">
 
-<aside class="project-summary">
-    <section>
-        <PillCloud>
-            <Pill_Tools />
-            <Pill_CSharp />
-        </PillCloud>
+    <div class="container">
+        <Block_ArticleHeader>
+            <h1 data-nosnippet>Lodestone</h1>
+        </Block_ArticleHeader>
 
-        <p>@openGraphModel.Description.Default</p>
+        <Block_ArticleIntroduction>
+            <Sidebar>
+                <Block_PillCloud>
+                    <Pill_Tools />
+                    <Pill_CSharp />
+                </Block_PillCloud>
 
-        <menu class="externallinks" aria-label="Project External links">
-        </menu>
+                <p>@openGraphModel.Description.Default</p>
 
-        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
-    </section>
-</aside>
+                <menu class="externallinks" aria-label="Project External links">
+                </menu>
 
-<HeadingScope>
-    <aside>
-        <section style="position: sticky; top: 64px;">
-            <div style="height: 5rem"></div>
-            <TableOfContents />
-        </section>
+                <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+            </Sidebar>
+            <Container>
+            </Container>
+        </Block_ArticleIntroduction>
 
-    </aside>
-
-    <section class="container">
-
-        <Heading Level="2" Identifier="asset-pipeline">
-            <Text>The Asset Pipeline</Text>
+        <Block_ArticleOutlined>
+            <Sidebar>
+                <aside>
+                    <Block_TableOfContents />
+                </aside>
+            </Sidebar>
             <Content>
-                <p>The asset pipeline is composed of processing layers that transform data from one format to another.</p>
 
-                <p>These layers can be thought of many-to-many transformations. Some layers will take multiple sources and map them to a single item.</p>
-                
-                <p>Other layers may map one source to many different resources.</p>
+                <OutlineSection Id="asset-pipeline" LinkName="The Asset Pipeline">
+                    <Block_ArticleHeading>
+                        <h2>The Asset Pipeline</h2>
+                    </Block_ArticleHeading>
 
-                <p>Putting it all together, some layers might import multiple sources and produce multiple resources.</p>
+                    <p>The asset pipeline is composed of processing layers that transform data from one format to another.</p>
 
-                <p>These layers can be stacked together to form a complete asset pipeline.</p>
-                
-                <Callout Type="construction">
-                    <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
-                    <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
-                </Callout>
+                    <p>These layers can be thought of many-to-many transformations. Some layers will take multiple sources and map them to a single item.</p>
+
+                    <p>Other layers may map one source to many different resources.</p>
+
+                    <p>Putting it all together, some layers might import multiple sources and produce multiple resources.</p>
+
+                    <p>These layers can be stacked together to form a complete asset pipeline.</p>
+
+                    <Block_Callout Type="construction">
+                        <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
+                        <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
+                    </Block_Callout>
+                </OutlineSection>
+
+                <OutlineSection Id="incremental-building" LinkName="Incremental Building">
+                    <Block_ArticleHeading>
+                        <h2>Incremental Building</h2>
+                    </Block_ArticleHeading>
+
+                    <p>Lodestone features support for <b>incremental building</b> of assets through its cascading database.</p>
+
+                    <Block_Callout Type="construction">
+                        <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
+                        <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
+                    </Block_Callout>
+                </OutlineSection>
 
             </Content>
-        </Heading>
-
-        <Heading Level="2" Identifier="incremental-building">
-            <Text>Incremental Building</Text>
-            <Content>
-                <p>Lodestone features support for <b>incremental building</b> of assets through its cascading database.</p>
-
-                <Callout Type="construction">
-                    <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
-                    <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
-                </Callout>
-
-            </Content>
-        </Heading>
-
-    </section>
-</HeadingScope>
+        </Block_ArticleOutlined>
+    </div>
+</article>

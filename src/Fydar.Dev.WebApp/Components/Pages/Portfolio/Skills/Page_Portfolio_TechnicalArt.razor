@@ -37,67 +37,59 @@
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
-<section class="container container-wide" data-nosnippet>
-    <h1>Technical Art</h1>
-</section>
+<article class="page-technicalart">
+    <div class="container">
+        <Block_ArticleHeader>
+            <h1 data-nosnippet>Technical Art</h1>
+        </Block_ArticleHeader>
 
-<HeadingScope>
-    <aside>
-        <section style="position: sticky; top: 64px;">
-            <div style="height: 5rem"></div>
-            <TableOfContents />
-        </section>
-
-    </aside>
-
-    <section class="container">
-
-        <Heading Level="2" Identifier="professional">
-            <Text>Professional</Text>
+        <Block_ArticleOutlined>
+            <Sidebar>
+                <aside>
+                    <Block_TableOfContents />
+                </aside>
+            </Sidebar>
             <Content>
-                <CoverGrid>
+                <OutlineSection Id="professional" LinkName="Professional">
+                    <Block_ArticleHeading>
+                        <h2>Professional</h2>
+                    </Block_ArticleHeading>
 
-                    <CoverDate Date="2025">
-                        <Cover_Phasmophobia />
-                    </CoverDate>
+                    <Block_CoverGrid>
 
-                    <CoverDate Date="2024">
-                        <Cover_UNO />
-                    </CoverDate>
+                        <CoverDate Date="2025">
+                            <Cover_Phasmophobia />
+                        </CoverDate>
 
-                    <CoverDate>
-                        <Cover_Southfield />
-                    </CoverDate>
+                        <CoverDate Date="2024">
+                            <Cover_UNO />
+                        </CoverDate>
 
-                </CoverGrid>
+                        <CoverDate>
+                            <Cover_Southfield />
+                        </CoverDate>
 
-                <div style="height: 24px"></div>
+                    </Block_CoverGrid>
 
-                <CardGrid Size="md">
-                    <Card href="https://www.gamesindustry.biz/technical-art-roles-what-they-are-and-how-to-get-one">
-                        <FeaturedImage>
+                    <div style="height: 24px"></div>
+
+                    <Block_CardGrid>
+                        <Card>
+                            <a class="card__link" href="https://www.gamesindustry.biz/technical-art-roles-what-they-are-and-how-to-get-one" target="_blank">EGX 2023 Panellist</a>
                             <picture>
-                                <img decoding="async"loading="lazy" width="640" height="480" class="card-image" src="@Assets["media/companies/radicalforge/egx-card.webp"]" alt="Preview of the EGX talk." />
+                                <img class="card__image" decoding="async" loading="lazy" width="640" height="480" src="@Assets["media/companies/radicalforge/egx-card.webp"]" alt="Preview of the EGX talk." />
                             </picture>
-                        </FeaturedImage>
-                        <ChildContent>
-                            <div class="card-container">
-                                <div class="row">
+                            <div class="container">
+                                <header>
                                     <SvgSprite class="card-keyicon" Link="/icons.svg?v=1#tabler--brush" />
-                                    <div class="column">
-                                        <h3 class="card-header">EGX 2023 Panellist</h3>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <p class="card-description">Technical art roles: What they are, and how to get one</p>
-                                </div>
+                                    <h3>EGX 2023 Panellist</h3>
+                                </header>
+                                <p>Technical art roles: What they are, and how to get one</p>
                             </div>
-                        </ChildContent>
-                    </Card>
-                </CardGrid>
-
+                        </Card>
+                    </Block_CardGrid>
+                </OutlineSection>
             </Content>
-        </Heading>
-
-    </section>
-</HeadingScope>
+        </Block_ArticleOutlined>
+    </div>
+</article>

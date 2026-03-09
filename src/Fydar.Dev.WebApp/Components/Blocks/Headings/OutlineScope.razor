@@ -1,0 +1,25 @@
+@using System.ComponentModel
+@implements INotifyPropertyChanged
+
+<CascadingValue Name="ParentScope" Value="this">
+    @ChildContent
+</CascadingValue>
+
+@code {
+	public OutlineScope? ThisScope => this;
+
+    [Parameter, EditorRequired]
+	public RenderFragment? ChildContent { get; set; }
+
+	public HashSet<OutlineSection> Sections { get; } = [];
+
+	public event PropertyChangedEventHandler? PropertyChanged;
+
+	public void Register(OutlineSection section)
+	{
+		if (Sections.Add(section))
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Sections)));
+		}
+	}
+}

@@ -37,96 +37,99 @@
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
-<section class="fullscreen" data-nosnippet>
-    <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-        <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
-            <img decoding="async"src="@Assets["media/roadtonorthstead/background.webp"]" style="image-rendering: pixelated;" />
-        </picture>
-    </div>
+<article class="page-roadtonorthstead">
 
-    <div class="fullscreen-footer">
-        <div class="fullscreen-footer-container container container-wide">
-            <picture>
-                <img decoding="async"class="titlecard" src="@Assets["media/roadtonorthstead/titlecard.svg"]" alt="Title card for the game 'Road to Northstead'." />
+    <div class="fullscreen" data-nosnippet>
+        <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
+            <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
+                <img decoding="async" src="@Assets["media/roadtonorthstead/background.webp"]" style="image-rendering: pixelated;" />
             </picture>
+        </div>
 
-            <div class="titlerow">
-                <div class="flexible-space"></div>
-                <SteamPlayButton href="/play/roadtonorthstead">Play in Browser</SteamPlayButton>
+        <div class="fullscreen-footer">
+            <div class="container">
+                <picture>
+                    <img decoding="async" class="titlecard" src="@Assets["media/roadtonorthstead/titlecard.svg"]" alt="Title card for the game 'Road to Northstead'." />
+                </picture>
+
+                <div class="titlerow">
+                    <div class="flexible-space"></div>
+                    <SteamPlayButton href="/play/roadtonorthstead">Play in Browser</SteamPlayButton>
+                </div>
+            </div>
+        </div>
+
+        <div class="cascade-container">
+            <div class="cascade" style="background: linear-gradient(to right, #64692800 0%, #64692830 75%, #64692814 100%), url('media/noise.svg');">
             </div>
         </div>
     </div>
-</section>
 
-<div class="cascade-container">
-    <div class="cascade" style="background: linear-gradient(to right, #64692800 0%, #64692830 75%, #64692814 100%), url('media/noise.svg');">
+    <div class="container">
+        <Block_ArticleHeader>
+            <h1 data-nosnippet>Road to Northstead</h1>
+        </Block_ArticleHeader>
+
+        <Block_ArticleIntroduction>
+            <Sidebar>
+                <img decoding="async" class="article-featuredimage" src="@Assets["media/roadtonorthstead/social.webp"]" alt="Promotional material for the game 'Road to Northstead'." />
+
+                <Block_PillCloud>
+                    <Pill_GameJam />
+                    <Pill_Unity />
+                    <Pill_CSharp />
+                </Block_PillCloud>
+
+                <p>@openGraphModel.Description.Default</p>
+
+                <menu class="externallinks" aria-label="Project External links">
+                    <li class="palette-youtube"><a href="https://youtu.be/nt5aEzyqaOU" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+                </menu>
+
+                <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+            </Sidebar>
+            <Container>
+                <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/nt5aEzyqaOU?si=UYA_5Xe3CJ7Qcsj6" />
+            </Container>
+        </Block_ArticleIntroduction>
+
+        <Block_ArticleOutlined>
+            <Sidebar>
+                <aside>
+                    <Block_TableOfContents />
+                </aside>
+            </Sidebar>
+            <Content>
+
+                <OutlineSection Id="questing-system" LinkName="Data-Driven Questing System">
+                    <Block_ArticleHeading>
+                        <hgroup>
+                            <p>Implementing a</p>
+                            <h2>Data-Driven Questing System</h2>
+                        </hgroup>
+                    </Block_ArticleHeading>
+
+                    <Block_Callout Type="construction">
+                        <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
+                        <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
+                    </Block_Callout>
+                </OutlineSection>
+
+                <OutlineSection Id="dialogue-system" LinkName="Dialogue System">
+                    <Block_ArticleHeading>
+                        <hgroup>
+                            <p>Implementing a</p>
+                            <h2>Dialogue System</h2>
+                        </hgroup>
+                    </Block_ArticleHeading>
+
+                    <Block_Callout Type="construction">
+                        <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
+                        <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
+                    </Block_Callout>
+                </OutlineSection>
+
+            </Content>
+        </Block_ArticleOutlined>
     </div>
-</div>
-
-<section class="container container-wide" data-nosnippet>
-    <h1>Road to Northstead</h1>
-</section>
-
-<aside class="project-summary">
-    <section>
-        <img decoding="async"class="project-featuredimage" src="@Assets["media/roadtonorthstead/social.webp"]" alt="Promotional material for the game 'Road to Northstead'." />
-
-        <PillCloud>
-            <Pill_GameJam />
-            <Pill_Unity />
-            <Pill_CSharp />
-        </PillCloud>
-
-        <p>@openGraphModel.Description.Default</p>
-
-        <menu class="externallinks" aria-label="Project External links">
-            <li class="palette-youtube"><a href="https://youtu.be/nt5aEzyqaOU" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
-        </menu>
-
-        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
-    </section>
-</aside>
-
-<section class="container">
-    <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/nt5aEzyqaOU?si=UYA_5Xe3CJ7Qcsj6" />
-</section>
-
-<HeadingScope>
-    <aside>
-        <section style="position: sticky; top: 64px;">
-            <div style="height: 5rem"></div>
-            <TableOfContents />
-        </section>
-
-    </aside>
-
-    <section class="container">
-
-        <Heading Level="2" Identifier="questing-system">
-            <Prefix>Implementing a</Prefix>
-            <Text>Data-Driven Questing System</Text>
-            <Content>
-
-                <Callout Type="construction">
-                    <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
-                    <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
-                </Callout>
-
-            </Content>
-        </Heading>
-
-        <Heading Level="2" Identifier="dialogue-system">
-            <Prefix>Implementing the </Prefix>
-            <Text>Dialogue System</Text>
-            <Content>
-
-                <Callout Type="construction">
-                    <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
-                    <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
-                </Callout>
-
-            </Content>
-        </Heading>
-
-    </section>
-</HeadingScope>
+</article>

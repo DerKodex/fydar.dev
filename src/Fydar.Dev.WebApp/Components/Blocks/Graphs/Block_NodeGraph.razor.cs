@@ -3,7 +3,7 @@ using Microsoft.JSInterop;
 
 namespace Fydar.Dev.WebApp.Components.Blocks.Graphs;
 
-public partial class NodeGraph : ComponentBase
+public partial class Block_NodeGraph : ComponentBase
 {
 	[Inject]
 	public IJSRuntime JSRuntime { get; set; } = default!;

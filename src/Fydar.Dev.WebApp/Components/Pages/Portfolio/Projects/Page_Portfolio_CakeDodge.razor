@@ -37,85 +37,90 @@
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
-<section class="fullscreen" data-nosnippet>
-    <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-        <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
-            <img decoding="async"src="@Assets["media/cakedodge/background.webp"]" style="object-position: 42% 50%;" />
-        </picture>
-    </div>
+<article class="page-cakedodge">
 
-    <div class="fullscreen-footer">
-        <div class="fullscreen-footer-container container container-wide">
-            <picture>
-                <img decoding="async"class="titlecard" src="@Assets["media/cakedodge/titlecard.svg"]" alt="Title card for the game 'Cake Dodge'." />
+    <div class="fullscreen" data-nosnippet>
+        <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
+            <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
+                <img decoding="async" src="@Assets["media/cakedodge/background.webp"]" style="object-position: 42% 50%;" />
             </picture>
+        </div>
 
-            <div class="titlerow">
-                <div class="flexible-space"></div>
-                <SteamPlayButton href="/play/cakedodge">Play in Browser</SteamPlayButton>
+        <div class="fullscreen-footer">
+            <div class="container">
+                <picture>
+                    <img decoding="async" class="titlecard" src="@Assets["media/cakedodge/titlecard.svg"]" alt="Title card for the game 'Cake Dodge'." />
+                </picture>
+
+                <div class="titlerow">
+                    <div class="flexible-space"></div>
+                    <SteamPlayButton href="/play/cakedodge">Play in Browser</SteamPlayButton>
+                </div>
+            </div>
+        </div>
+
+        <div class="cascade-container">
+            <div class="cascade" style="background: linear-gradient(to right, #302e3200 0%, #302e3230 75%, #302e3214 100%), url('media/noise.svg');">
             </div>
         </div>
     </div>
-</section>
 
-<div class="cascade-container">
-    <div class="cascade" style="background: linear-gradient(to right, #302e3200 0%, #302e3230 75%, #302e3214 100%), url('media/noise.svg');">
-    </div>
-</div>
+    <div class="container">
+        <Block_ArticleHeader>
+            <h1 data-nosnippet>Cake Dodge</h1>
+        </Block_ArticleHeader>
 
-<section class="container container-wide" data-nosnippet>
-    <h1>Cake Dodge</h1>
-</section>
+        <Block_ArticleIntroduction>
+            <Sidebar>
+                <img decoding="async" class="article-featuredimage" src="@Assets["media/cakedodge/social.webp"]" alt="Promotional material for the game 'Cake Dodge'." />
 
-<aside class="project-summary">
-    <section>
-        <img decoding="async"class="project-featuredimage" src="@Assets["media/cakedodge/social.webp"]" alt="Promotional material for the game 'Cake Dodge'." />
+                <Block_PillCloud>
+                    <Pill_GameJam />
+                    <Pill_Unity />
+                    <Pill_CSharp />
+                    <Pill_TechnicalArt />
+                </Block_PillCloud>
 
-        <PillCloud>
-            <Pill_GameJam />
-            <Pill_Unity />
-            <Pill_CSharp />
-            <Pill_TechnicalArt />
-        </PillCloud>
+                <p>@openGraphModel.Description.Default</p>
 
-        <p>@openGraphModel.Description.Default</p>
+                <menu class="externallinks" aria-label="Project External links">
+                </menu>
 
-        <menu class="externallinks" aria-label="Project External links">
-        </menu>
+                <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+            </Sidebar>
+            <Container>
+            </Container>
+        </Block_ArticleIntroduction>
 
-        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
-
-    </section>
-</aside>
-
-<HeadingScope>
-    <aside>
-        <section style="position: sticky; top: 64px;">
-            <div style="height: 5rem"></div>
-            <TableOfContents />
-        </section>
-
-    </aside>
-
-    <section class="container">
-
-        <Heading Level="2" Identifier="animated-character">
-            <Prefix>Creating the</Prefix>
-            <Text>Animated Character</Text>
+        <Block_ArticleOutlined>
+            <Sidebar>
+                <aside>
+                    <Block_TableOfContents />
+                </aside>
+            </Sidebar>
             <Content>
 
-                <figure class="figure-image">
-                    <img decoding="async"loading="lazy" src="@Assets["media/cakedodge/cookie-walking.gif"]" />
-                    <figcaption>The completed animated character walking left then right.</figcaption>
-                </figure>
+                <OutlineSection Id="animated-character" LinkName="Animated Character">
+                    <Block_ArticleHeading>
+                        <hgroup>
+                            <p>Creating the</p>
+                            <h2>Animated Character</h2>
+                        </hgroup>
+                    </Block_ArticleHeading>
 
-                <Callout Type="construction">
-                    <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
-                    <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
-                </Callout>
+                    <figure class="figure-image">
+                        <img decoding="async" loading="lazy" src="@Assets["media/cakedodge/cookie-walking.gif"]" />
+                        <figcaption>The completed animated character walking left then right.</figcaption>
+                    </figure>
+
+                    <Block_Callout Type="construction">
+                        <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
+                        <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
+                    </Block_Callout>
+
+                </OutlineSection>
 
             </Content>
-        </Heading>
-
-    </section>
-</HeadingScope>
+        </Block_ArticleOutlined>
+    </div>
+</article>

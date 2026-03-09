@@ -2,15 +2,16 @@
 .cutcontent {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
-    background-color: #ffffff0d;
-    padding: 12px 20px;
-    align-self: center;
+    background-color: #ffffff08;
+    padding: 12px 12px;
+    border-radius: 8px;
+    width: 100%;
 }
 
     .cutcontent .cutcontent-line {
         display: flex;
         align-items: center;
+        gap: 8px;
     }
 
         .cutcontent .cutcontent-line ::deep svg {
@@ -21,11 +22,11 @@
         }
 
         .cutcontent .cutcontent-line:last-child ::deep svg {
-            transform: scaleX(-1);
+            transform: scaleX(-1) scaleY(-1);
         }
 
         .cutcontent .cutcontent-line .cutcontent-dashed {
-            border-bottom: 2px dashed #888;
+            border-bottom: 2px dashed #484848;
             width: 100%;
         }
 
@@ -38,10 +39,14 @@
         padding: 0 36px;
     }
 
-        .cutcontent .cutcontent-body ::deep p:first-child {
-            margin-block-start: 0;
+        .cutcontent .cutcontent-body ::deep p {
+            text-align: left;
         }
 
-        .cutcontent .cutcontent-body ::deep p:last-child {
-            margin-block-end: 0;
-        }
+            .cutcontent .cutcontent-body ::deep p:first-child {
+                margin-block-start: 0;
+            }
+
+            .cutcontent .cutcontent-body ::deep p:last-child {
+                margin-block-end: 0;
+            }

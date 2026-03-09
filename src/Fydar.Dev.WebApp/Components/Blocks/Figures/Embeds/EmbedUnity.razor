@@ -60,11 +60,11 @@
                     dataUrl: "@Config.DataUrl",
                     @if (!string.IsNullOrEmpty(Config.SymbolsUrl))
                     {
-                                    <text>symbolsUrl: "@Config.SymbolsUrl",</text>
+                        <text>symbolsUrl: "@Config.SymbolsUrl",</text>
                     }
                     @if (!string.IsNullOrEmpty(Config.MemoryUrl))
                     {
-                                    <text>memoryUrl: "@Config.MemoryUrl",</text>
+                        <text>memoryUrl: "@Config.MemoryUrl",</text>
                     }
                     streamingAssetsUrl: "@Config.StreamingAssetsUrl",
                     arguments: [@((MarkupString)(Config.Arguments.Length > 0 ? $"\"{string.Join("\", \"", Config.Arguments)}\"" : ""))]
@@ -248,7 +248,7 @@
 </div>
 
 @code {
-    [Parameter]
+    [Parameter, EditorRequired]
     public EmbedUnityConfig Config { get; set; }
 
     [Parameter]

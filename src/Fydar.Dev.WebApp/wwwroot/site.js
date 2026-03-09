@@ -75,8 +75,8 @@ function findCSSRule(stylesheet, selector) {
 }
 
 var proceduralStylesheet = createStylesheet();
-addCSSRule(proceduralStylesheet, ".pointer-relative", "--pointer-fixed: 0px 0px;");
-const rule = findCSSRule(proceduralStylesheet, ".pointer-relative");
+addCSSRule(proceduralStylesheet, ".card", "--pointer-fixed: 0px 0px;");
+const rule = findCSSRule(proceduralStylesheet, ".card");
 
 var lastX = 0;
 var lastY = 0;
@@ -92,7 +92,7 @@ window.addEventListener("pointermove",
 
 window.document.addEventListener("pointerleave",
     eventArgs => {
-        var pointerRelativeElements = document.getElementsByClassName("pointer-relative");
+        var pointerRelativeElements = document.getElementsByClassName("card");
 
         for (let i = 0; i < pointerRelativeElements.length; i++) {
             var pointerRelativeElement = pointerRelativeElements[i];
@@ -103,7 +103,7 @@ window.document.addEventListener("pointerleave",
 
 window.document.addEventListener("pointerenter",
     eventArgs => {
-        var pointerRelativeElements = document.getElementsByClassName("pointer-relative");
+        var pointerRelativeElements = document.getElementsByClassName("card");
 
         for (let i = 0; i < pointerRelativeElements.length; i++) {
             var pointerRelativeElement = pointerRelativeElements[i];
@@ -112,38 +112,128 @@ window.document.addEventListener("pointerenter",
     }, { passive: true }
 );
 
+
+
+// Cache section positions to avoid layout thrashing during scroll
+let sectionCache = [];
+
+function updateSectionCache() {
+    sectionCache = Array.from(document.querySelectorAll("menu.toc li > a")).map(link => {
+        const id = link.getAttribute("href").split('#').pop();
+        const section = document.getElementById(id);
+        if (!section) return null;
+
+        // We only read these when the window resizes or loads
+        const rect = section.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        return {
+            link,
+            top: top,
+            bottom: top + section.offsetHeight,
+            center: top + (section.offsetHeight / 2)
+        };
+    }).filter(Boolean);
+}
+
+// Initialize cache and update on resize
+window.addEventListener('resize', updateSectionCache);
+updateSectionCache();
+
 function NavHighlighter() {
-    // Get all sections that have an ID defined
-    let sections = document.querySelectorAll(".heading-wrapper[id]");
+    const menus = document.querySelectorAll("menu.toc");
+    const scrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const viewportCenter = scrollY + (viewportHeight * 0.333);
 
-    // Get current scroll position
-    let scrollY = window.scrollY;
+    menus.forEach(menu => {
+        // 1. Guard: Check if display: none
+        // offsetParent is null if the element or any ancestor is display: none
+        if (menu.offsetParent === null) return;
 
-    // Now we loop through sections to get height, top and ID values for each
-    sections.forEach(current => {
-        const sectionHeight = current.offsetHeight;
+        // 2. Guard: Check if menu is visible on screen (scrolled past)
+        const menuRect = menu.getBoundingClientRect();
+        const isMenuVisible = menuRect.top < viewportHeight && menuRect.bottom > 0;
+        if (!isMenuVisible) return;
 
-        const sectionTop = (current.getBoundingClientRect().top + scrollY) - 50 - (window.innerHeight * 0.5 * getScrollPercent());
-        sectionId = current.getAttribute("id");
+        let closestLink = null;
+        let minDistance = Infinity;
 
-        var queryResults = document.querySelector("ol li a[href*=\"" + sectionId + "\"]");
-
-        if (queryResults != null) {
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                queryResults.classList.add("active");
-            } else {
-                queryResults.classList.remove("active");
+        // 3. Use cached values (No Recalculate Style calls here!)
+        sectionCache.forEach((data) => {
+            const distance = Math.abs(viewportCenter - data.center);
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestLink = data.link;
             }
-        }
+        });
+
+        const firstTop = sectionCache[0]?.top ?? 0;
+        const lastBottom = sectionCache[sectionCache.length - 1]?.bottom ?? 0;
+
+        const isBeforeFirst = scrollY < (firstTop - (viewportHeight * 0.333));
+        const isAfterLast = (scrollY + viewportHeight) > (lastBottom + (viewportHeight * 0.333));
+        const isOutOfBounds = isBeforeFirst || isAfterLast;
+
+        // 4. Batch the Writes (DOM updates) at the end
+        const links = menu.querySelectorAll("li > a");
+        links.forEach(link => {
+            const shouldBeActive = !isOutOfBounds && link === closestLink;
+            // Only update DOM if state actually changed to minimize paint
+            if (link.classList.contains("active") !== shouldBeActive) {
+                link.classList.toggle("active", shouldBeActive);
+            }
+        });
     });
 }
-function getScrollPercent() {
-    var h = document.documentElement,
-        b = document.body,
-        st = 'scrollTop',
-        sh = 'scrollHeight';
-    return (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight);
-}
+
+NavHighlighter();
+
+// window.addEventListener("scroll",
+//     eventArgs => {
+//         NavHighlighter();
+//     }, { passive: true }
+// );
+
+let scrollTick = false;
+window.addEventListener("scroll", () => {
+    if (!scrollTick) {
+        window.requestAnimationFrame(() => {
+            NavHighlighter();
+            scrollTick = false;
+        });
+        scrollTick = true;
+    }
+}, { passive: true });
+
+// let throttleTimeout = null;
+// let lastRun = 0;
+// function throttledNavHighlighter() {
+//     const now = Date.now();
+//     const limit = 100; // 0.1 seconds
+// 
+//     if (now - lastRun < limit) {
+//         // If we scroll again within 50ms, clear the previous "eventual" 
+//         // run and schedule a new one.
+//         clearTimeout(throttleTimeout);
+//         throttleTimeout = setTimeout(() => {
+//             lastRun = now;
+//             NavHighlighter();
+//         }, limit);
+//     } else {
+//         // If it's been longer than 50ms, run immediately
+//         lastRun = now;
+//         NavHighlighter();
+//     }
+// }
+// window.addEventListener("scroll", throttledNavHighlighter, { passive: true });
+
+window.addEventListener("resize",
+    eventArgs => {
+        NavHighlighter();
+    }, { passive: true }
+);
+
+
 
 function GraphScaler() {
     var elements = document.getElementsByClassName("graph");
@@ -156,22 +246,13 @@ function GraphScaler() {
     }
 }
 
-NavHighlighter();
 GraphScaler();
-
-window.addEventListener("scroll",
-    eventArgs => {
-        NavHighlighter();
-    }, { passive: true }
-);
 
 window.addEventListener("resize",
     eventArgs => {
-        NavHighlighter();
         GraphScaler();
     }, { passive: true }
 );
-
 
 
 const getRequiredModifiers = () => {

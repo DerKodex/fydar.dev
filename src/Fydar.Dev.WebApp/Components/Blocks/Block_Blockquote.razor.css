@@ -1,11 +1,11 @@
 /* Blockquote */
 figure.figure-blockquote {
     margin: 0 0 1rem;
-    border-left: 6px solid #3368e473;
     padding: 2px 26px 6px 26px;
     max-width: 580px;
-    background-color: #2727557a;
     color: rgb(221 221 221);
+    border-radius: 8px;
+    background: linear-gradient(to right, #3368e473 0, #3368e473 8px, #2727557a 8px);
 }
 
     figure.figure-blockquote ::deep *::selection,

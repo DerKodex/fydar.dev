@@ -7,9 +7,8 @@
 
 <PageTitle>Error - Fydar</PageTitle>
 
-<section class="container">
-
-    <div class="page">
+<article class="page-error">
+    <div class="container">
 
         <h2>Uh oh!</h2>
 
@@ -18,8 +17,7 @@
         <p>Error Code: @ErrorCode (@((HttpStatusCode)(ErrorCode ?? 500)))</p>
 
     </div>
-
-</section>
+</article>
 
 @code {
     [Parameter]

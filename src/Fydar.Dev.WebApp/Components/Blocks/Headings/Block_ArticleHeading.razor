@@ -1,0 +1,20 @@
+@inject NavigationManager NavigationManager
+
+<header class="article-heading">
+    @if (ParentSection != null)
+    {
+        <a class="anchor-link" href="@NavigationManager.Uri#@ParentSection.Id" aria-label="@ParentSection.LinkName">
+            <SvgSprite Link="/icons.svg?v=1#glyph-inter-hashtag" /><span class="link-name" aria-hidden="true">@ParentSection.LinkName</span>
+        </a>
+    }
+
+    @ChildContent
+</header>
+
+@code {
+    [CascadingParameter(Name = "ParentSection")]
+    public OutlineSection? ParentSection { get; set; }
+
+    [Parameter, EditorRequired]
+    public RenderFragment? ChildContent { get; set; }
+}

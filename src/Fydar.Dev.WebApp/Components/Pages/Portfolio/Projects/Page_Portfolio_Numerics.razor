@@ -37,50 +37,53 @@
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
-<section class="container container-wide" data-nosnippet>
-    <h1>Numerics</h1>
-</section>
+<article class="page-numerics">
 
-<aside class="project-summary">
-    <section>
-        <PillCloud>
-            <Pill_CSharp />
-        </PillCloud>
+    <div class="container">
+        <Block_ArticleHeader>
+            <h1 data-nosnippet>Numerics</h1>
+        </Block_ArticleHeader>
 
-        <p>@openGraphModel.Description.Default</p>
+        <Block_ArticleIntroduction>
+            <Sidebar>
+                <Block_PillCloud>
+                    <Pill_CSharp />
+                </Block_PillCloud>
 
-        <menu class="externallinks" aria-label="Project External links">
-            <li><a href="https://github.com/fydar/Deterministic" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-github" Alt="GitHub" /></a></li>
-        </menu>
+                <p>@openGraphModel.Description.Default</p>
 
-        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
-    </section>
-</aside>
+                <menu class="externallinks" aria-label="Project External links">
+                    <li><a href="https://github.com/fydar/Deterministic" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-github" Alt="GitHub" /></a></li>
+                </menu>
 
-<HeadingScope>
-    <aside>
-        <section style="position: sticky; top: 64px;">
-            <div style="height: 5rem"></div>
-            <TableOfContents />
-        </section>
+                <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+            </Sidebar>
+            <Container>
+            </Container>
+        </Block_ArticleIntroduction>
 
-    </aside>
-
-    <section class="container">
-
-        <Heading Level="2" Identifier="fixed-points">
-            <Text>Fixed-Point Mathematics</Text>
+        <Block_ArticleOutlined>
+            <Sidebar>
+                <aside>
+                    <Block_TableOfContents />
+                </aside>
+            </Sidebar>
             <Content>
 
-                <p>A common problem when programming a <b>deterministic simulation</b> is <b>deterministic mathematics</b>. One way to achieve <b>deterministic mathematics</b> is to use a <b>fixed-point numeric</b> as an alternative to the built-in <b>floating point numeric</b>. This is a commonly employed strategy by RTS games.</p>
+                <OutlineSection Id="fixed-points" LinkName="Fixed-Point Mathematics">
+                    <Block_ArticleHeading>
+                        <h2>Fixed-Point Mathematics</h2>
+                    </Block_ArticleHeading>
 
-                <Callout Type="construction">
-                    <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
-                    <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
-                </Callout>
+                    <p>A common problem when programming a <b>deterministic simulation</b> is <b>deterministic mathematics</b>. One way to achieve <b>deterministic mathematics</b> is to use a <b>fixed-point numeric</b> as an alternative to the built-in <b>floating point numeric</b>. This is a commonly employed strategy by RTS games.</p>
+
+                    <Block_Callout Type="construction">
+                        <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
+                        <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
+                    </Block_Callout>
+                </OutlineSection>
 
             </Content>
-        </Heading>
-
-    </section>
-</HeadingScope>
+        </Block_ArticleOutlined>
+    </div>
+</article>

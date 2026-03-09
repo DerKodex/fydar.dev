@@ -37,78 +37,84 @@
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
-<section class="fullscreen" data-nosnippet>
-    <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-        <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
-            <img decoding="async"src="@Assets["media/loversdefence/background.webp"]" style="image-rendering: pixelated;" />
-        </picture>
-    </div>
+<article class="page-loversdefence">
 
-    <div class="fullscreen-footer">
-        <div class="fullscreen-footer-container container container-wide">
-            <picture>
-                <img decoding="async"class="titlecard" src="@Assets["media/loversdefence/titlecard.png"]" alt="Title card for the game 'Lovers' Defence'." style="image-rendering: pixelated;" />
+    <div class="fullscreen" data-nosnippet>
+        <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
+            <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
+                <img decoding="async" src="@Assets["media/loversdefence/background.webp"]" style="image-rendering: pixelated;" />
             </picture>
+        </div>
 
-            <div class="titlerow">
-                <div class="flexible-space"></div>
-                <SteamPlayButton href="/play/loversdefence">Play in Browser</SteamPlayButton>
+        <div class="fullscreen-footer">
+            <div class="container">
+                <picture>
+                    <img decoding="async" class="titlecard" src="@Assets["media/loversdefence/titlecard.png"]" alt="Title card for the game 'Lovers' Defence'." style="image-rendering: pixelated;" />
+                </picture>
+
+                <div class="titlerow">
+                    <div class="flexible-space"></div>
+                    <SteamPlayButton href="/play/loversdefence">Play in Browser</SteamPlayButton>
+                </div>
+            </div>
+        </div>
+
+        <div class="cascade-container">
+            <div class="cascade" style="background: linear-gradient(to right, #75a84700 0%, #75a84730 75%, #75a84714 100%), url('media/noise.svg');">
             </div>
         </div>
     </div>
-</section>
 
-<div class="cascade-container">
-    <div class="cascade" style="background: linear-gradient(to right, #75a84700 0%, #75a84730 75%, #75a84714 100%), url('media/noise.svg');">
-    </div>
-</div>
+    <div class="container">
+        <Block_ArticleHeader>
+            <h1 data-nosnippet>Lovers' Defence</h1>
+        </Block_ArticleHeader>
 
-<section class="container container-wide" data-nosnippet>
-    <h1>Lovers' Defence</h1>
-</section>
+        <Block_ArticleIntroduction>
+            <Sidebar>
+                <img decoding="async" class="article-featuredimage" src="@Assets["media/loversdefence/social.webp"]" alt="Promotional material for the game 'Lovers' Defence'." />
 
-<aside class="project-summary">
-    <section>
-        <img decoding="async"class="project-featuredimage" src="@Assets["media/loversdefence/social.webp"]" alt="Promotional material for the game 'Lovers' Defence'." />
+                <Block_PillCloud>
+                    <Pill_GameJam />
+                    <Pill_Unity />
+                    <Pill_CSharp />
+                </Block_PillCloud>
 
-        <PillCloud>
-            <Pill_GameJam />
-            <Pill_Unity />
-            <Pill_CSharp />
-        </PillCloud>
+                <p>@openGraphModel.Description.Default</p>
 
-        <p>@openGraphModel.Description.Default</p>
+                <menu class="externallinks" aria-label="Project External links">
+                </menu>
 
-        <menu class="externallinks" aria-label="Project External links">
-        </menu>
+                <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+            </Sidebar>
+            <Container>
+                <EmbedYouTube Url="REPLACE WITH YOUTUBE LINK" />
+            </Container>
+        </Block_ArticleIntroduction>
 
-        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
-    </section>
-</aside>
-
-<HeadingScope>
-    <aside>
-        <section style="position: sticky; top: 64px;">
-            <div style="height: 5rem"></div>
-            <TableOfContents />
-        </section>
-
-    </aside>
-
-    <section class="container">
-
-        <Heading Level="2" Identifier="dialogue-system">
-            <Prefix>Implementing the </Prefix>
-            <Text>Dialogue System</Text>
+        <Block_ArticleOutlined>
+            <Sidebar>
+                <aside>
+                    <Block_TableOfContents />
+                </aside>
+            </Sidebar>
             <Content>
 
-                <Callout Type="construction">
-                    <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
-                    <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
-                </Callout>
+                <OutlineSection Id="dialogue-system" LinkName="Dialogue System">
+                    <Block_ArticleHeading>
+                        <hgroup>
+                            <p>Implementing the</p>
+                            <h2>Dialogue System</h2>
+                        </hgroup>
+                    </Block_ArticleHeading>
+
+                    <Block_Callout Type="construction">
+                        <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
+                        <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
+                    </Block_Callout>
+                </OutlineSection>
 
             </Content>
-        </Heading>
-
-    </section>
-</HeadingScope>
+        </Block_ArticleOutlined>
+    </div>
+</article>

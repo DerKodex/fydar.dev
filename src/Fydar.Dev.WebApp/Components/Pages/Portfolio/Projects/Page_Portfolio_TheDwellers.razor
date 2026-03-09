@@ -37,87 +37,88 @@
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
-<section class="fullscreen" data-nosnippet>
-    <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
-        <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
-            <img decoding="async"src="@Assets["media/thedwellers/background.webp"]" style="object-position: 42% 50%;" />
-        </picture>
-    </div>
+<article class="page-systems">
 
-    <div class="fullscreen-footer">
-        <div class="fullscreen-footer-container container container-wide">
-            <picture>
-                <img decoding="async"class="titlecard" src="@Assets["media/thedwellers/titlecard.svg"]" alt="Title card for the game 'The Dwellers'." />
+    <div class="fullscreen" data-nosnippet>
+        <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
+            <picture class="parallax-layer" style="--parallax-multiplier: 0.5">
+                <img decoding="async" src="@Assets["media/thedwellers/background.webp"]" style="object-position: 42% 50%;" />
             </picture>
+        </div>
 
-            <div class="titlerow">
-                <div class="flexible-space"></div>
-                <SteamPlayButton href="/play/thedwellers">Play in Browser</SteamPlayButton>
+        <div class="fullscreen-footer">
+            <div class="container">
+                <picture>
+                    <img decoding="async" class="titlecard" src="@Assets["media/thedwellers/titlecard.svg"]" alt="Title card for the game 'The Dwellers'." />
+                </picture>
+
+                <div class="titlerow">
+                    <div class="flexible-space"></div>
+                    <SteamPlayButton href="/play/thedwellers">Play in Browser</SteamPlayButton>
+                </div>
+            </div>
+        </div>
+
+        <div class="cascade-container">
+            <div class="cascade" style="background: linear-gradient(to right, #302e3200 0%, #302e3230 75%, #302e3214 100%), url('media/noise.svg');">
             </div>
         </div>
     </div>
-</section>
 
-<div class="cascade-container">
-    <div class="cascade" style="background: linear-gradient(to right, #302e3200 0%, #302e3230 75%, #302e3214 100%), url('media/noise.svg');">
-    </div>
-</div>
+    <div class="container">
+        <Block_ArticleHeader>
+            <h1 data-nosnippet>The Dwellers</h1>
+        </Block_ArticleHeader>
 
-<section class="container container-wide" data-nosnippet>
-    <h1>The Dwellers</h1>
-</section>
+        <Block_ArticleIntroduction>
+            <Sidebar>
+                <img decoding="async" class="article-featuredimage" src="@Assets["media/thedwellers/social.webp"]" alt="Promotional material for the game 'The Dwellers'." />
 
-<aside class="project-summary">
-    <section>
-        <img decoding="async"class="project-featuredimage" src="@Assets["media/thedwellers/social.webp"]" alt="Promotional material for the game 'The Dwellers'." />
+                <Block_PillCloud>
+                    <Pill_Northbrook />
+                    <Pill_GameJam />
+                    <Pill_Tools />
+                    <Pill_Unity />
+                    <Pill_CSharp />
+                </Block_PillCloud>
 
-        <PillCloud>
-            <Pill_Northbrook />
-            <Pill_GameJam />
-            <Pill_Tools />
-            <Pill_Unity />
-            <Pill_CSharp />
-        </PillCloud>
+                <p>@openGraphModel.Description.Default</p>
 
-        <p>@openGraphModel.Description.Default</p>
+                <menu class="externallinks" aria-label="Project External links">
+                    <li class="palette-youtube"><a href="https://youtu.be/ksa6ccxi0Ug" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+                </menu>
 
-        <menu class="externallinks" aria-label="Project External links">
-            <li class="palette-youtube"><a href="https://youtu.be/ksa6ccxi0Ug" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
-        </menu>
+                <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+            </Sidebar>
+            <Container>
+                <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/ksa6ccxi0Ug?si=hheiAYNLLLx_EhRv" />
+            </Container>
+        </Block_ArticleIntroduction>
 
-        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
-
-    </section>
-</aside>
-
-<section class="container">
-    <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/ksa6ccxi0Ug?si=hheiAYNLLLx_EhRv" />
-</section>
-
-<HeadingScope>
-    <aside>
-        <section style="position: sticky; top: 64px;">
-            <div style="height: 5rem"></div>
-            <TableOfContents />
-        </section>
-
-    </aside>
-
-    <section class="container">
-
-        <Heading Level="2" Identifier="inventory-and-items">
-            <Prefix>Implementing</Prefix>
-            <Text>Inventory and Items</Text>
-            <Media><SvgSprite Link="/icons.svg?v=1#icon-knapsack" /></Media>
+        <Block_ArticleOutlined>
+            <Sidebar>
+                <aside>
+                    <Block_TableOfContents />
+                </aside>
+            </Sidebar>
             <Content>
 
-                <Callout Type="construction">
-                    <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
-                    <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
-                </Callout>
+                <OutlineSection Id="inventory-and-items" LinkName="Inventory and Items">
+                    <Block_ArticleHeading>
+                        <SvgSprite class="media" Link="/icons.svg?v=1#icon-knapsack" />
+                        <hgroup>
+                            <p>Implementing</p>
+                            <h2>Inventory and Items</h2>
+                        </hgroup>
+                    </Block_ArticleHeading>
+
+                    <Block_Callout Type="construction">
+                        <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
+                        <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
+                    </Block_Callout>
+                </OutlineSection>
 
             </Content>
-        </Heading>
-
-    </section>
-</HeadingScope>
+        </Block_ArticleOutlined>
+    </div>
+</article>

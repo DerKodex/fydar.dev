@@ -1,6 +1,6 @@
 @using System.ComponentModel
 
-<menu class="card-grid card-grid-@Size card-grid-@(Cards.Count)cells">
+<menu class="card-grid card-grid-@(Cards.Count)cells">
 
     <CascadingValue Name="CardGrid" Value="this">
         @ChildContent
@@ -11,9 +11,6 @@
 @code {
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
-
-    [Parameter]
-    public string Size { get; set; } = "sm";
 
     public HashSet<Card> Cards { get; } = [];
 

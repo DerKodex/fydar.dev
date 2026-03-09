@@ -1,0 +1,144 @@
+.pronunciation-guide {
+    position: relative;
+}
+
+    .pronunciation-guide .pronunciation-guide__button {
+        display: block;
+        position: relative;
+        text-align: left;
+        margin-bottom: 0;
+        margin-right: -20px;
+        padding-top: 4px;
+        padding-bottom: 20px;
+        padding-left: 24px;
+        padding-right: 0;
+        font-size: 1.625rem;
+        letter-spacing: 8px;
+        color: #ffffff80;
+        cursor: pointer;
+        font-weight: 400;
+        white-space: nowrap;
+        background: none;
+        border: 0;
+    }
+
+        .pronunciation-guide .pronunciation-guide__button:before,
+        .pronunciation-guide .pronunciation-guide__button:after {
+            content: "";
+            height: 0;
+            left: 32px;
+            position: absolute;
+            z-index: -1;
+            bottom: 8px;
+        }
+
+        .pronunciation-guide .pronunciation-guide__button:before {
+            right: 2px;
+            border-bottom: 2px solid #ffffff20;
+        }
+
+        .pronunciation-guide .pronunciation-guide__button:after {
+            border-bottom: 2px solid #e2b384;
+        }
+
+    .pronunciation-guide:before {
+        content: "";
+        height: 0;
+        left: 12px;
+        bottom: 5px;
+        position: absolute;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-left: 12px solid #ffffff20;
+        transition: border-left 0.1s linear;
+    }
+
+    .pronunciation-guide:has(.pronunciation-guide__button:hover):before,
+    .pronunciation-guide:has(.pronunciation-guide__button:focus-visible):before {
+        border-left-color: #ffffff80;
+    }
+
+    .pronunciation-guide.pronunciation-guide--fydar.readanimation button.pronunciation-guide__button:after {
+        animation: readanimation-fydar 1s linear;
+    }
+
+    .pronunciation-guide.pronunciation-guide--fydar.readanimation button.pronunciation-guide__button .syllable1 {
+        animation: readanimation-syllable1 1s linear;
+    }
+
+    .pronunciation-guide.pronunciation-guide--fydar.readanimation button.pronunciation-guide__button .syllable2 {
+        animation: readanimation-syllable2 1s linear;
+    }
+
+@keyframes readanimation-fydar {
+    0% {
+        right: calc(100% - 2px);
+        opacity: 0;
+    }
+
+    5% {
+        right: calc(100% - 2px);
+        opacity: 1;
+    }
+
+    25% {
+        right: 42.5%;
+    }
+
+    50% {
+        right: 42.5%;
+    }
+
+    65% {
+        right: 2px;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    90% {
+        right: 2px;
+    }
+
+    100% {
+        right: 2px;
+        opacity: 0;
+    }
+}
+
+@keyframes readanimation-syllable1 {
+    0% {
+        color: #ffffff80;
+    }
+
+    5% {
+        color: #fffffff0;
+    }
+
+    25% {
+        color: #fffffff0;
+    }
+
+    50% {
+        color: #ffffff80;
+    }
+}
+
+@keyframes readanimation-syllable2 {
+    0% {
+        color: #ffffff80;
+    }
+
+    50% {
+        color: #ffffff80;
+    }
+
+    55% {
+        color: #fffffff0;
+    }
+
+    100% {
+        color: #ffffff80;
+    }
+}

@@ -37,59 +37,58 @@
     <LinkDataComponent Model="@linkData" />
 </HeadContent>
 
-<section class="container container-wide" data-nosnippet>
-    <h1>Pew Pew</h1>
-</section>
+<article class="page-pewpew">
 
-<aside class="project-summary">
-    <section>
-        <img decoding="async"class="project-featuredimage" src="@Assets["media/pewpew/social.webp"]" alt="Promotional material for the game 'Pew Pew'." />
+    <div class="container">
+        <Block_ArticleHeader>
+            <h1 data-nosnippet>Pew Pew</h1>
+        </Block_ArticleHeader>
 
-        <PillCloud>
-            <Pill_GameJam />
-            <Pill_Backend />
-            <Pill_CSharp />
-            <Pill_Multiplayer />
-        </PillCloud>
+        <Block_ArticleIntroduction>
+            <Sidebar>
+                <img decoding="async" class="article-featuredimage" src="@Assets["media/pewpew/social.webp"]" alt="Promotional material for the game 'Pew Pew'." />
 
-        <p>@openGraphModel.Description.Default</p>
+                <Block_PillCloud>
+                    <Pill_GameJam />
+                    <Pill_Backend />
+                    <Pill_CSharp />
+                    <Pill_Multiplayer />
+                </Block_PillCloud>
 
-        <menu class="externallinks" aria-label="Project External links">
-            <li><a href="https://github.com/fydar/PewPew" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-github" Alt="GitHub" /></a></li>
-            <li class="palette-youtube"><a href="https://youtu.be/9DOz6ob91zM" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
-        </menu>
+                <p>@openGraphModel.Description.Default</p>
 
-        <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
-    </section>
-</aside>
+                <menu class="externallinks" aria-label="Project External links">
+                    <li><a href="https://github.com/fydar/PewPew" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-github" Alt="GitHub" /></a></li>
+                    <li class="palette-youtube"><a href="https://youtu.be/9DOz6ob91zM" target="_blank"><SvgSprite Link="/icons.svg?v=1#icon-youtube" Alt="YouTube" /></a></li>
+                </menu>
 
-<section class="container">
-    <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/9DOz6ob91zM?si=9wSx2SPaN7-wz7OO" />
-</section>
+                <ShareLink Url="@openGraphModel.CanonicalUrl.Html" />
+            </Sidebar>
+            <Container>
+                <EmbedYouTube Url="https://www.youtube-nocookie.com/embed/9DOz6ob91zM?si=9wSx2SPaN7-wz7OO" />
+            </Container>
+        </Block_ArticleIntroduction>
 
-<HeadingScope>
-    <aside>
-        <section style="position: sticky; top: 64px;">
-            <div style="height: 5rem"></div>
-            <TableOfContents />
-        </section>
-
-    </aside>
-
-    <section class="container">
-
-        <Heading Level="2" Identifier="wip">
-            <Prefix></Prefix>
-            <Text>Work-in-progress</Text>
+        <Block_ArticleOutlined>
+            <Sidebar>
+                <aside>
+                    <Block_TableOfContents />
+                </aside>
+            </Sidebar>
             <Content>
 
-                <Callout Type="construction">
-                    <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
-                    <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
-                </Callout>
+                <OutlineSection Id="work-in-progress" LinkName="Work-in-progress">
+                    <Block_ArticleHeading>
+                        <h2>Work-in-progress</h2>
+                    </Block_ArticleHeading>
+
+                    <Block_Callout Type="construction">
+                        <Icon><SvgSprite Link="/icons.svg?v=1#fluent-emoji-high-contrast--construction" Alt="Check" /></Icon>
+                        <ChildContent>This section of my website is currently <b>under construction</b>.</ChildContent>
+                    </Block_Callout>
+                </OutlineSection>
 
             </Content>
-        </Heading>
-
-    </section>
-</HeadingScope>
+        </Block_ArticleOutlined>
+    </div>
+</article>

@@ -1,9 +1,9 @@
 /* Table of Contents */
-ol.toc {
+menu.toc {
     padding: 0;
 }
 
-    ol.toc li {
+    menu.toc li {
         list-style: none;
         text-wrap: nowrap;
         font-size: 1.0625em;
@@ -11,7 +11,7 @@ ol.toc {
         letter-spacing: 0.25px;
     }
 
-        ol.toc li a {
+        menu.toc li a {
             display: inline-block;
             align-content: center;
             text-decoration: none;
@@ -21,7 +21,7 @@ ol.toc {
             transition: color 0.25s ease-out;
         }
 
-            ol.toc li a.active {
+            menu.toc li a.active {
                 color: currentColor;
             }
 
@@ -30,12 +30,12 @@ ol.toc {
         color: #666;
     }
 
-    ol.toc li a:focus-visible,
-    ol.toc li a:hover {
+    menu.toc li a:focus-visible,
+    menu.toc li a:hover {
         color: #d8d8d8;
     }
 
-    ol.toc li a:before {
+    menu.toc li a:before {
         content: "";
         display: inline-block;
         width: 1em;
@@ -46,11 +46,11 @@ ol.toc {
         transition: width 0.25s ease-out;
     }
 
-    ol.toc li a:hover:before,
-    ol.toc li a:focus-visible:before {
+    menu.toc li a:hover:before,
+    menu.toc li a:focus-visible:before {
         width: 3em;
     }
 
-    ol.toc li a.active:before {
+    menu.toc li a.active:before {
         width: 3em;
     }

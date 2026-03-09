@@ -1,0 +1,3 @@
+section:has(header.article-heading:first-child) {
+    scroll-margin-top: 4rem;
+}

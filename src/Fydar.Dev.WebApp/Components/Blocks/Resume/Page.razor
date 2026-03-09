@@ -1,0 +1,13 @@
+<div class="page-viewport">
+	<div class="page @Class">
+		@ChildContent
+	</div>
+</div>
+
+@code {
+    [Parameter]
+    public string Class { get; set; } = "";
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}
