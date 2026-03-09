@@ -45,11 +45,13 @@
 </SectionContent>
 
 <SectionContent SectionName="layoutbodyscript">
-    <script src="@Assets["site.js"]"></script>
-    <script src="@Assets["/_framework/blazor.web.js"]" autostart="false"></script>
+    <script defer src="@Assets["site.js"]"></script>
+    <script defer src="@Assets["/_framework/blazor.web.js"]" autostart="false"></script>
     <script nonce="@noncer.Nonce">
-        Blazor.start({
-            ssr: { disableDomPreservation: true }
+        document.addEventListener("DOMContentLoaded", () => {
+            Blazor.start({
+                ssr: { disableDomPreservation: true }
+            });
         });
     </script>
     <ImportMap nonce="@noncer.Nonce" />
