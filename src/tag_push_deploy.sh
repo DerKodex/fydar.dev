@@ -6,7 +6,7 @@ docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 22277921
 
 # Build
 
-docker build . -t websiteinstance -f Fydar.Dev.WebApp/Dockerfile
+docker buildx build --platform linux/arm64 -t websiteinstance -f Fydar.Dev.WebApp/Dockerfile .
 
 # Tag
 

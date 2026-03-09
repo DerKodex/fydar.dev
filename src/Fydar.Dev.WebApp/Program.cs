@@ -152,13 +152,16 @@ public class Program
 
 			string domainName = builder.Configuration.GetValue<string>("DOMAINNAME") ?? string.Empty;
 
-			builder.Services.AddLettuceEncrypt(options =>
+			if (!string.IsNullOrEmpty(domainName))
 			{
-				options.AcceptTermsOfService = true;
-				options.DomainNames = [domainName];
-				options.EmailAddress = "dev.anthonymarmont@gmail.com";
-			});
-			// 	.PersistDataToDirectory(new DirectoryInfo("lettuce"), null);
+				builder.Services.AddLettuceEncrypt(options =>
+				{
+					options.AcceptTermsOfService = true;
+					options.DomainNames = [domainName];
+					options.EmailAddress = "dev.anthonymarmont@gmail.com";
+				});
+				// 	.PersistDataToDirectory(new DirectoryInfo("lettuce"), null);
+			}
 		}
 
 		builder.WebHost.UseKestrel(kestrel =>
@@ -222,7 +225,12 @@ public class Program
 		}
 		else
 		{
-			app.UseHttpsRedirection();
+			string domainName = builder.Configuration.GetValue<string>("DOMAINNAME") ?? string.Empty;
+			if (!string.IsNullOrEmpty(domainName))
+			{
+				app.UseHttpsRedirection();
+			}
+
 			app.UseHsts();
 			app.UseExceptionHandler("/error");
 		}
