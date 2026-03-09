@@ -51,7 +51,6 @@
         .cover .cover-background ::deep video {
             animation: library-fade-in ease 1s;
             animation-iteration-count: 1;
-            animation-fill-mode: forwards;
         }
 
         .cover .cover-background .cover-overlay {
