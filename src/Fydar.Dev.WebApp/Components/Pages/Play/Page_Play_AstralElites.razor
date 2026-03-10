@@ -47,8 +47,8 @@
 
 <EmbedUnity__AstralElites IsBackground="@Background" />
 
-<script nonce="@noncer.Nonce">
-    var serviceWorkerUrl = "@Assets["play/astralelites/ServiceWorker.js"]";
+<script defer nonce="@noncer.Nonce">
+    const serviceWorkerUrl = "@Assets["play/astralelites.serviceworker.js"]";
     window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.register(serviceWorkerUrl);

@@ -45,6 +45,37 @@
 
     <script nonce="@noncer.Nonce">
         var loaderUrl = "@Config.LoaderUrl";
+        const cacheName = "@(Config.CompanyName.ToLower().Replace(" ", ""))-@(Config.ProductName.ToLower().Replace(" ", ""))-@("v" + Config.ProductVersion)";
+
+        const originalFetch = window.fetch;
+
+        window.fetch = async (...args) => {
+            const [resource, config] = args;
+
+            const requestUrl = new URL((typeof resource === 'string') ? resource : resource.url, window.location.href).href;
+            const currentBaseUrl = window.location.href;
+
+            if (requestUrl.startsWith(currentBaseUrl) && requestUrl !== currentBaseUrl) {
+                const cache = await caches.open(cacheName);
+                const cachedResponse = await cache.match(resource);
+
+                if (cachedResponse) {
+                    console.log(`[Cache Hit] Serving child asset: ${requestUrl}`);
+                    return cachedResponse;
+                }
+
+                const response = await originalFetch(...args);
+
+                if (response.ok && response.status === 200) {
+                    const responseToCache = response.clone();
+                    cache.put(resource, responseToCache);
+                    console.log(`[Cache Save] Child asset saved: ${requestUrl}`);
+                }
+                return response;
+            }
+
+            return originalFetch(...args);
+        };
 
         var script = document.createElement("script");
         script.src = loaderUrl;
@@ -97,7 +128,7 @@
                 config.showBanner = unityShowBanner;
 
                 createUnityInstance(canvas, config, (progress) => {
-                    container.style.setProperty('--loading-percentage', 100 * progress + "%");
+                    container.style.setProperty('--loading-percentage', (100 * progress) + "%");
                 }).then((unityInstance) => {
                     container.style.setProperty('--loading-percentage', "100%");
 
