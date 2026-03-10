@@ -1,6 +1,6 @@
 namespace Fydar.Dev.WebApp.Components.Blocks.Phonetics;
 
-public struct IPAExampleWord
+public readonly struct IPAExampleWord
 {
 	public string Prefix { get; }
 	public string Sample { get; }

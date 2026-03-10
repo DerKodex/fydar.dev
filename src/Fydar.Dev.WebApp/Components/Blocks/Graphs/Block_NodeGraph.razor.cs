@@ -8,8 +8,8 @@ public partial class Block_NodeGraph : ComponentBase
 	[Inject]
 	public IJSRuntime JSRuntime { get; set; } = default!;
 
-	public string PositionPixelsX { get; set; }
-	public string PositionPixelsY { get; set; }
+	public required string PositionPixelsX { get; set; }
+	public required string PositionPixelsY { get; set; }
 
 	protected override Task OnInitializedAsync()
 	{
