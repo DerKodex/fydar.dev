@@ -123,8 +123,17 @@ const mq = window.matchMedia("(min-width: 992px)");
 // Throttle/Debounce helpers
 let scrollTick = false;
 let resizeTimeout;
+let isCacheBuilt = false;
+
+function clearHighlighting() {
+    menus.forEach(menu => {
+        menu.querySelectorAll("li > a.active").forEach(a => a.classList.remove("active"));
+    });
+}
 
 function BuildCache() {
+    if (window.scrollY === 0) return;
+
     sectionCache = [];
     visibleMenus = [];
     menus.forEach(menu => {
@@ -150,6 +159,8 @@ function BuildCache() {
             });
         }
     });
+
+    isCacheBuilt = true;
 }
 
 function NavHighlighter() {
@@ -189,7 +200,16 @@ function NavHighlighter() {
 const handleScroll = () => {
     if (!scrollTick) {
         window.requestAnimationFrame(() => {
-            NavHighlighter();
+            if (window.scrollY === 0) {
+                clearHighlighting();
+                isCacheBuilt = false; // Invalidate cache so it rebuilds on next scroll down
+                sectionCache = [];
+            } else {
+                if (!isCacheBuilt) {
+                    BuildCache(); // Lazy execution on first scroll pixel
+                }
+                NavHighlighter();
+            }
             scrollTick = false;
         });
         scrollTick = true;
@@ -199,8 +219,14 @@ const handleScroll = () => {
 const handleResize = () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-        BuildCache();
-        NavHighlighter();
+        if (window.scrollY > 0) {
+            BuildCache();
+            NavHighlighter();
+        } else {
+            // Keep state clean if resized at the top of the page
+            isCacheBuilt = false;
+            sectionCache = [];
+        }
     }, 150);
 };
 
@@ -209,8 +235,12 @@ function updateState() {
         // Enable
         window.addEventListener("scroll", handleScroll, { passive: true });
         window.addEventListener("resize", handleResize, { passive: true });
-        BuildCache();
-        NavHighlighter();
+
+        // Handle scenario where page is refreshed while already scrolled down
+        if (window.scrollY > 0) {
+            BuildCache();
+            NavHighlighter();
+        }
     } else {
         clearTimeout(resizeTimeout);
 
@@ -218,13 +248,11 @@ function updateState() {
         window.removeEventListener("scroll", handleScroll);
         window.removeEventListener("resize", handleResize);
 
-        // Remove active classes when disabling
-        menus.forEach(menu => {
-            menu.querySelectorAll("li > a.active").forEach(a => a.classList.remove("active"));
-        });
+        clearHighlighting();
 
         sectionCache = [];
         visibleMenus = [];
+        isCacheBuilt = false;
     }
 }
 
