@@ -1,5 +1,6 @@
 @inherits LayoutComponentBase
 
+@inject IWebHostEnvironment environment;
 @inject Noncer noncer;
 
 <ContentSecurityPolicy_Allow Directive="default-src" Sources="'self'" />
@@ -7,6 +8,12 @@
 <ContentSecurityPolicy_Allow Directive="style-src" Sources="'self' 'unsafe-inline'" />
 <ContentSecurityPolicy_Allow Directive="img-src" Sources="'self' data:" />
 <ContentSecurityPolicy_Allow Directive="media-src" Sources="'self' data: blob:" />
+
+@if (!environment.IsDevelopment())
+{
+    // Enforce Trusted Types in Production/Staging
+    <ContentSecurityPolicy_Allow Directive="require-trusted-types-for" Sources="'script'" />
+}
 
 <SectionContent SectionName="layoutheadcontent">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" />

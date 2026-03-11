@@ -26,9 +26,11 @@
     function revealLink() {
         var element = document.getElementById("decodethis");
         if (!element.classList.contains("revealed")) {
-            element.innerHTML += decodeString("@EncodeString(LinkText, true)");
+            element.append(decodeString("@EncodeString(LinkText, false)"));
+
             element.href = decodeString("@EncodeString(LinkDestination, false)");
-            element.style = null;
+
+            element.removeAttribute("style");
             element.classList.add("revealed");
         }
     }

@@ -44,7 +44,27 @@
     <div class="embed--warning"></div>
 
     <script nonce="@noncer.Nonce">
-        var loaderUrl = "@Config.LoaderUrl";
+        let scriptLoaderPolicy;
+
+        // Check if the browser supports Trusted Types
+        if (window.trustedTypes && window.trustedTypes.createPolicy) {
+            // Create a policy specifically for loading your scripts
+            scriptLoaderPolicy = window.trustedTypes.createPolicy('script-loader-policy', {
+                createScriptURL: (url) => {
+                    // SECURITY CHECK: Validate the URL before trusting it.
+                    // Example: Only allow scripts from your own origin.
+                    const parsedUrl = new URL(url, window.location.origin);
+                    if (parsedUrl.origin !== window.location.origin) {
+                        throw new TypeError('Rejected script URL: Only same-origin scripts are allowed.');
+                    }
+
+                    // If the validation passes, return the string.
+                    // The browser will automatically wrap it in a TrustedScriptURL object.
+                    return parsedUrl.href;
+                }
+            });
+        }
+
         const cacheName = "@(Config.CompanyName.ToLower().Replace(" ", ""))-@(Config.ProductName.ToLower().Replace(" ", ""))-@("v" + Config.ProductVersion)";
 
         const originalFetch = window.fetch;
@@ -77,8 +97,11 @@
             return originalFetch(...args);
         };
 
+        var loaderUrl = "@Config.LoaderUrl";
+        var frameworkUrl = "@Config.FrameworkUrl";
+
         var script = document.createElement("script");
-        script.src = loaderUrl;
+        script.src = scriptLoaderPolicy ? scriptLoaderPolicy.createScriptURL(loaderUrl) : loaderUrl;
         script.setAttribute("async", "");
         script.onload = () => {
             setTimeout(function () {
@@ -86,7 +109,7 @@
                     companyName: "@Config.CompanyName",
                     productName: "@Config.ProductName",
                     productVersion: "@Config.ProductVersion",
-                    frameworkUrl: "@Config.FrameworkUrl",
+                    frameworkUrl: scriptLoaderPolicy ? scriptLoaderPolicy.createScriptURL(frameworkUrl) : frameworkUrl,
                     codeUrl: "@Config.CodeUrl",
                     dataUrl: "@Config.DataUrl",
                     @if (!string.IsNullOrEmpty(Config.SymbolsUrl))
@@ -111,7 +134,7 @@
                         warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
                     }
                     var div = document.createElement('div');
-                    div.innerHTML = msg;
+                    div.innerText = msg;
                     warningBanner.appendChild(div);
                     if (type == 'error') {
                         div.style = 'background: red; padding: 10px;';

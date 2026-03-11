@@ -18,9 +18,15 @@
 <ContentSecurityPolicy_Allow Directive="form-action" Sources="'self'" />
 <ContentSecurityPolicy_Allow Directive="frame-ancestors" Sources="'self'" />
 
-@if (environment.IsDevelopment())
+@if (!environment.IsDevelopment())
 {
-	<ContentSecurityPolicy_Allow Directive="connect-src" Sources="ws: http: ws://localhost:* wss://localhost:*" />
+    // Enforce Trusted Types in Production/Staging
+    <ContentSecurityPolicy_Allow Directive="require-trusted-types-for" Sources="'script'" />
+}
+else
+{
+    // Allow Browser Link and Hot Reload connections in Development
+    <ContentSecurityPolicy_Allow Directive="connect-src" Sources="ws: http: ws://localhost:* wss://localhost:*" />
 }
 
 <SectionContent SectionName="layoutheadcontent">
