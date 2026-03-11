@@ -4,7 +4,7 @@
     var openGraphModel = new OpenGraphModel()
     {
         Title = "UNO™ - Fydar",
-        Description = "One of the most iconic classic games which we all grew to know and love!",
+        Description = "Modernizing a legacy UI and optimizing performance for Ubisoft's iconic card game.",
         CanonicalUrl = "https://fydar.dev/portfolio/uno",
         Properties = [
             new OpenGraphModelImage()
@@ -42,7 +42,7 @@
     <div class="fullscreen" data-nosnippet>
         <div class="parallax-frame parallax-focalanchortop" style="--animation-time: 0.5;">
             <div class="parallax-layer" style="--parallax-multiplier: 0.5;">
-                <div class="blur" style="background: radial-gradient(20% 25% at 57% 40%, rgba(255,118,7,1) 16%, transparent), radial-gradient(100% 105% at 66% 60%, rgba(250,202,21,1) 2%, rgba(253,165,13,1) 12%, rgba(255,118,7,1) 26%, rgba(250,70,0,1) 36%, rgba(241,36,1,1) 43%, rgba(141,5,0,1) 77%, rgba(101,2,0,1) 100%);">
+                <div class="blur" style="background: radial-gradient(in oklab 20% 25% at 57% 40%, rgb(255, 118, 7) 16%, transparent), radial-gradient(in oklab 100% 105% at 66% 60%, rgb(250, 202, 21) 0%, rgb(253, 165, 13) 10%, rgb(255, 118, 7) 20%, rgb(255 71 0) 30%, rgb(239 35 0) 41%, rgb(89 3 0) 77%, rgb(72, 12, 3) 100%)">
                 </div>
             </div>
 
@@ -111,136 +111,109 @@
                 </aside>
             </Sidebar>
             <Content>
-                <OutlineSection Id="legacy-codebase" LinkName="Legacy Codebase">
+                <OutlineSection Id="legacy-codebase" LinkName="Project Overview">
                     <Block_ArticleHeading>
                         <img class="media" decoding="async" src="@Assets["media/uno/green-1.webp"]" alt="A green UNO™ 1 card." />
                         <hgroup>
-                            <p>Bug fixing in a</p>
-                            <h2>Legacy Codebase</h2>
+                            <p>Legacy Systems & Modernization</p>
+                            <h2>Project Overview</h2>
                         </hgroup>
                     </Block_ArticleHeading>
 
-                    <p>The UNO™ codebase dates back to 2016 with the first release of the <b>Ubisoft</b> UNO™ game. As such, it inherited a lot of bugs over the many years of development it's received. My responsibility working on UNO™ was to address these bugs to earn community trust.</p>
+                    <p>Ubisoft’s <b>UNO™</b> is built on a legacy codebase originating in 2016. My primary objective was to address technical debt and resolve long-standing bugs to restore community trust. This required a deep dive into antiquated UI systems and complex rendering bottlenecks across multiple platforms.</p>
 
                 </OutlineSection>
 
-                <OutlineSection Id="button-behaviour" LinkName="Main Menu Button Behaviour">
+                <OutlineSection Id="button-behaviour" LinkName="UX Engineering">
                     <Block_ArticleHeading>
                         <img class="media" decoding="async" src="@Assets["media/uno/blue-2.webp"]" alt="A blue UNO™ 2 card." />
                         <hgroup>
-                            <p>Debugging, fixing, and polishing the</p>
-                            <h2>Main Menu Button Behaviour</h2>
+                            <p>Refactoring Logic & Input Parity</p>
+                            <h2>UX Engineering: Main Menu</h2>
                         </hgroup>
                     </Block_ArticleHeading>
 
-                    <p>Whilst fixing bugs on some buttons in the game Main Menu I identified a whole host of troublesome behaviours. My best course of action was to completely rethink how these buttons work.</p>
+                    <p>The legacy UI suffered from “input friction” caused by technical inconsistencies that degraded the user experience. I refactored the core button component logic to decouple visual animations from functional interaction states.</p>
 
-                    <p>Before we do that, though, let's analyse the old UI behaviour and see what issues we can identify with its design and implementation.</p>
+                    <h3>Rework 1: Static Hitbox Geometry</h3>
 
-                    <h3>Issue 1: Inconsistent Hitboxes</h3>
-
-                    <p>When using the UI for the first time I noticed that the buttons had very inconsistent hitboxes. This was very frustrating to the point where I avoided using the buttons because of how bad their hitboxes were.</p>
+                    <p>The original implementation scaled hitboxes during hover animations, creating a “moving target” effect. I re-engineered the logic to ensure hitbox geometry remained static and predictable while the visual layer handled the juice.</p>
 
                     <figure class="figure-image">
                         <video autoplay muted loop>
                             <source src="@Assets["media/uno/issue1-before.30fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
                             <source src="@Assets["media/uno/issue1-before.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
                         </video>
-                        <figcaption>Footage of the mouse hovering over the old main menu buttons.</figcaption>
+                        <figcaption><b>Before:</b> Dynamic hitbox scaling causing inconsistent mouse-over registration.</figcaption>
                     </figure>
-
-                    <p>I quickly realised that these hitboxes were inconsistent because the hitboxes were being scaled whilst the user hovered over the button. This is a common mistake which should be avoided.</p>
 
                     <figure class="figure-image">
                         <video autoplay muted loop>
                             <source src="@Assets["media/uno/issue1-after.30fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
                             <source src="@Assets["media/uno/issue1-after.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
                         </video>
-                        <figcaption>Footage of the mouse hovering over the new main menu buttons.</figcaption>
+                        <figcaption><b>After:</b> Refactored hitbox logic ensuring reliable interaction.</figcaption>
                     </figure>
 
-                    <h3>Issue 2: No "Depressed" State </h3>
+                    <h3>Rework 2: Standardizing Tactile Feedback</h3>
 
-                    <p>When clicking on the buttons using the mouse, keyboard, or controller button, there is no visual feedback.</p>
+                    <p>Effective UI requires immediate confirmation of user intent. The legacy codebase primarily used “act on release” triggers, which can feel sluggish if not accompanied by proper feedback. Due to the significant lag spikes that occour when opening a tab, I focused on improving the visual feedback loop rather than changing the button behaviour.</p>
 
-                    <figure class="figure-image">
-                        <video autoplay muted loop>
-                            <source src="@Assets["media/uno/issue2-before.30fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
-                            <source src="@Assets["media/uno/issue2-before.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
-                        </video>
-                        <figcaption>Footage of the mouse clicking on the old main menu buttons.</figcaption>
-                    </figure>
-
-                    <p>Without a depressed state on the button there is a significant disconnect between the user and the interface.</p>
+                    <p>I introduced a dedicated button “depressed” state across all input modalities. This ensures that the user receives a tactile visual response the instant a button is engaged, providing the “snappiness” of a modern UI while respecting the technical constraints of the 2016 codebase.</p>
 
                     <figure class="figure-image">
                         <video autoplay muted loop>
                             <source src="@Assets["media/uno/issue2-after.30fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
                             <source src="@Assets["media/uno/issue2-after.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
                         </video>
-                        <figcaption>Footage of the mouse clicking on the new main menu buttons.</figcaption>
+                        <figcaption>Implemented tactile "press" states for immediate visual feedback.</figcaption>
                     </figure>
 
-                    <h3>Issue 3: Inconsistent</h3>
+                    <h3>Rework 3: Input Parity & Logic Inconsistency</h3>
 
-                    <p>There were quite a few inconsistencies with the old behaviour:</p>
-
-                    <ul>
-                        <li>When you navigate between buttons using a controller there is no animation, unlike when you're using the mouse.</li>
-                        <li>When you highlight the "profile" button using a mouse it glows, but it doesn't if you're using a controller.</li>
-                        <li>Buttons animate out when you stop hovering using the mouse, but not when you hover.</li>
-                        <li>Some buttons don't have labels that appear when you hover over them.</li>
-                    </ul>
-
-                    <figure class="figure-image">
-                        <video autoplay muted loop>
-                            <source src="@Assets["media/uno/issue3-before.30fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
-                            <source src="@Assets["media/uno/issue3-before.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
-                        </video>
-                        <figcaption>Footage of controller navigation on the old main menu buttons.</figcaption>
-                    </figure>
-
-                    <p>With these inconsistencies, it can be difficult for the user to navigate the menu naturally.</p>
+                    <p>I implemented a standardized state machine to ensure animations and labels (e.g., glows and hover tooltips) triggered identically regardless of the input device, eliminating the disparity between mouse and controller users.</p>
 
                     <figure class="figure-image">
                         <video autoplay muted loop>
                             <source src="@Assets["media/uno/issue3-after.30fps.h265.mp4"]" type='video/mp4; codecs="hvc1.1.2.L123.90"; profiles="isom,iso2,mp41"'>
                             <source src="@Assets["media/uno/issue3-after.30fps.h264.mp4"]" type='video/mp4; codecs="avc1.4d4028"; profiles="isom,iso2,avc1,mp41"'>
                         </video>
-                        <figcaption>Footage of controller navigation on the new main menu buttons.</figcaption>
+                        <figcaption>Standardized controller navigation with full animation parity.</figcaption>
                     </figure>
                 </OutlineSection>
 
-                <OutlineSection Id="overdraw" LinkName="Addressing Overdraw">
+                <OutlineSection Id="overdraw" LinkName="Technical Art Optimization">
                     <Block_ArticleHeading>
                         <img class="media" decoding="async" src="@Assets["media/uno/red-3.webp"]" alt="A red UNO™ 3 card." />
                         <hgroup>
-                            <p>Technical Art</p>
-                            <h2>Addressing Overdraw</h2>
+                            <p>GPU Optimization & Performance</p>
+                            <h2>Technical Art: Valhalla DLC</h2>
                         </hgroup>
                     </Block_ArticleHeading>
 
-                    <p>The UNO™ Valhalla DLC features an alternative map where your cards do battle (higher value wins). This scene was plagued with performance issues, especially on XBOX. I was tasked with identifying what was causing the slowdown and fixing it.</p>
+                    <p>The UNO™ Valhalla DLC "battle" screen suffered from significant frame-rate drops on console, particularly Xbox. I was tasked with diagnosing the source of the GPU lag and implementing a fix that maintained visual fidelity.</p>
 
                     <figure class="figure-image">
                         <picture class="media-wide">
                             <img decoding="async" src="@Assets["media/uno/valhalla-battle.webp"]" alt="The UNO™ Valhalla DLC battle map." loading="lazy" />
                         </picture>
-                        <figcaption>The UNO™ Valhalla DLC "battle" screen that had performance issues.</figcaption>
+                        <figcaption>The performance-intensive Valhalla DLC "battle" screen.</figcaption>
                     </figure>
 
-                    <p>When I first read the reports of performance issues on this scene I was immediately suspicious of the <a target="_blank" href="https://docs.unity3d.com/Manual/ParticleSystems.html">Unity Particle System<SvgSprite Link="/icons.svg?v=1#icon-external-link" class="external-link-icon" /></a> used to produce the aurora effect that appears in the background because of my experience optimizing <a href="/portfolio/eitr">EITR</a> for consoles.</p>
+                    <h3>The Diagnosis: Overdraw Analysis</h3>
 
-                    <p>Using tools for identifying areas of significant overdraw, I was able to see that there was indeed areas of high overdraw caused by the particles. I reproduced the issue below. See how, on the left, how much "hotter"" the particles read?</p>
+                    <p>Using Unity's Overdraw Debugger, I identified that the background Aurora effect, created using a <b>Unity Particle System</b>, was rendering excessive overlapping high-transparency quads. This forced the GPU to re-calculate the same pixels multiple times per frame, creating massive overhead.</p>
 
                     <figure class="figure-image">
                         <picture class="media-wide">
                             <img decoding="async" src="@Assets["media/uno/valhalla-battle-godrays-overdraw.webp"]" alt="A comparison of different godray particles using the Overdraw debugger.." loading="lazy" />
                         </picture>
-                        <figcaption><b>Left</b> is the slow Particle System; <b>Right</b> is the optimized Particle System; both viewed using the Overdraw debugger.</figcaption>
+                        <figcaption><b>Overdraw View:</b> The left panel shows the original "hot" area of high pixel complexity; the right shows the optimized version.</figcaption>
                     </figure>
 
-                    <p>As you can see, the Overdraw has been significantly reduced in the optimized version. To accomplish this, I reduced the particle count and increased the opacity until the effect returned.</p>
+                    <h3>The Solution: Balancing Fidelity & Overhead</h3>
+
+                    <p>I balanced visual quality with GPU performance by reducing the total particle count by approximately 40% while increasing the alpha opacity. This maintained the "thick" visual presence of the aurora while significantly reducing the per-pixel rendering costs.</p>
 
                     <figure class="figure-image">
                         <picture class="media-wide">
